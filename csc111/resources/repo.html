@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Accessibility and Support - CSC 111 Data Structures and Abstractions</title>
+        <title>Git Repo - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -173,65 +173,42 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="accessibility-and-support"><a class="header" href="#accessibility-and-support">Accessibility and Support</a></h1>
-<h2 id="disability-and-accommodations"><a class="header" href="#disability-and-accommodations">Disability and Accommodations</a></h2>
-<p>QU’s policy on disabilities and accommodations can be found at
-<a href="https://catalog.qu.edu/university-policies/disability-policy/">https://catalog.qu.edu/university-policies/disability-policy/</a>.</p>
-<p>The university provides the following text for use in syllabi:</p>
-<blockquote>
-<p>Quinnipiac University is committed to creating a learning environment that
-meets the needs of its diverse student body. If you anticipate or experience
-any barriers to learning in this course, please feel welcome to discuss your
-concerns with me.</p>
-<p>If you have a disability, or think you may have a disability, you may also
-want to meet with the Office of Student Accessibility, to begin this
-conversation or to request reasonable accommodations. Quinnipiac University
-complies with the Americans with Disabilities Act and Section 504 of the
-Rehabilitation Act of 1973.</p>
-<p>Please contact the Office of Student Accessibility by emailing access@qu.edu,
-or by calling 203-582-7600. If you have already been approved for
-accommodations through the Office of Student Accessibility, please meet with
-me so we can develop an implementation plan together.</p>
-</blockquote>
-<p>In addition to the above, I want to stress that your mental and physical health
-are more important than your classes. If you’re struggling with class due to
-mental health issues or notice that you’re developing unhealthy habits to cope
-with your workload, then please talk to someone as early as possible. The sooner
-you ask for help, the more (and better) options you’ll have, but it’s never too
-late to reach out to someone. You can email OSA (<a href="mailto:access@qu.edu">access@qu.edu</a>), your academic
-coach, the Learning Commons (see below), your advisor, me, or another professor.</p>
-<h2 id="learning-commons"><a class="header" href="#learning-commons">Learning Commons</a></h2>
-<p>I highly recommend making use of the Learning Commons any time you need help
-with work for this class. There should be several peer tutors available for
-computer science and software engineering courses. The Learning Commons also
-employs academic coaches who work with first-year students.</p>
-<p>Below is some additional information about the Learning Commons and their
-contact information:</p>
-<blockquote>
-<p>The Learning Commons is a place for students to go when they want to achieve a
-level of performance they can’t reach on their own. In a setting of practice
-and growth, student resources are provided through Peer Educator programs, the
-Office of Student Accessibility, and Academic Development &amp; Outreach
-professional staff. The Learning Commons can be found at the Mount Carmel
-Campus in the North wing of the Arnold Bernhard Library; and at the North
-Haven Campus on the third floor of the Law School (SLE-340). Students are
-encouraged to visit The Learning Commons for support with class content, to
-improve study skills, to consult on academic success strategies, and for
-general developmental advising needs.</p>
-</blockquote>
-<p>Phone: 203-582-8628</p>
-<p>Email: <a href="mailto:LearningCommons@Qinnipiac.edu">LearningCommons@Qinnipiac.edu</a></p>
-<p>Website: <a href="https://www.qu.edu/student-life/support-services/">https://www.qu.edu/student-life/support-services/</a></p>
+                        <h1 id="git-repo"><a class="header" href="#git-repo">Git Repo</a></h1>
+<p>Almost everything I do in class will be uploaded to a public git repo hosted on
+GitHub: <a href="https://github.com/zachkohlberg/csc111_26fa_class_repo">https://github.com/zachkohlberg/csc111_26fa_class_repo</a>. You can view
+or download the whole repo from this webpage without git, but using git is
+faster and easier. We’ll do this during class, but the essential commands are
+below in case you forget.</p>
+<p>To clone the repo:</p>
+<pre><code class="language-bash"># cd to your csc111 folder or wherever you keep your files for this class
+cd ~/csc111
+# clone the repo
+git clone https://github.com/zachkohlberg/csc111_26fa_class_repo.git
+# rename it to "repo" or something shorter
+# also, be careful with the mv command! (see the terminal guide)
+mv csc111_26fa_class_repo repo
+</code></pre>
+<p>You only need to clone the repo once! After you’ve cloned it, you can get the
+latest changes with the <code>pull</code> command:</p>
+<pre><code class="language-bash"># cd to the repo first (your path depends on where you cloned it)
+cd ~/csc111/repo
+# run the pull command
+git pull
+</code></pre>
+<p>Avoid storing your own files in the repo or editing the files in the repo. If
+you modify anything in the repo, then you may run into errors when you try to
+update it with the pull command. I’m not going to troubleshoot this with you, so
+if you mess with the repo and can’t pull then you can just make a new clone.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../policies/ai.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../resources/textbooks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../policies/proposals.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../resources/terminal.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -241,11 +218,11 @@ general developmental advising needs.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../policies/ai.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../resources/textbooks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../policies/proposals.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../resources/terminal.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

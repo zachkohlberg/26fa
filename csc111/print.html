@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-86823fb2.js";
+            window.path_to_searchindex_js = "searchindex-3bbb65f0.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-b73a17f7.js"></script>
+        <script src="toc-338c0896.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -917,7 +917,7 @@ those files in your terminal.</p>
 interface. These editors are designed to be fast and efficient, but you need to
 learn and use their keyboard shortcuts instead of the mouse to get the most out
 of them.</p>
-<p>I personally use vim and neovim, and you’ll see me use this for most of the
+<p>I personally use vim and neovim, and you’ll see me use them for most of the
 semester after I cover how to use Geany. I prefer this style of editor over
 graphical editors like Geany and find them much more efficient. However, they
 can be difficult to learn, especially for beginners who are used to relying on a
@@ -927,7 +927,9 @@ and that’s fine.</p>
 <p>I usually recommend students just use Geany, but I’m going to try taking some
 time early in the class to teach everyone how to use vim. I think it’s worth
 giving it a shot before deciding to stick to a graphical program, and it will
-help make sense of what you see me doing when I present code with vim.</p>
+help make sense of what you see me doing when I present code with vim. You
+shouldn’t need to go out of your way to install vim if you want to try it out:
+MacOS usually comes with vim preinstalled and git for windows includes vim.</p>
 <p>You can also look into <a href="https://www.gnu.org/software/emacs/">emacs</a>, which is
 quite different from vim but has a similar focus on keyboard shortcuts.</p>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -998,6 +1000,33 @@ navigate the API and use it to look up information.</p>
 <a href="https://docs.oracle.com/javase/specs/">Java Specification</a>. It’s a very
 technical document and not likely to come up while you’re coding, but I might
 reference it in class and some of you may find it interesting.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="git-repo"><a class="header" href="#git-repo">Git Repo</a></h1>
+<p>Almost everything I do in class will be uploaded to a public git repo hosted on
+GitHub: <a href="https://github.com/zachkohlberg/csc111_26fa_class_repo">https://github.com/zachkohlberg/csc111_26fa_class_repo</a>. You can view
+or download the whole repo from this webpage without git, but using git is
+faster and easier. We’ll do this during class, but the essential commands are
+below in case you forget.</p>
+<p>To clone the repo:</p>
+<pre><code class="language-bash"># cd to your csc111 folder or wherever you keep your files for this class
+cd ~/csc111
+# clone the repo
+git clone https://github.com/zachkohlberg/csc111_26fa_class_repo.git
+# rename it to "repo" or something shorter
+# also, be careful with the mv command! (see the terminal guide)
+mv csc111_26fa_class_repo repo
+</code></pre>
+<p>You only need to clone the repo once! After you’ve cloned it, you can get the
+latest changes with the <code>pull</code> command:</p>
+<pre><code class="language-bash"># cd to the repo first (your path depends on where you cloned it)
+cd ~/csc111/repo
+# run the pull command
+git pull
+</code></pre>
+<p>Avoid storing your own files in the repo or editing the files in the repo. If
+you modify anything in the repo, then you may run into errors when you try to
+update it with the pull command. I’m not going to troubleshoot this with you, so
+if you mess with the repo and can’t pull then you can just make a new clone.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="terminal-guide"><a class="header" href="#terminal-guide">Terminal Guide</a></h1>
 <p>We’ll talk about most of this in class, but I wrote this guide a while ago and
@@ -1172,6 +1201,51 @@ file).</p>
 your current location.</p>
 <p>The <code>-a</code> flag mentioned earlier will show hidden files, and the <code>-l</code> flag will
 show more details about the files.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="markdown"><a class="header" href="#markdown">Markdown</a></h1>
+<p>I use markdown extensively: when I type notes during class, when I write
+assignments or other course material, and when writing this website. To explain
+what markdown actually is, I’ll just quote the guide on
+<a href="https://commonmark.org/help">commonmark.org</a>:</p>
+<blockquote>
+<p>Markdown is a simple way to format text that looks great on any device. It
+doesn’t do anything fancy like change the font size, color, or type — just the
+essentials, using keyboard symbols you already know.</p>
+</blockquote>
+<p>Markdown isn’t a specific program or a special file format (like a word doc or
+powerpoint). It’s just a small set of rules to indicate formatting in plaintext
+files. We normally use the <code>.md</code> extension to indicate that a file uses
+markdown, but it’s still just a regular text file.</p>
+<p>The guide at <a href="https://commonmark.org/help/">https://commonmark.org/help/</a> is an excellent (and <em>very</em> short)
+introduction, so go read that and you should know everything you need to make
+sense of my markdown notes. You can read markdown files in a text editor without
+any syntax coloring or other tools (it’s designed to be readable as plaintext),
+but you can also use many programs such as zine, mdbook, and pandoc to render
+markdown files into a website (html), pdf, or other file formats that will
+display the text with its intended formatting.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="vim-1"><a class="header" href="#vim-1">Vim</a></h1>
+<p>I want to encourage you to give vim a try this semester, but if at any point you
+decide it’s not for you feel free to switch to Geany or your preferred text
+editor.</p>
+<p>There are many excellent resources available for learning vim. Here are my
+favorites:</p>
+<ul>
+<li>When running vim, you can type <code>:help tutor</code> to start the vim tutor. This is a
+built-in guide for learning vim.</li>
+<li><a href="https://vim-adventures.com/">https://vim-adventures.com/</a> is a game that teaches you to use vim. I believe
+the beginning is free and a license must be purchased to play through the
+entire game.</li>
+<li>The vim tips wiki (<a href="https://antifandom.com/vim/wiki/Vim_Tips_Wiki">https://antifandom.com/vim/wiki/Vim_Tips_Wiki</a>, the
+antifandom proxy makes “fandom” wikis more tolerable to navigate) is an
+excellent resource for learning more about vim’s advanced features or figuring
+out which command you need to do something more efficiently.</li>
+<li>The official vim website recommends many other resources (includes those I’ve
+already mentioned) on its documentation page: <a href="https://www.vim.org/docs.php">https://www.vim.org/docs.php</a></li>
+</ul>
+<p>My plan is to gradually introduce some vim features throughout the semester. You
+don’t need to know that much to use vim competently, and once you’re comfortable
+with the basics you can learn more advanced features at whatever pace you want.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="schedule"><a class="header" href="#schedule">Schedule</a></h1>
 <p>This is a tentative schedule for topics, assigned readings, and activities.
