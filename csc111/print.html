@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-3bbb65f0.js";
+            window.path_to_searchindex_js = "searchindex-04bbffb1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-338c0896.js"></script>
+        <script src="toc-2c1a2831.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1258,16 +1258,16 @@ class meetings. Expect this section to be updated frequently.</p>
 </thead>
 <tbody>
 <tr><td>1</td><td>08/25</td><td>08/27</td><td>syllabus, software, Java review</td><td></td><td>add/drop ends Monday, 08/28</td></tr>
-<tr><td>2</td><td>09/01</td><td>09/03</td><td>Java review</td><td></td><td></td></tr>
-<tr><td>3</td><td>09/08</td><td>09/10</td><td>OOP intro</td><td></td><td></td></tr>
-<tr><td>4</td><td>09/15</td><td>09/17</td><td>exceptions, file I/O</td><td></td><td></td></tr>
-<tr><td>5</td><td>09/22</td><td>09/24</td><td>recursion</td><td></td><td></td></tr>
-<tr><td>6</td><td>09/29</td><td>10/01</td><td>recursion, algorithm analysis</td><td></td><td></td></tr>
-<tr><td>7</td><td>10/06</td><td>10/08</td><td>algorithm analysis, searching, sorting</td><td></td><td></td></tr>
+<tr><td>2</td><td>09/01</td><td>09/03</td><td>java classes</td><td></td><td></td></tr>
+<tr><td>3</td><td>09/08</td><td>09/10</td><td>exceptions, file I/O</td><td></td><td></td></tr>
+<tr><td>4</td><td>09/15</td><td>09/17</td><td>recursion</td><td></td><td></td></tr>
+<tr><td>5</td><td>09/22</td><td>09/24</td><td>list adt</td><td></td><td></td></tr>
+<tr><td>6</td><td>09/29</td><td>10/01</td><td>algorithm analysis</td><td></td><td></td></tr>
+<tr><td>7</td><td>10/06</td><td>10/08</td><td>search/sort algorithms</td><td></td><td></td></tr>
 <tr><td>8</td><td>10/13</td><td>10/15</td><td>sorting algorithms</td><td></td><td></td></tr>
-<tr><td>9</td><td>10/20</td><td>10/22</td><td>data structures overview, array-based list</td><td></td><td>midterm grades due Wednesday, 10/21</td></tr>
-<tr><td>10</td><td>10/27</td><td>10/29</td><td>linked list, stacks</td><td></td><td>withdraw deadline Friday, 10/30</td></tr>
-<tr><td>11</td><td>11/03</td><td>11/05</td><td>stacks, queues</td><td></td><td></td></tr>
+<tr><td>9</td><td>10/20</td><td>10/22</td><td>stacks</td><td></td><td>midterm grades due Wednesday, 10/21</td></tr>
+<tr><td>10</td><td>10/27</td><td>10/29</td><td>recursion 2</td><td></td><td>withdraw deadline Friday, 10/30</td></tr>
+<tr><td>11</td><td>11/03</td><td>11/05</td><td>queues</td><td></td><td></td></tr>
 <tr><td>12</td><td>11/10</td><td>11/12</td><td>trees</td><td></td><td></td></tr>
 <tr><td>13</td><td>11/17</td><td>11/19</td><td>hashing</td><td></td><td></td></tr>
 <tr><td>Break</td><td>11/24</td><td>11/26</td><td><strong>NO CLASS</strong></td><td></td><td></td></tr>
@@ -1302,12 +1302,42 @@ integrating the textbook</li>
 <ul>
 <li>attendance (reminder for me, I’m forgetful)</li>
 <li>software troubleshooting</li>
-<li>class git repo</li>
-<li>markdown</li>
-<li>some java review</li>
+<li>class git repo (see resources)</li>
+<li>markdown (see resources)</li>
+<li>review some java examples and start practice</li>
 <li>homework
 <ul>
-<li>tba</li>
+<li>read 1.1:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/IntroDSA.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/IntroDSA.html</a>
+<ul>
+<li>introduces the course topics</li>
+<li>you can skip the practice exercises</li>
+</ul>
+</li>
+<li>read the following sections from chapter 5 of OpenDSA’s CS1 textbook, which
+review familiar java concepts and introduce some object-oriented topics
+we’ll cover next week:
+<ul>
+<li>5.1.1 to 5.1.6, 5.1.9</li>
+<li>link for chapter 5:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/VariablesFieldsAndParameters.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/VariablesFieldsAndParameters.html</a></li>
+<li>you can skip the practice exercises in this chapter, but I would suggest
+trying the exercises in 5.1.2 and 5.1.5 to make sure you recall those
+concepts from your last programming class</li>
+</ul>
+</li>
+<li>attempt this week’s <a href="#practice">practice exercises</a> and submit your
+code on Canvas by Monday, 08/31
+<ul>
+<li>worth 2 points</li>
+<li>must attempt each problem and submit code that runs (no compile errors) to
+receive credit for the assignment</li>
+<li>partial solutions that run and demonstrate an effort to solve the problem
+will still receive credit even if they are otherwise incorrect or
+incomplete</li>
+<li>we will review these during class next week</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1360,6 +1390,151 @@ implementations?</li>
 <li>textbook: OpenDSA</li>
 <li>software</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="java-examples"><a class="header" href="#java-examples">Java Examples</a></h1>
+<pre><code class="language-java">// program must go in a class
+public class Example1 {
+    // main is the entry point for the program
+    public static void main(String[] args) {
+        // printing to stdout and stderr
+        System.out.print("stdout message with no linebreak");
+        System.out.println("stdout message with a linebreak");
+        System.out.printf("formatted %s message\n", "stdout");
+        System.err.println("stderr message");
+
+        // command line arguments are a form of user input
+        System.out.printf("there were %d command line arguments:\n", args.length);
+        for (int i = 0; i &lt; args.length; i++) {
+            System.out.println(args[i]);
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-java">// imports the Scanner class so we don't have to keep typing the package
+import java.util.Scanner;
+
+public class Example2 {
+    public static void main(String[] args) {
+        // a scanner can read from stdin using System.in
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = in.nextLine();
+        System.out.printf("Hello, %s. Nice to meet you!\n", name);
+
+        // make small talk
+        System.out.println("How was your first week of classes?");
+        in.nextLine();
+        System.out.println("Uh-huh, very interesting.");
+
+        name = "";
+
+        // in Java 25, we also have the IO class for stdin and stdout
+        IO.println("Oops, I forgot your name!");
+        name = IO.readln("What did you say it was? ");
+        IO.println("Okay, thanks! I'll defininitely remember this time.");
+        name = "";
+
+        // make sure user is done
+        String answer = IO.readln("Are you done using this program?\n");
+        while (!answer.equalsIgnoreCase("yes")) {
+            answer = IO.readln("How about now?\n");
+        }
+
+        // are they really done?
+        do {
+            answer = IO.readln("Are you sure you're done?\n");
+        } while (!answer.equals("yes"));
+
+        IO.println("Goodbye!");
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class Example3 {
+    public static void main(String[] args) {
+        // if there are no program args, then the program ends!
+        if (args.length == 0) {
+            System.out.println("Sorry, I need program args.");
+            // ends the program early
+            // exiting with a nonzero value indicates to other programs that
+            // something went wrong
+            System.exit(1);
+        }
+
+        // check whether there are an even or odd number of args
+        if (args.length % 2 == 0) {
+            System.out.println("Even arg count detected!");
+            // call another static method
+            even(args);
+        } else {
+            System.out.println("Odd arg count detected!");
+            // call another static method
+            odd(args);
+        }
+    }
+
+    public static void even(String[] args) {
+        // print only the even-numbered args
+        for (int i = 1; i &lt; args.length; i += 2) {
+            // our target audience is non-programmers, and their brains aren't
+            // zero-indexed
+            System.out.printf("%d. %s\n", i + 1, args[i]);
+        }
+    }
+
+    public static void odd(String[] args) {
+        // print only the characters encoded as odd numbers
+        // why are we doing that? hey, look! an enhanced for loop!
+        for (String arg : args) {
+            // wow, a nested loop!
+            for (int i = 0; i &lt; arg.length(); i++) {
+                // get character
+                char c = arg.charAt(i);
+                // checking if odd
+                if (c % 2 != 0) {
+                    System.out.print(c);
+                }
+            }
+            // line break after each arg
+            System.out.println();
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
+<ol>
+<li>Try making the following changes to the example programs:
+<ol>
+<li>Rewrite the printf statements in Example1 as println statements. Use
+string concatenation to include any variables in the output.</li>
+<li>Change the do-while loop in Example2 into a while loop. What problem
+occurs and how can you fix it? Note your answer in a comment.</li>
+<li>Add numeric labels to the args printed by the odd method in Example3.
+Don’t number each character, just each arg.</li>
+</ol>
+</li>
+<li>Let’s solve a classic coding interview problem: FizzBuzz!
+<ol>
+<li>Write a program that prints the numbers 1 to 15. (<code>FizzBuzz.java</code>)</li>
+<li>Replace all multiples of 3 with the word “Fizz”.</li>
+<li>Replace all multiples of 5 with the word “Buzz”.</li>
+<li>If a number is a multiple of both 3 and 5, then it should be replaced with
+“FizzBuzz”.</li>
+</ol>
+</li>
+<li>Write a program that converts a distance in centimeters to a distance in feet
+and inches (<code>Conversion.java</code>). An inch is about 2.54 centimeters, and your
+output should be rounded to the nearest inch (<code>Math.round()</code> will help). You
+can take user input however you want: the args array, IO class, or a Scanner.</li>
+<li>Make a copy of your FizzBuzz program (<code>FizzBuzz2.java</code>) and make the
+following changes to the copy:
+<ol>
+<li>Make your program count up to 200 instead of 15.</li>
+<li>Replace all multiples of 7 with the word “Beep”. Multiples of 7 and 3, 7
+and 5, or all three numbers should include each applicable word.</li>
+</ol>
+</li>
+</ol>
 
                     </main>
 
