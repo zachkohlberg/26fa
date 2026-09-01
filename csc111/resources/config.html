@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - CSC 111 Data Structures and Abstractions</title>
-        <base href="/">
+        <title>Config Files - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -13,32 +12,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="shortcut icon" href="favicon-c3b505ff.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-d1f80d55.css">
-        <link rel="stylesheet" href="css/chrome-ae938929.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="shortcut icon" href="../favicon-c3b505ff.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-d1f80d55.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-7f993777.js";
+            window.path_to_searchindex_js = "../searchindex-7f993777.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-0d780bb6.js"></script>
+        <script src="../toc-0d780bb6.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -105,7 +104,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -140,7 +139,7 @@
                     <h1 class="menu-title">CSC 111 Data Structures and Abstractions</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
@@ -174,14 +173,132 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="config-files"><a class="header" href="#config-files">Config Files</a></h1>
+<p>Your terminal and certain terminal programs can be configured with text files,
+which they will usually look for in your home directory on startup. We’ll cover
+some configuration settings for your terminal/shell (bash or zsh) and vim.</p>
+<h2 id="shell-bash-or-zsh"><a class="header" href="#shell-bash-or-zsh">Shell (bash or zsh)</a></h2>
+<p>These programs will look for several different files and execute the first one
+they find. This order can depend on how the shell was launched, and it’s
+possible these directions will not work for Windows or Mac users. We’ll
+troubleshoot any issues during class, and I will update these directions if we
+find any issues.</p>
+<h3 id="findingcreating-your-config-file"><a class="header" href="#findingcreating-your-config-file">Finding/Creating Your Config File</a></h3>
+<h4 id="bash"><a class="header" href="#bash">bash</a></h4>
+<p>Check whether any config files already exist in your home directory:</p>
+<pre><code class="language-bash">ls -a ~/.bash*
+</code></pre>
+<p>We’re looking for files named either <code>.bashrc</code> or <code>.bash_profile</code>. If both files
+exist, then we’ll use <code>.bash_profile</code>. If only one exists, then use that one. If
+neither exists, then create <code>.bashrc</code> with the following command:</p>
+<pre><code class="language-bash">touch ~/.bashrc
+</code></pre>
+<h4 id="zsh"><a class="header" href="#zsh">zsh</a></h4>
+<p>Check whether any config files already exist in your home directory:</p>
+<pre><code class="language-bash">ls -a ~/.z*
+</code></pre>
+<p>We’re looking for files named either <code>.zshrc</code> or <code>.zprofile</code>. If both files
+exist, then we’ll use <code>.zprofile</code>. If only one exists, then use that one. If
+neither exists, then create <code>.zshrc</code> with the following command:</p>
+<pre><code class="language-bash">touch ~/.zshrc
+</code></pre>
+<h3 id="editing-the-config-file"><a class="header" href="#editing-the-config-file">Editing the Config File</a></h3>
+<p>We’ll use vim to edit the config file. Make sure you understand how to navigate,
+edit, and save a text file in vim before you try this.</p>
+<p>You can start vim with either the <code>vim</code> or <code>vi</code> command on your terminal
+(depends on the name it’s installed under) followed by the name of the file you
+want to edit (the config file we found or created earlier). For example, if your
+vim is installed under the name <code>vi</code> and you’re using the file <code>.zshrc</code> to
+configure zsh, then you would open it with the following command:</p>
+<pre><code class="language-bash">vi .zshrc
+</code></pre>
+<p>There are many changes you could make to this file (feel free to research this
+on your own and experiment), but for now we’ll just cover one: adding an alias
+to jump to your folder for this class. If you decided to put your class folder
+somewhere requiring a long <code>cd</code> command to reach, then a shortcut will make your
+life easier. The exact wording of this alias command depends on your path, so
+for this example we’ll assume my class folder is located at the path
+<code>~/Documents/School/Classes/Class Folder</code>. I’d like to jump to this folder by
+typing <code>cs</code> into my terminal, so I’ll add the following line to the end of my
+config file:</p>
+<pre><code class="language-bash">alias cs="cd ~/Documents/School/Classes/Class\ Folder"
+</code></pre>
+<p>The whole command needs to be quoted, and because my folder name contains a
+space I also need to escape the space with a backslash (<code>Class\ Folder</code> instead
+of <code>Class Folder</code>). I’m including the space example so that you know how to
+handle a space in your alias command, but I would strongly recommend changing
+the folder name to not include a space: either remove the space or replace it
+with something else, such as an underscore.</p>
+<h2 id="vim"><a class="header" href="#vim">Vim</a></h2>
+<p>You can configure vim using the file <code>~/.vimrc</code>. Vim has its own scripting
+language, vimscript, that it uses in its configuration files. You don’t need to
+learn vimscript and can just copy my example vimrc for now, but it’s worth
+learning if you decide to continue using vim after this semester.</p>
+<pre><code class="language-vimscript">" These are some settings I use in my neovim configuration combined with other
+" useful defaults found in this page:
+"
+" https://antifandom.com/vim/wiki/Example_vimrc
+"
+" I encourage you to use this as a starting point for your own .vimrc and try
+" changing settings as you go to tune it to your own preferences.
+
+""""""""""""""""
+" line numbers "
+""""""""""""""""
+
+set number
+
+" I normally like this setting instead of showing absolute line numbers because
+" it's easier to jump to a specific line with something like 12j if I know the
+" line is 12 below my current line. I have this disabled in my config because
+" it's not ideal when presenting code. Delete the " if you'd like to enable it.
+
+" set relativenumber
+
+""""""""""""""""""""""
+" cursor coordinates "
+""""""""""""""""""""""
+
+set cursorline
+set cursorcolumn
+
+"""""""""""""""
+" indentation "
+"""""""""""""""
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set wrap!
+
+""""""""""
+" search "
+""""""""""
+
+set ignorecase
+set smartcase
+set incsearch
+
+""""""""""""""""""""""""""
+" other display settings "
+""""""""""""""""""""""""""
+
+set termguicolors
+set scrolloff=10
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../resources/vim.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
 
+                            <a rel="next prefetch" href="../schedule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -189,7 +306,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../resources/vim.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
 
+                    <a rel="next prefetch" href="../schedule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
             </nav>
 
         </div>
@@ -207,13 +330,13 @@
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-c2a407aa.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-a0b12cfe.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 
