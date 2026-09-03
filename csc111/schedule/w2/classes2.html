@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Geany - CSC 111 Data Structures and Abstractions</title>
+        <title>Java Classes Part 2 - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -173,56 +173,44 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="geany"><a class="header" href="#geany">Geany</a></h1>
-<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
-<p>You can download a Geany installer from the
-<a href="https://www.geany.org/download/releases/">geany.org releases page</a> for Mac or
-Windows, and you can use your
-<a href="https://www.geany.org/download/third-party/">package manager</a> to install it on
-Linux.</p>
-<h2 id="plugins"><a class="header" href="#plugins">Plugins</a></h2>
-<p>Under Tools -&gt; Plugin Manager, you’ll find several useful plugins. Check the
-“File Browser”, “Save Actions”, and “Split Window” plugins to enable them. You
-can edit a plugin’s preferences by selecting it and clicking the Preferences
-button.</p>
-<h3 id="save-actions"><a class="header" href="#save-actions">Save Actions</a></h3>
-<p>I recommend enabling the autosave feature in this plugin’s preferences. Choose
-whatever settings you’d prefer, or go with the following suggestions if you
-don’t know what to choose:</p>
+                        <h1 id="java-classes-part-2"><a class="header" href="#java-classes-part-2">Java Classes Part 2</a></h1>
 <ul>
-<li>Check “Enable save when losing focus” so Geany saves whenever you switch to a
-terminal to run your program.</li>
-<li>Check “Enable” and set interval to 300 to autosave every five minutes.</li>
+<li>class (static) variables and methods
+<ul>
+<li>methods invoked through class, not instances</li>
+<li>one copy of each variable per class, not per instance</li>
 </ul>
-<h3 id="file-browser"><a class="header" href="#file-browser">File Browser</a></h3>
-<p>The default settings should be fine. You can find the file browser in the
-sidebar (make sure View -&gt; Show Sidebar is checked) under the Files tab. This
-can be a convenient way to find and edit files.</p>
-<h3 id="split-window"><a class="header" href="#split-window">Split Window</a></h3>
-<p>If you want to have multiple files open and visible at once, you can enable a
-split view with Tools -&gt; Split Window -&gt; Side by Side (or Top and Bottom). The
-second panel can show any of your open tabs.</p>
-<h2 id="startup-path"><a class="header" href="#startup-path">Startup Path</a></h2>
-<p>We’ll go over how to organize files during class and create a folder for all of
-our csc110 files. After you create this folder, you should set it as the Startup
-Path in Geany’s settings. You can find your settings under Edit -&gt; Preferences.
-On Mac and Windows Preferences may be under a different menu, such as File or
-Geany, and it may be called Settings instead of Preferences. The Startup Path
-will be in the General section of Geany’s settings.</p>
-<h2 id="using-geany"><a class="header" href="#using-geany">Using Geany</a></h2>
-<p>We’ll cover how to use Geany during class. Make sure you’re comfortable
-creating, saving, opening, and editing files in Geany and can easily locate
-those files in your terminal.</p>
+</li>
+<li>instance (non-static) variables and methods
+<ul>
+<li>methods invoked through instance, not class</li>
+<li>methods have instance (<code>this</code>) as implicit parameter
+<ul>
+<li>see <code>Circle.getCircumference</code> for explicit static equivalent</li>
+</ul>
+</li>
+<li>one copy of each variable per instance</li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li>initializes instance variables</li>
+<li>must call a constructor when instantiating (creating a new instance of) a
+class</li>
+</ul>
+</li>
+<li>demo: add parameterized constructor and instance methods to circle</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../software/editor.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w2/vim.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../software/editor/vim.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w2/encapsulation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -232,11 +220,11 @@ those files in your terminal.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../software/editor.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w2/vim.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../software/editor/vim.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w2/encapsulation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-7f993777.js";
+            window.path_to_searchindex_js = "searchindex-7b33b4ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-0d780bb6.js"></script>
+        <script src="toc-c8c4a5d9.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1676,10 +1676,23 @@ and 5, or all three numbers should include each applicable word.</li>
 </li>
 <li>homework
 <ul>
-<li>reading TBA</li>
-<li>practice TBA</li>
+<li>read
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/StaticMainAndExceptions.html">chapter 14</a>
+from the CS1 textbook, which covers exceptions</li>
+<li>attempt <a href="#practice">practice exercises</a> and submit on canvas by
+Monday, 09/07 (2 points)</li>
 </ul>
 </li>
+<li>optional review: if you want to review some other concepts that you should
+already be familiar with, I recommend the following parts of the CS1 textbook:
+<ul>
+<li>chapters 10 and 11 cover arrays:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/Arrays.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/Arrays.html</a></li>
+<li>12.1.1 covers variable scope:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/FileIO.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/FileIO.html</a></li>
+</ul>
+</li>
+<li>we’ll be mostly using the CS2 book integrated with Canvas after this week</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="java-classes"><a class="header" href="#java-classes">Java Classes</a></h1>
@@ -1699,14 +1712,7 @@ and 5, or all three numbers should include each applicable word.</li>
 <li>instance variables</li>
 </ul>
 </li>
-<li>write code that uses the circle class</li>
-<li>convert functions below to use circle class</li>
-</ul>
-</li>
-<li>instance methods and constructors (if time)
-<ul>
-<li>constructor to initialize new objects</li>
-<li>instance methods instead of static methods</li>
+<li>convert program below to use circle class</li>
 </ul>
 </li>
 </ul>
@@ -1764,6 +1770,211 @@ and 5, or all three numbers should include each applicable word.</li>
     }
 }
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="vim-intro"><a class="header" href="#vim-intro">Vim Intro</a></h1>
+<ul>
+<li>starting vim on terminal</li>
+<li>exiting vim
+<ul>
+<li><code>:q</code> to quit normally</li>
+<li><code>:q!</code> to quit and discard any changes to opened file(s)</li>
+<li><code>:wq</code> to write (save the current file) and then quit</li>
+</ul>
+</li>
+<li>modes
+<ul>
+<li>normal is the default</li>
+<li><code>i</code> to enter insert mode (escape or control-c to return to normal mode from
+insert and most other modes)</li>
+<li>insert mode allows you to enter text</li>
+<li>other modes exist and can be covered later</li>
+</ul>
+</li>
+<li>in normal mode
+<ul>
+<li><code>:</code> begins a command</li>
+<li><code>hjkl</code> move the cursor by one line or column</li>
+<li><code>w</code>, <code>b</code>, and <code>e</code> all move by one word</li>
+<li><code>x</code> deletes the current character</li>
+<li><code>$</code> moves to the end of the current line</li>
+<li><code>_</code> moves to the beginning of the current line, respecting indentation</li>
+<li><code>0</code> moves to the beginning of the current line</li>
+<li><code>d</code> followed by a movement will delete the text traversed by that movement</li>
+<li>typing a number followed by a movement will repeat the movement that many
+times
+<ul>
+<li>example: <code>3w</code> will move forward 3 words</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>these are just some of the basics, and we’ll cover more as we go</li>
+<li>use the linked <a href="#vim-1">vim resources</a> if you want to learn
+more on your own</li>
+<li>feel free to interrupt the lecture at any time to ask me how I just did
+something in vim</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="java-classes-part-2"><a class="header" href="#java-classes-part-2">Java Classes Part 2</a></h1>
+<ul>
+<li>class (static) variables and methods
+<ul>
+<li>methods invoked through class, not instances</li>
+<li>one copy of each variable per class, not per instance</li>
+</ul>
+</li>
+<li>instance (non-static) variables and methods
+<ul>
+<li>methods invoked through instance, not class</li>
+<li>methods have instance (<code>this</code>) as implicit parameter
+<ul>
+<li>see <code>Circle.getCircumference</code> for explicit static equivalent</li>
+</ul>
+</li>
+<li>one copy of each variable per instance</li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li>initializes instance variables</li>
+<li>must call a constructor when instantiating (creating a new instance of) a
+class</li>
+</ul>
+</li>
+<li>demo: add parameterized constructor and instance methods to circle</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h1>
+<ul>
+<li>encapsulation
+<ul>
+<li>hiding data from parts of the program that should not access it</li>
+<li>allows classes to guarantee a valid internal state, maintain invariants</li>
+<li>only expose the public API necessary to use the class</li>
+</ul>
+</li>
+<li>access modifiers
+<ul>
+<li><code>public</code></li>
+<li><code>private</code></li>
+<li><code>protected</code></li>
+<li>none</li>
+</ul>
+</li>
+<li>invariant: something that must always be true</li>
+<li>example: immutable Strings
+<ul>
+<li>internal <code>char</code> array is private</li>
+<li>strings cannot change after creation</li>
+</ul>
+</li>
+<li>we usually default to making all instance variables private</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="bank-example"><a class="header" href="#bank-example">Bank Example</a></h1>
+<p>As an example, we’ll create the following classes:</p>
+<ul>
+<li>Check
+<ul>
+<li>instance variables:
+<ul>
+<li><code>amount: int</code> is the check value in cents</li>
+</ul>
+</li>
+<li>constructors:
+<ul>
+<li><code>Check(int)</code> initializes the check amount, but sets amount to zero if the
+argument is negative</li>
+</ul>
+</li>
+<li>methods:
+<ul>
+<li><code>getAmount(): int</code> returns the value of <code>amount</code></li>
+<li><code>format(): String</code> returns a string representation of the check amount in
+the format <code>$100.05</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Account
+<ul>
+<li>instance variables:
+<ul>
+<li><code>balance: int</code> is the account balance in cents</li>
+<li><code>name: String</code> is the name of the account holder</li>
+</ul>
+</li>
+<li>constructors:
+<ul>
+<li><code>Account(String, int)</code> initializes the balance and name</li>
+</ul>
+</li>
+<li>methods:
+<ul>
+<li><code>getName(): String</code> returns <code>name</code></li>
+<li><code>getBalance(): int</code> returns <code>balance</code></li>
+<li><code>deposit(Check): void</code> adds the check’s amount to the account’s balance</li>
+<li><code>transfer(Check, Account): boolean</code>
+<ul>
+<li>if this account’s balance is too small to withdraw the check’s amount,
+then immediately return <code>false</code> to indicate a failed transfer</li>
+<li>subtract the check’s amount from this account’s balance</li>
+<li>add the check’s amount to the other account’s balance</li>
+<li>return <code>true</code> to indicate a successful transfer</li>
+</ul>
+</li>
+<li><code>format(): String</code> returns a string with the account name and balance
+formatted like this: “Alice: $100.05”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
+<ol>
+<li>Write a rectangle class that meets the following requirements:
+<ol>
+<li>includes instance variables the following properties, all of which are
+real numbers:
+<ul>
+<li>the (x, y) coordinates of the upper-left corner</li>
+<li>the length and width</li>
+</ul>
+</li>
+<li>does not include any other instance variables</li>
+<li>includes a parameterized constructor that allows you to set the initial
+value of each instance variable</li>
+<li>includes instance methods that calculate and return the area and perimeter
+of the rectangle</li>
+<li>includes an instance method that returns whether the rectangle contains a
+point
+<ul>
+<li>for a point (defined by <code>px</code> and <code>py</code>) and rectangle (defined by <code>x</code>,
+<code>y</code>, <code>w</code>, and <code>h</code>) to overlap, they must satisfy the following
+conditions:
+<ul>
+<li><code>x &lt;= px &lt;= x + w</code></li>
+<li><code>y &lt;= py &lt;= y + h</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Write a <code>Bank</code> program that uses the <code>Check</code> and <code>Account</code> classes to do the
+following:
+<ol>
+<li>create two new accounts with whatever names and starting balances you want</li>
+<li>print the accounts and their balances</li>
+<li>ask the user for an amount to transfer from the first account to the
+second and create a check with that amount</li>
+<li>use the <code>transfer</code> method to attempt to transfer money from the first
+account to the second account and report whether the transfer succeeded</li>
+<li>print the accounts and their balances again</li>
+</ol>
+</li>
+</ol>
 
                     </main>
 
