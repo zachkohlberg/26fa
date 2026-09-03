@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-7b33b4ad.js";
+            window.path_to_searchindex_js = "searchindex-ecf87b55.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-c8c4a5d9.js"></script>
+        <script src="toc-414c30d8.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1667,7 +1667,6 @@ and 5, or all three numbers should include each applicable word.</li>
 <h2 id="thursday-agenda-1"><a class="header" href="#thursday-agenda-1">Thursday Agenda</a></h2>
 <ul>
 <li>reminder for Zach: attendance and zoom</li>
-<li>vim</li>
 <li>terminal configuration</li>
 <li>java classes continued
 <ul>
@@ -1679,8 +1678,8 @@ and 5, or all three numbers should include each applicable word.</li>
 <li>read
 <a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/StaticMainAndExceptions.html">chapter 14</a>
 from the CS1 textbook, which covers exceptions</li>
-<li>attempt <a href="#practice">practice exercises</a> and submit on canvas by
-Monday, 09/07 (2 points)</li>
+<li>attempt problem 1 from the <a href="#practice-1">practice exercises</a> and submit
+on canvas by Monday, 09/07 (2 points)</li>
 </ul>
 </li>
 <li>optional review: if you want to review some other concepts that you should
@@ -1771,6 +1770,81 @@ already be familiar with, I recommend the following parts of the CS1 textbook:
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="java-classes-part-2"><a class="header" href="#java-classes-part-2">Java Classes Part 2</a></h1>
+<ul>
+<li>class (static) variables and methods
+<ul>
+<li>methods invoked through class, not instances</li>
+<li>one copy of each variable per class, not per instance</li>
+</ul>
+</li>
+<li>instance (non-static) variables and methods
+<ul>
+<li>methods invoked through instance, not class</li>
+<li>methods have instance (<code>this</code>) as implicit parameter
+<ul>
+<li>see <code>Circle.getCircumference</code> for explicit static equivalent</li>
+</ul>
+</li>
+<li>one copy of each variable per instance</li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li>initializes instance variables</li>
+<li>must call a constructor when instantiating (creating a new instance of) a
+class</li>
+</ul>
+</li>
+<li>demo: add parameterized constructor and instance methods to circle</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
+<ol>
+<li>Write a rectangle class that meets the following requirements:
+<ol>
+<li>includes instance variables the following properties, all of which are
+real numbers:
+<ul>
+<li>the (x, y) coordinates of the upper-left corner</li>
+<li>the length and width</li>
+</ul>
+</li>
+<li>does not include any other instance variables</li>
+<li>includes a parameterized constructor that allows you to set the initial
+value of each instance variable</li>
+<li>includes instance methods that calculate and return the area and perimeter
+of the rectangle</li>
+<li>includes an instance method that returns whether the rectangle contains a
+point
+<ul>
+<li>for a point (defined by <code>px</code> and <code>py</code>) and rectangle (defined by <code>x</code>,
+<code>y</code>, <code>w</code>, and <code>h</code>) to overlap, they must satisfy the following
+conditions:
+<ul>
+<li><code>x &lt;= px &lt;= x + w</code></li>
+<li><code>y &lt;= py &lt;= y + h</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p>The second problem has been moved to next week. We didn’t have time to cover the
+relevant material this week, so you just have the above rectangle exercise this
+week.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-3-0908-0910"><a class="header" href="#week-3-0908-0910">Week 3 (09/08, 09/10)</a></h1>
+<h2 id="tuesday-agenda-2"><a class="header" href="#tuesday-agenda-2">Tuesday Agenda</a></h2>
+<ul>
+<li>TBD</li>
+</ul>
+<h2 id="thursday-agenda-2"><a class="header" href="#thursday-agenda-2">Thursday Agenda</a></h2>
+<ul>
+<li>TBD</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="vim-intro"><a class="header" href="#vim-intro">Vim Intro</a></h1>
 <ul>
 <li>starting vim on terminal</li>
@@ -1813,35 +1887,6 @@ times
 more on your own</li>
 <li>feel free to interrupt the lecture at any time to ask me how I just did
 something in vim</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="java-classes-part-2"><a class="header" href="#java-classes-part-2">Java Classes Part 2</a></h1>
-<ul>
-<li>class (static) variables and methods
-<ul>
-<li>methods invoked through class, not instances</li>
-<li>one copy of each variable per class, not per instance</li>
-</ul>
-</li>
-<li>instance (non-static) variables and methods
-<ul>
-<li>methods invoked through instance, not class</li>
-<li>methods have instance (<code>this</code>) as implicit parameter
-<ul>
-<li>see <code>Circle.getCircumference</code> for explicit static equivalent</li>
-</ul>
-</li>
-<li>one copy of each variable per instance</li>
-</ul>
-</li>
-<li>constructor
-<ul>
-<li>initializes instance variables</li>
-<li>must call a constructor when instantiating (creating a new instance of) a
-class</li>
-</ul>
-</li>
-<li>demo: add parameterized constructor and instance methods to circle</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h1>
@@ -1931,37 +1976,8 @@ formatted like this: “Alice: $100.05”</li>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
+<h1 id="practice-2"><a class="header" href="#practice-2">Practice</a></h1>
 <ol>
-<li>Write a rectangle class that meets the following requirements:
-<ol>
-<li>includes instance variables the following properties, all of which are
-real numbers:
-<ul>
-<li>the (x, y) coordinates of the upper-left corner</li>
-<li>the length and width</li>
-</ul>
-</li>
-<li>does not include any other instance variables</li>
-<li>includes a parameterized constructor that allows you to set the initial
-value of each instance variable</li>
-<li>includes instance methods that calculate and return the area and perimeter
-of the rectangle</li>
-<li>includes an instance method that returns whether the rectangle contains a
-point
-<ul>
-<li>for a point (defined by <code>px</code> and <code>py</code>) and rectangle (defined by <code>x</code>,
-<code>y</code>, <code>w</code>, and <code>h</code>) to overlap, they must satisfy the following
-conditions:
-<ul>
-<li><code>x &lt;= px &lt;= x + w</code></li>
-<li><code>y &lt;= py &lt;= y + h</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
 <li>Write a <code>Bank</code> program that uses the <code>Check</code> and <code>Account</code> classes to do the
 following:
 <ol>
@@ -1975,6 +1991,7 @@ account to the second account and report whether the transfer succeeded</li>
 </ol>
 </li>
 </ol>
+<p>Additional exercises to be added later.</p>
 
                     </main>
 

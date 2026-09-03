@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Vim Intro - CSC 111 Data Structures and Abstractions</title>
+        <title>Bank Example - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -34,10 +34,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-7b33b4ad.js";
+            window.path_to_searchindex_js = "../../searchindex-ecf87b55.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-c8c4a5d9.js"></script>
+        <script src="../../toc-414c30d8.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -173,59 +173,75 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="vim-intro"><a class="header" href="#vim-intro">Vim Intro</a></h1>
+                        <h1 id="bank-example"><a class="header" href="#bank-example">Bank Example</a></h1>
+<p>As an example, we’ll create the following classes:</p>
 <ul>
-<li>starting vim on terminal</li>
-<li>exiting vim
+<li>Check
 <ul>
-<li><code>:q</code> to quit normally</li>
-<li><code>:q!</code> to quit and discard any changes to opened file(s)</li>
-<li><code>:wq</code> to write (save the current file) and then quit</li>
+<li>instance variables:
+<ul>
+<li><code>amount: int</code> is the check value in cents</li>
 </ul>
 </li>
-<li>modes
+<li>constructors:
 <ul>
-<li>normal is the default</li>
-<li><code>i</code> to enter insert mode (escape or control-c to return to normal mode from
-insert and most other modes)</li>
-<li>insert mode allows you to enter text</li>
-<li>other modes exist and can be covered later</li>
+<li><code>Check(int)</code> initializes the check amount, but sets amount to zero if the
+argument is negative</li>
 </ul>
 </li>
-<li>in normal mode
+<li>methods:
 <ul>
-<li><code>:</code> begins a command</li>
-<li><code>hjkl</code> move the cursor by one line or column</li>
-<li><code>w</code>, <code>b</code>, and <code>e</code> all move by one word</li>
-<li><code>x</code> deletes the current character</li>
-<li><code>$</code> moves to the end of the current line</li>
-<li><code>_</code> moves to the beginning of the current line, respecting indentation</li>
-<li><code>0</code> moves to the beginning of the current line</li>
-<li><code>d</code> followed by a movement will delete the text traversed by that movement</li>
-<li>typing a number followed by a movement will repeat the movement that many
-times
-<ul>
-<li>example: <code>3w</code> will move forward 3 words</li>
+<li><code>getAmount(): int</code> returns the value of <code>amount</code></li>
+<li><code>format(): String</code> returns a string representation of the check amount in
+the format <code>$100.05</code>.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>these are just some of the basics, and we’ll cover more as we go</li>
-<li>use the linked <a href="../../resources/vim.html">vim resources</a> if you want to learn
-more on your own</li>
-<li>feel free to interrupt the lecture at any time to ask me how I just did
-something in vim</li>
+<li>Account
+<ul>
+<li>instance variables:
+<ul>
+<li><code>balance: int</code> is the account balance in cents</li>
+<li><code>name: String</code> is the name of the account holder</li>
+</ul>
+</li>
+<li>constructors:
+<ul>
+<li><code>Account(String, int)</code> initializes the balance and name</li>
+</ul>
+</li>
+<li>methods:
+<ul>
+<li><code>getName(): String</code> returns <code>name</code></li>
+<li><code>getBalance(): int</code> returns <code>balance</code></li>
+<li><code>deposit(Check): void</code> adds the check’s amount to the account’s balance</li>
+<li><code>transfer(Check, Account): boolean</code>
+<ul>
+<li>if this account’s balance is too small to withdraw the check’s amount,
+then immediately return <code>false</code> to indicate a failed transfer</li>
+<li>subtract the check’s amount from this account’s balance</li>
+<li>add the check’s amount to the other account’s balance</li>
+<li>return <code>true</code> to indicate a successful transfer</li>
+</ul>
+</li>
+<li><code>format(): String</code> returns a string with the account name and balance
+formatted like this: “Alice: $100.05”</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w2/classes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w3/encapsulation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w2/classes2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w3/practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -235,11 +251,11 @@ something in vim</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w2/classes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w3/encapsulation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w2/classes2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w3/practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

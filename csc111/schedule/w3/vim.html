@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Java Classes Part 2 - CSC 111 Data Structures and Abstractions</title>
+        <title>Vim Intro - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -173,44 +173,59 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="java-classes-part-2"><a class="header" href="#java-classes-part-2">Java Classes Part 2</a></h1>
+                        <h1 id="vim-intro"><a class="header" href="#vim-intro">Vim Intro</a></h1>
 <ul>
-<li>class (static) variables and methods
+<li>starting vim on terminal</li>
+<li>exiting vim
 <ul>
-<li>methods invoked through class, not instances</li>
-<li>one copy of each variable per class, not per instance</li>
+<li><code>:q</code> to quit normally</li>
+<li><code>:q!</code> to quit and discard any changes to opened file(s)</li>
+<li><code>:wq</code> to write (save the current file) and then quit</li>
 </ul>
 </li>
-<li>instance (non-static) variables and methods
+<li>modes
 <ul>
-<li>methods invoked through instance, not class</li>
-<li>methods have instance (<code>this</code>) as implicit parameter
-<ul>
-<li>see <code>Circle.getCircumference</code> for explicit static equivalent</li>
+<li>normal is the default</li>
+<li><code>i</code> to enter insert mode (escape or control-c to return to normal mode from
+insert and most other modes)</li>
+<li>insert mode allows you to enter text</li>
+<li>other modes exist and can be covered later</li>
 </ul>
 </li>
-<li>one copy of each variable per instance</li>
-</ul>
-</li>
-<li>constructor
+<li>in normal mode
 <ul>
-<li>initializes instance variables</li>
-<li>must call a constructor when instantiating (creating a new instance of) a
-class</li>
+<li><code>:</code> begins a command</li>
+<li><code>hjkl</code> move the cursor by one line or column</li>
+<li><code>w</code>, <code>b</code>, and <code>e</code> all move by one word</li>
+<li><code>x</code> deletes the current character</li>
+<li><code>$</code> moves to the end of the current line</li>
+<li><code>_</code> moves to the beginning of the current line, respecting indentation</li>
+<li><code>0</code> moves to the beginning of the current line</li>
+<li><code>d</code> followed by a movement will delete the text traversed by that movement</li>
+<li>typing a number followed by a movement will repeat the movement that many
+times
+<ul>
+<li>example: <code>3w</code> will move forward 3 words</li>
 </ul>
 </li>
-<li>demo: add parameterized constructor and instance methods to circle</li>
+</ul>
+</li>
+<li>these are just some of the basics, and we’ll cover more as we go</li>
+<li>use the linked <a href="../../resources/vim.html">vim resources</a> if you want to learn
+more on your own</li>
+<li>feel free to interrupt the lecture at any time to ask me how I just did
+something in vim</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w2/classes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w2/practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w3/encapsulation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -220,11 +235,11 @@ class</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w2/classes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w2/practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w3/encapsulation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
