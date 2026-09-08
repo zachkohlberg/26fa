@@ -1,4 +1,3 @@
-// previous Circle2 example with an added default constructor and toString method
 public class Circle {
     private double x, y;
     private double radius;

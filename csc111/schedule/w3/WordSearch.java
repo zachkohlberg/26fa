@@ -24,7 +24,7 @@ public class WordSearch {
             search(in, word);
 
             // important to close scanners to free the underlying resources
-            // not doing this will cause a memory leak
+            // not doing this can cause memory leaks
             in.close();
         } catch (FileNotFoundException e) {
             System.err.printf("File not found: %s\n", filename);

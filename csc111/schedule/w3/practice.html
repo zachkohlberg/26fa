@@ -34,10 +34,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-ecf87b55.js";
+            window.path_to_searchindex_js = "../../searchindex-179f22fc.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-414c30d8.js"></script>
+        <script src="../../toc-1dd146be.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -175,8 +175,8 @@
                     <main>
                         <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
 <ol>
-<li>Write a <code>Bank</code> program that uses the <code>Check</code> and <code>Account</code> classes to do the
-following:
+<li>Write a <code>Bank</code> program that uses the <code>Check</code> and <code>Account</code> classes we wrote
+during class to do the following:
 <ol>
 <li>create two new accounts with whatever names and starting balances you want</li>
 <li>print the accounts and their balances</li>
@@ -187,14 +187,92 @@ account to the second account and report whether the transfer succeeded</li>
 <li>print the accounts and their balances again</li>
 </ol>
 </li>
+<li>Write your own (simplified) version of the terminal command <code>cat</code>:
+<ol>
+<li>accept zero or more command line arguments, each of which should represent
+a file path</li>
+<li>open each file in order and print the entire file to the terminal</li>
+<li>if a file cannot be opened, then print an error message stating the name
+of the file and that it wasn’t found</li>
+<li>you don’t need to do anything if there are zero args, just let the program
+exit without printing anything</li>
+<li>see the <code>Sum.java</code> (iterating over command line args) and the file reader
+we wrote during class for examples</li>
 </ol>
-<p>Additional exercises to be added later.</p>
+</li>
+<li>Modify the <code>Sum.java</code> program as follows:
+<ol>
+<li>when the program starts, try to open a “sum.txt” file</li>
+<li>if the file exists and can be read:
+<ul>
+<li>read an int from the file and then close your scanner</li>
+<li>print a message stating that you loaded the previous sum, including the
+number from the file in your message</li>
+<li>instead of starting your sum at 0, start it at the number you read from
+the file</li>
+</ul>
+</li>
+<li>if the file doesn’t exist or can’t be read:
+<ul>
+<li>print a message stating that no previous sum was found, and that you
+will start at 0</li>
+</ul>
+</li>
+<li>after you finish summing every number, write the sum to a file named
+“sum.txt” so that it can be used the next time you run this program</li>
+</ol>
+</li>
+</ol>
+<!-- 4. Modify the word search program as follows: -->
+<!--    - when a word is found, find its index in that line and print the index below -->
+<!--      the line -->
+<!--    - instead of printing the index, print a `^` below the line at the start of -->
+<!--      the word -->
+<!--    - instead of printing a single `^`, print a `^` below each character of the -->
+<!--      word -->
+<h2 id="challenge-problem-code-generation"><a class="header" href="#challenge-problem-code-generation">Challenge Problem: Code Generation</a></h2>
+<p>Optional problem that I thought of after our FizzBuzz review. Not worth any
+points, just something you can try for fun.</p>
+<p>We’ll define a “FizzBuzz-like” program as a program that behaves as follows:</p>
+<ol>
+<li>Loops through integers from 1 to <strong>N</strong>, where <strong>N</strong> is a constant positive
+integer defined in the program’s source code.</li>
+<li>For each integer <strong>i</strong> covered by the loop, performs zero or more
+divisibility tests to determine the output:
+<ul>
+<li>Each divisibility test checks whether <strong>i</strong> is divisible by a positive
+integer. No two divisibility tests check the same integer.</li>
+<li>Each divisibility test has an associated String, such as “Fizz” or “Buzz”.</li>
+<li>Each divisibility test that <strong>i</strong> passes adds that test’s String to the
+output.</li>
+<li>If <strong>i</strong> doesn’t pass any divisibility test, then <strong>i</strong> is added to the
+output.</li>
+</ul>
+</li>
+<li>After completing the loop and printing the output for each <strong>i</strong> from 1 to
+<strong>N</strong>, the program exits.</li>
+</ol>
+<p>Write a program that accepts the following input (either through stdin or the
+program args):</p>
+<ul>
+<li>A value for <strong>N</strong>.</li>
+<li>Zero or more divisibility tests, which consist of a positive integer and the
+associated output string.</li>
+</ul>
+<p>The program must output a valid FizzBuzz-like program using the input it
+received, or an error message if the input isn’t valid (such as nonpositive
+integers or the same integer for multiple divisibility tests). You can print
+this program to standard output (make sure it’s the only thing printed to
+standard output so you can use I/O redirection to save it) or write it directly
+to a text file.</p>
+<p>Try generating a few programs with it! You should be able to compile and run
+them just like any other Java program.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w3/bank.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w3/file_io.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -205,7 +283,7 @@ account to the second account and report whether the transfer succeeded</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w3/bank.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w3/file_io.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 

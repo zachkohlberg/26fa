@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecf87b55.js";
+            window.path_to_searchindex_js = "searchindex-179f22fc.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-414c30d8.js"></script>
+        <script src="toc-1dd146be.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1838,11 +1838,23 @@ week.</p>
 <h1 id="week-3-0908-0910"><a class="header" href="#week-3-0908-0910">Week 3 (09/08, 09/10)</a></h1>
 <h2 id="tuesday-agenda-2"><a class="header" href="#tuesday-agenda-2">Tuesday Agenda</a></h2>
 <ul>
-<li>TBD</li>
+<li>vim intro</li>
+<li>encapsulation and bank example</li>
+<li>packages and namespaces</li>
+<li>exceptions intro</li>
 </ul>
 <h2 id="thursday-agenda-2"><a class="header" href="#thursday-agenda-2">Thursday Agenda</a></h2>
 <ul>
-<li>TBD</li>
+<li>exception handling</li>
+<li>java APIs: io and nio</li>
+<li>file i/o</li>
+<li>i/o redirection</li>
+<li>homework
+<ul>
+<li>reading TBD</li>
+<li>practice TBD</li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="vim-intro"><a class="header" href="#vim-intro">Vim Intro</a></h1>
@@ -1976,10 +1988,356 @@ formatted like this: “Alice: $100.05”</li>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="packages"><a class="header" href="#packages">Packages</a></h1>
+<ul>
+<li>namespacing: separating code into “namespaces” allows name reuse without
+conflict, like directories on a file system
+<ul>
+<li>C# has a <code>namespace</code> keyword</li>
+<li>Java has packages (declared with <code>package</code> keyword)</li>
+<li>classes in both languages can also act as namespaces</li>
+</ul>
+</li>
+<li>Java packages must match directory structure
+<ul>
+<li>a project has a root directory (typically wherever we are when running the
+<code>java</code> command)</li>
+<li>files in root declare no package and are in the “default package”</li>
+<li>a file <code>abc/def/Example.java</code> would declare the package <code>abc.def</code></li>
+</ul>
+</li>
+<li>when you import from standard library or another library, your import includes
+the package
+<ul>
+<li>for example: <code>Scanner</code> is in the package <code>java.util</code></li>
+</ul>
+</li>
+<li>unless told otherwise, your code should just use the default package (i.e.
+don’t declare a package at all)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="examples-1"><a class="header" href="#examples-1">Examples</a></h1>
+<pre><code class="language-java">public class Sum {
+    public static void main(String[] args) {
+        // note: this program uses command line args for input, so no scanner
+
+        int sum = 0;
+
+        for (int i = 0; i &lt; args.length; i++) {
+            try {
+                int n = Integer.parseInt(args[i]);
+                sum += n;
+                System.out.printf("Adding %d, sum is now %d.\n", n, sum);
+            } catch (NumberFormatException e) {
+                System.out.printf("Skipping \"%s\" because it's not an integer.\n", args[i]);
+            }
+        }
+
+        System.out.printf("Finished! Final sum is %d.\n", sum);
+    }
+}
+</code></pre>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class WordSearch {
+    public static void main(String[] args) {
+        // print a helpful error message instead of a stack trace on no argument
+        // note that we're detecting something that would cause an exception and
+        // never triggering the ArrayIndexOutOfBoundsException
+        if (args.length != 2) {
+            System.err.println("USAGE: java WordSearch.java FILE WORD");
+            System.exit(1);
+        }
+
+        String filename = args[0];
+        String word = args[1];
+
+        File file = new File(filename);
+
+        try {
+            Scanner in = new Scanner(file);
+
+            // the actual work our program wants to do
+            search(in, word);
+
+            // important to close scanners to free the underlying resources
+            // not doing this can cause memory leaks
+            in.close();
+        } catch (FileNotFoundException e) {
+            System.err.printf("File not found: %s\n", filename);
+            System.exit(1);
+        }
+    }
+
+    public static void search(Scanner in, String word) {
+        while (in.hasNextLine()) {
+            String line = in.nextLine();
+            if (line.contains(word)) {
+                System.out.printf("Found \"%s\" in line: \"%s\"\n", word, line);
+            }
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class CircleEditor {
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+        Circle circle = new Circle();
+
+        boolean done = false;
+        while (!done) {
+            System.out.println(circle);
+            System.out.print("Enter command: ");
+            String[] command = stdin.nextLine().split(" ");
+
+            switch (command[0]) {
+                case "quit", "q":
+                    done = true;
+                    break;
+                case "x":
+                    double x = Double.parseDouble(command[1]);
+                    circle.setX(x);
+                    break;
+                case "y":
+                    double y = Double.parseDouble(command[1]);
+                    circle.setY(y);
+                    break;
+                case "radius", "r":
+                    double radius = Double.parseDouble(command[1]);
+                    circle.setRadius(radius);
+                    break;
+                case "save":
+                    saveCircle(circle, command[1]);
+                    break;
+                case "load":
+                    circle = loadCircle(command[1]);
+                    break;
+                default:
+                    System.out.printf("Invalid command: \"%s\"", command[0]);
+            }
+        }
+
+        System.out.println("Goodbye!");
+    }
+
+    public static void saveCircle(Circle c, String filename) {
+        // try with resources pattern will close the writer for us
+        try (PrintWriter fileOut = new PrintWriter(new File(filename))) {
+            fileOut.println(c.getX());
+            fileOut.println(c.getY());
+            fileOut.println(c.getRadius());
+        } catch (FileNotFoundException e) {
+            // if the file wasn't created, then we might see this error
+            System.out.printf("File \"%s\" not found.\n", filename);
+        }
+    }
+
+    public static Circle loadCircle(String filename) {
+        // try with resources pattern will close the scanner for us
+        try (Scanner fileIn = new Scanner(new File(filename))) {
+            double x = fileIn.nextDouble();
+            double y = fileIn.nextDouble();
+            double radius = fileIn.nextDouble();
+            return new Circle(x, y, radius);
+        } catch (FileNotFoundException e) {
+            System.out.printf("File \"%s\" not found.\n", filename);
+            return null;
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class Circle {
+    private double x, y;
+    private double radius;
+
+    public Circle() {
+        this.setX(0);
+        this.setY(0);
+        this.setRadius(0);
+    }
+
+    public Circle(double initX, double initY, double initRadius) {
+        this.setX(initX);
+        this.setY(initY);
+        this.setRadius(initRadius);
+    }
+
+    public void setX(double newX) {
+        this.x = newX;
+    }
+
+    public void setY(double newY) {
+        this.y = newY;
+    }
+
+    public void setRadius(double newRadius) {
+        if (newRadius &lt; 0) {
+            this.radius = 0;
+        } else {
+            this.radius = newRadius;
+        }
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public double getY() {
+        return this.y;
+    }
+
+    public double getRadius() {
+        return this.radius;
+    }
+
+    public double getArea() {
+        return Math.PI * this.radius * this.radius;
+    }
+
+    public double getCircumference() {
+        return 2 * Math.PI * this.radius;
+    }
+
+    public String toString() {
+        return String.format("Circle(center: (%.02f, %.02f), radius: %.02f)", x, y, radius);
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="exceptions-1"><a class="header" href="#exceptions-1">Exceptions</a></h1>
+<ul>
+<li>error types
+<ul>
+<li>compile/syntax</li>
+<li>runtime (exceptions)</li>
+<li>logic</li>
+</ul>
+</li>
+<li>checked vs unchecked (see java spec quote)</li>
+<li>handling checked exceptions
+<ul>
+<li>throw (it’s the caller’s problem)</li>
+<li>try-catch (handle it now)</li>
+<li>ignore (abuse throw or try-catch to disable compile error)</li>
+</ul>
+</li>
+</ul>
+<p>from Java 25 spec,
+<a href="https://docs.oracle.com/javase/specs/jls/se25/html/jls-11.html#jls-11.2">section 11.2</a>:</p>
+<blockquote>
+<p>Error classes are exempted because they can occur at many points in the
+program and recovery from them is difficult or impossible. A program declaring
+such exceptions would be cluttered, pointlessly. Sophisticated programs may
+yet wish to catch and attempt to recover from some of these conditions.</p>
+<p>Run-time exception classes are exempted because, in the judgment of the
+designers of the Java programming language, having to declare such exceptions
+would not aid significantly in establishing the correctness of programs. Many
+of the operations and constructs of the Java programming language can result
+in exceptions at run time. The information available to a Java compiler, and
+the level of analysis a compiler performs, are usually not sufficient to
+establish that such run-time exceptions cannot occur, even though this may be
+obvious to the programmer. Requiring such exception classes to be declared
+would simply be an irritation to programmers.</p>
+<p>For example, certain code might implement a circular data structure that, by
+construction, can never involve null references; the programmer can then be
+certain that a NullPointerException cannot occur, but it would be difficult
+for a Java compiler to prove it. The theorem-proving technology that is needed
+to establish such global properties of data structures is beyond the scope of
+this specification.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="try-catch"><a class="header" href="#try-catch">Try-Catch</a></h1>
+<pre><code class="language-java">try {
+    // code that might cause an exception
+} catch (ExceptionType1 e) {
+    // how we respond to one type of exception
+} catch (ExceptionType2 e) {
+    // how we respond to another type of exception
+}
+// can have as many catch blocks as you want
+</code></pre>
+<ul>
+<li>try block attempts to run and stops when it encounters an exception</li>
+<li>first catch block with the correct type will execute instead</li>
+<li>if no catch block handles the exception, the error propagates as normal and
+crashes the program</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="file-apis"><a class="header" href="#file-apis">File APIs</a></h1>
+<ul>
+<li>java standard library:
+<ul>
+<li><code>java.io</code> package:
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html</a></li>
+<li><code>java.nio</code> package:
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html</a></li>
+<li>the nio (new io) APIs are more convenient and abstracted</li>
+<li>we will use the IO APIs for now
+<ul>
+<li>better to know how to implement something yourself when a more convenient
+API doesn’t do the job (either it can’t do what you want or you need
+better performance)</li>
+<li>knowing a simplified API like <code>nio</code> doesn’t help if you need to work with
+another API (such as in another programming language), but knowing how
+file I/O works at a lower level makes it easier to learn other file APIs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>classes we’ll use:
+<ul>
+<li><code>java.io.File</code> to represent and query files</li>
+<li><code>java.util.Scanner</code> to read from files</li>
+<li><code>java.io.PrintWriter</code> to write to files</li>
+<li>note that <code>PrintWriter</code> is similar to <code>PrintStream</code> (<code>System.out</code> and
+<code>System.err</code>), so it will feel familiar</li>
+<li><code>java.io.FileNotFoundException</code> and <code>java.io.IOException</code> are two checked
+exceptions we’ll have to deal with</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="file-io"><a class="header" href="#file-io">File I/O</a></h1>
+<p>try with resources tutorial for further reading:
+<a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html</a></p>
+<h2 id="reading-files"><a class="header" href="#reading-files">Reading Files</a></h2>
+<ul>
+<li>task: print contents of a file</li>
+<li>write code with no try-catch
+<ul>
+<li>what exception(s) do we need to handle and what code throws them?</li>
+</ul>
+</li>
+<li>add try-catch to make it work
+<ul>
+<li>compare failing gracefully to abusing <code>throws</code> and crashing</li>
+</ul>
+</li>
+<li>use newer “try with resources” to auto-close scanner</li>
+</ul>
+<h2 id="writing-files"><a class="header" href="#writing-files">Writing Files</a></h2>
+<ul>
+<li>task: write “Hello World” to a file named <code>HelloWorld.txt</code></li>
+<li>write code with no try-catch
+<ul>
+<li>what exception(s) do we need to handle and what code throws them?</li>
+</ul>
+</li>
+<li>add try-catch to make it work</li>
+<li>use newer “try with resources” to auto-close writer</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="practice-2"><a class="header" href="#practice-2">Practice</a></h1>
 <ol>
-<li>Write a <code>Bank</code> program that uses the <code>Check</code> and <code>Account</code> classes to do the
-following:
+<li>Write a <code>Bank</code> program that uses the <code>Check</code> and <code>Account</code> classes we wrote
+during class to do the following:
 <ol>
 <li>create two new accounts with whatever names and starting balances you want</li>
 <li>print the accounts and their balances</li>
@@ -1990,8 +2348,86 @@ account to the second account and report whether the transfer succeeded</li>
 <li>print the accounts and their balances again</li>
 </ol>
 </li>
+<li>Write your own (simplified) version of the terminal command <code>cat</code>:
+<ol>
+<li>accept zero or more command line arguments, each of which should represent
+a file path</li>
+<li>open each file in order and print the entire file to the terminal</li>
+<li>if a file cannot be opened, then print an error message stating the name
+of the file and that it wasn’t found</li>
+<li>you don’t need to do anything if there are zero args, just let the program
+exit without printing anything</li>
+<li>see the <code>Sum.java</code> (iterating over command line args) and the file reader
+we wrote during class for examples</li>
 </ol>
-<p>Additional exercises to be added later.</p>
+</li>
+<li>Modify the <code>Sum.java</code> program as follows:
+<ol>
+<li>when the program starts, try to open a “sum.txt” file</li>
+<li>if the file exists and can be read:
+<ul>
+<li>read an int from the file and then close your scanner</li>
+<li>print a message stating that you loaded the previous sum, including the
+number from the file in your message</li>
+<li>instead of starting your sum at 0, start it at the number you read from
+the file</li>
+</ul>
+</li>
+<li>if the file doesn’t exist or can’t be read:
+<ul>
+<li>print a message stating that no previous sum was found, and that you
+will start at 0</li>
+</ul>
+</li>
+<li>after you finish summing every number, write the sum to a file named
+“sum.txt” so that it can be used the next time you run this program</li>
+</ol>
+</li>
+</ol>
+<!-- 4. Modify the word search program as follows: -->
+<!--    - when a word is found, find its index in that line and print the index below -->
+<!--      the line -->
+<!--    - instead of printing the index, print a `^` below the line at the start of -->
+<!--      the word -->
+<!--    - instead of printing a single `^`, print a `^` below each character of the -->
+<!--      word -->
+<h2 id="challenge-problem-code-generation"><a class="header" href="#challenge-problem-code-generation">Challenge Problem: Code Generation</a></h2>
+<p>Optional problem that I thought of after our FizzBuzz review. Not worth any
+points, just something you can try for fun.</p>
+<p>We’ll define a “FizzBuzz-like” program as a program that behaves as follows:</p>
+<ol>
+<li>Loops through integers from 1 to <strong>N</strong>, where <strong>N</strong> is a constant positive
+integer defined in the program’s source code.</li>
+<li>For each integer <strong>i</strong> covered by the loop, performs zero or more
+divisibility tests to determine the output:
+<ul>
+<li>Each divisibility test checks whether <strong>i</strong> is divisible by a positive
+integer. No two divisibility tests check the same integer.</li>
+<li>Each divisibility test has an associated String, such as “Fizz” or “Buzz”.</li>
+<li>Each divisibility test that <strong>i</strong> passes adds that test’s String to the
+output.</li>
+<li>If <strong>i</strong> doesn’t pass any divisibility test, then <strong>i</strong> is added to the
+output.</li>
+</ul>
+</li>
+<li>After completing the loop and printing the output for each <strong>i</strong> from 1 to
+<strong>N</strong>, the program exits.</li>
+</ol>
+<p>Write a program that accepts the following input (either through stdin or the
+program args):</p>
+<ul>
+<li>A value for <strong>N</strong>.</li>
+<li>Zero or more divisibility tests, which consist of a positive integer and the
+associated output string.</li>
+</ul>
+<p>The program must output a valid FizzBuzz-like program using the input it
+received, or an error message if the input isn’t valid (such as nonpositive
+integers or the same integer for multiple divisibility tests). You can print
+this program to standard output (make sure it’s the only thing printed to
+standard output so you can use I/O redirection to save it) or write it directly
+to a text file.</p>
+<p>Try generating a few programs with it! You should be able to compile and run
+them just like any other Java program.</p>
 
                     </main>
 
