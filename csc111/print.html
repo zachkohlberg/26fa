@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-e8ebd552.js";
+            window.path_to_searchindex_js = "searchindex-53f3dd4e.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-1dd146be.js"></script>
+        <script src="toc-4c23d13f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -2440,6 +2440,112 @@ standard output so you can use I/O redirection to save it) or write it directly
 to a text file.</p>
 <p>Try generating a few programs with it! You should be able to compile and run
 them just like any other Java program.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-4-0915-0917"><a class="header" href="#week-4-0915-0917">Week 4 (09/15, 09/17)</a></h1>
+<h3 id="tuesday-agenda-3"><a class="header" href="#tuesday-agenda-3">Tuesday Agenda</a></h3>
+<ul>
+<li>review practice exercise?</li>
+<li>finish file output
+<ul>
+<li>review file output example</li>
+<li>second demo to write file, maybe fizz-buzz generation?</li>
+</ul>
+</li>
+<li>interfaces</li>
+<li>ADTs</li>
+</ul>
+<h3 id="thursday-agenda-3"><a class="header" href="#thursday-agenda-3">Thursday Agenda</a></h3>
+<ul>
+<li>unordered list ADT</li>
+<li>first implementation</li>
+<li>first project: Monster Battle</li>
+<li>homework TBA</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="interfaces"><a class="header" href="#interfaces">Interfaces</a></h1>
+<ul>
+<li>APIs and general idea of an interface</li>
+<li>interface keyword and the specific programming construct</li>
+<li>why use interfaces?
+<ul>
+<li>express an ADT in code</li>
+<li>compiler can detect mistakes (compile errors are better than runtime errors)</li>
+<li>take advantage of runtime polymorphism (later)</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="adts"><a class="header" href="#adts">ADTs</a></h1>
+<ul>
+<li>Abstract Data Type (ADT):
+<ul>
+<li>abstract: no implementation</li>
+<li>defines a data type “in terms of a type and a set of operations on that
+type”
+(<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/ADT.html">section 1.2.1</a>)</li>
+<li>i.e. what methods do we want this data type to have?</li>
+<li>specific data structures are implementations of an ADT</li>
+<li>can have multiple implementations with different strengths and weaknesses</li>
+<li>in Java, an interface represents an ADT</li>
+</ul>
+</li>
+<li>example (from Java’s standard library):
+<ul>
+<li>ADT:
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/List.html"><code>java.util.List</code></a></li>
+<li>data structures:
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html"><code>java.util.ArrayList</code></a>,
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/LinkedList.html"><code>java.util.LinkedList</code></a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="unordered-list-adt"><a class="header" href="#unordered-list-adt">Unordered List ADT</a></h1>
+<ul>
+<li>simple ADT for our first data structure implementations
+<ul>
+<li>unordered: makes no guarantees about the position of elements within the
+list</li>
+<li>less useful than a typical list, but simpler to implement</li>
+<li>has some optional features we can add later as we learn more about data
+structures</li>
+<li>lets us explore some early algorithms next week as part of different
+implementations</li>
+<li>stores integers for simplicity</li>
+</ul>
+</li>
+<li><code>UnorderedIntList</code>:
+<ul>
+<li><code>init(capacity: int)</code> our constructor, not an actual method and not part of
+the interface, initializes an empty list with the given capacity</li>
+<li><code>capacity(): int</code> returns the amount of space in the list</li>
+<li><code>size(): int</code> returns the number of elements stored in the list</li>
+<li><code>add(element: int): boolean</code> adds <code>element</code> to the list and returns whether
+it succeeded (adding can fail if the list is full)</li>
+<li><code>remove(element: int): boolean</code> removes one occurrence of <code>element</code> from the
+list (<code>element</code> could appear multiple times) and returns whether or not it
+removed anything</li>
+<li><code>contains(element: int): boolean</code> returns whether the list contains
+<code>element</code></li>
+<li><code>clear()</code> removes all elements from the list</li>
+<li><code>toArray(): int[]</code> returns an array with a length equal to the list’s
+<code>size()</code> containing every element in the list</li>
+</ul>
+</li>
+<li>first implementation: <code>UnsortedIntArrayList</code>
+<ul>
+<li>stores elements in an array</li>
+<li>does not resize if it runs out of space (we’ll look at how to do this later)</li>
+<li>removes an element by overwriting it with the last element of the list</li>
+<li>adds new elements at the end of the list</li>
+<li>important concepts: garbage data and the distinction between the list and
+its internal array</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-3"><a class="header" href="#practice-3">Practice</a></h1>
+<p>TBD</p>
 
                     </main>
 
