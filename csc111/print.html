@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-53f3dd4e.js";
+            window.path_to_searchindex_js = "searchindex-c68e0f74.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-4c23d13f.js"></script>
@@ -2458,8 +2458,14 @@ them just like any other Java program.</p>
 <ul>
 <li>unordered list ADT</li>
 <li>first implementation</li>
-<li>first project: Monster Battle</li>
-<li>homework TBA</li>
+<li>first project will be discussed next week, didn’t finish updating it for today</li>
+<li>homework:
+<ul>
+<li>read chapter 4 of the textbook:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html</a></li>
+<li>complete this week’s practice exercises</li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="interfaces"><a class="header" href="#interfaces">Interfaces</a></h1>
@@ -2545,7 +2551,142 @@ its internal array</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="practice-3"><a class="header" href="#practice-3">Practice</a></h1>
-<p>TBD</p>
+<ol>
+<li>Write a <code>saveList</code> method that takes a <code>String</code> with the name of a text file
+and an <code>UnorderedIntList</code> and saves the list to the specified file. It should
+record the list’s capacity on the first line, the size on the second line,
+and the elements each on a separate line after that. This must be a <code>static</code>
+method that operates on the <code>UnorderedIntList</code> interface, and it must be in a
+separate file from the list interface and any list classes you’ve written.
+Feel free to put it in a copy of the test program shown below.</li>
+<li>Write a <code>loadList</code> method that takes a <code>String</code> with the name of a text file
+and attempts to load the <code>UnorderedIntList</code> stored in that file (assume the
+the file is formatted correctly as described in the previous problem). This
+must also be a static method in a file separate from the list class(es) and
+interface.</li>
+</ol>
+<p>The following program will let you test your save and load methods.</p>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class ListTest {
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+        String cmd = "";
+
+        String help =
+                """
+                Type one of the following commands:
+
+                new CAPACITY
+                    make a new list with the given CAPACITY and discard the old list
+                load FNAME
+                    load the list from the file FNAME
+                save FNAME
+                    save the list to the file FNAME (be careful not to overwrite anything important!)
+                add N0 N1 N2...
+                    adds each number after the command to the list
+                rem N0 N1 N2...
+                    removes one copy of each number after the command from the list
+                print
+                    prints the list
+                help
+                    prints this help message
+                quit
+                    exits the program
+                """;
+
+        System.out.println("Welcome to the list test program!\n" + help);
+        UnorderedIntList list = new UnsortedIntArrayList(10);
+        while (!cmd.equalsIgnoreCase("quit") &amp;&amp; !cmd.equalsIgnoreCase("q")) {
+            System.out.print("&gt; ");
+            cmd = stdin.nextLine();
+
+            String[] parts = cmd.split(" ");
+            switch (parts[0].toLowerCase()) {
+                case "n", "new" -&gt; {
+                    try {
+                        int capacity = Integer.parseInt(parts[1]);
+                        list = new UnsortedIntArrayList(capacity);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Capacity must be an integer.");
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Must include a capacity for the new command.");
+                    } catch (NegativeArraySizeException e) {
+                        System.out.println("Capacity must be nonnegative.");
+                    }
+                }
+                case "l", "load" -&gt; {
+                    try {
+                        list = loadList(parts[1]);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Loading requires a filename!");
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Failed to load file.");
+                    }
+                }
+                case "s", "save" -&gt; {
+                    try {
+                        saveList(parts[1], list);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Saving requires a filename!");
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Failed to save file.");
+                    }
+                }
+                case "a", "add" -&gt; {
+                    for (int i = 1; i &lt; parts.length; i++) {
+                        try {
+                            list.add(Integer.parseInt(parts[i]));
+                        } catch (NumberFormatException e) {
+                            System.out.println("Can only add integers to the list.");
+                        }
+                    }
+                }
+                case "r", "rem" -&gt; {
+                    for (int i = 1; i &lt; parts.length; i++) {
+                        try {
+                            list.remove(Integer.parseInt(parts[i]));
+                        } catch (NumberFormatException e) {
+                            System.out.println("Can only remove integers from the list.");
+                        }
+                    }
+                }
+                case "p", "print" -&gt; {
+                    int[] data = list.toArray();
+                    System.out.print("{");
+                    for (int i = 0; i &lt; data.length; i++) {
+                        System.out.print(" ");
+                        System.out.print(data[i]);
+                        if (i &lt; data.length - 1) {
+                            System.out.print(",");
+                        }
+                    }
+                    System.out.println(" }");
+                }
+                case "h", "help" -&gt; System.out.println(help);
+                case "q", "quit" -&gt; System.out.println("Quitting!");
+                default -&gt; System.out.println("Invalid command. Type \"help\" for help.");
+            }
+        }
+
+        stdin.close();
+    }
+
+    public static UnorderedIntList loadList(String fname) throws FileNotFoundException {
+        // NOTE: you can use a try with resource block to handle closing, but you should
+        // NOT catch any exceptions. The main method's code will handle the exceptions
+        // for you. There's nothing interesting to do when the exception occurs anyway,
+        // so there's little point in having you handle it here.
+    }
+
+    public static void saveList(String fname, UnorderedIntList list) throws FileNotFoundException {
+        // See loadList's note about exceptions.
+    }
+}
+</code></pre>
 
                     </main>
 
