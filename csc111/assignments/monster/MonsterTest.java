@@ -16,18 +16,18 @@ public class MonsterTest {
                 "%s accidentally punches itself to demonstrate attacking:\n", a.getName());
 
         // monster a attacks something
-        double dmg = a.attack();
+        double damage = a.attack();
 
         // monster a receives the damage from an attack
-        a.damage(dmg);
+        a.takeDamage(damage);
 
         // we report the incident
-        System.out.printf("%s attacked %s for %.2f damage.\n", a.getName(), a.getName(), dmg);
+        System.out.printf("%s attacked %s for %.2f damage.\n", a.getName(), a.getName(), damage);
         System.out.println(a);
 
         // falling rocks are a workplace hazard
         double boulderDamage = 100;
-        a.damage(boulderDamage);
+        a.takeDamage(boulderDamage);
         System.out.printf(
                 "A large boulder landed on %s, dealing %.2f damage!\n", a.getName(), boulderDamage);
 

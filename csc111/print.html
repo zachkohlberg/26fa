@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-c68e0f74.js";
+            window.path_to_searchindex_js = "searchindex-50712ec4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-4c23d13f.js"></script>
+        <script src="toc-6dda1ee0.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1361,6 +1361,268 @@ set incsearch
 set termguicolors
 set scrolloff=10
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="assignments"><a class="header" href="#assignments">Assignments</a></h1>
+<p>Directions and resources for all assignments will be included here. The table
+below shows a summary of past, current, and planned assignments:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Assignment</th><th>Points</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="#weekly-practice">Weekly Practice</a></td><td>2 each</td></tr>
+<tr><td><a href="#a1-monster-battle">A1: Monster Battle</a></td><td>20</td></tr>
+<tr><td><a href="#assignments">A2: Maze</a></td><td>20</td></tr>
+<tr><td><a href="#assignments">A3: Sorting Experiment</a></td><td>20</td></tr>
+<tr><td><a href="#assignments">A4: Final Project TBD</a></td><td>20</td></tr>
+</tbody>
+</table>
+</div>
+<p>We may have more than ten weeks of practice assignments, which would put the
+total points you can earn over 100. Your final grade would still be out of 100
+points, and you can treat practice assignments 11, 12, etc. as extra credit.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="weekly-practice"><a class="header" href="#weekly-practice">Weekly Practice</a></h1>
+<p>Most weeks we’ll have a few practice exercises for you to complete by the
+following Monday. These will either be open-ended problems on the practice page
+for that week of the <a href="#schedule">schedule</a> or autograded exercises from our
+OpenDSA textbook.</p>
+<p>Completing all assigned practice exercises for a week is worth 2 points,
+regardless of the number of problems or the score shown for OpenDSA exercises.</p>
+<p>These assignments serve two purposes:</p>
+<ol>
+<li>You have an incentive to spend a little time coding each week, which will
+help you better understand that week’s material and retain what you’re
+learning.</li>
+<li>If students are struggling with a problem, then we can spend some extra time
+on that topic next class. I may explain something poorly or spend too little
+time on it, and this is one way for me to notice and correct those mistakes.</li>
+</ol>
+<p>For these reasons, I only care that you <strong>attempt each problem</strong>, not that you
+finish them or solve them correctly. A partial, incorrect solution to a problem
+still gives you coding practice and gives me useful feedback on how well you
+understood the week’s lectures. I recommend allowing yourself up to 30-60
+minutes total for each week’s practice, and if a problem is taking more than its
+share of that time then you’re free to stop and move on to the next one. You
+will receive full credit for the practice assignment as long as the work you
+submit is on time and shows an attempt was made to solve all assigned problems.</p>
+<h2 id="open-ended-problems"><a class="header" href="#open-ended-problems">Open-Ended Problems</a></h2>
+<p>I will include a submission link for each week’s practice on Canvas. You should
+attach all files to the same submission.</p>
+<h2 id="opendsa-problems"><a class="header" href="#opendsa-problems">OpenDSA Problems</a></h2>
+<p>If I can get the OpenDSA book integrated with Canvas, then you will be able to
+complete these problems in Canvas and get immediate feedback on your solution.
+If your solution is correct, then Canvas will record that you finished the
+problem and you don’t need to upload anything with the normal submission link.</p>
+<p>If you don’t get a correct solution to a problem, then upload your
+partial/incorrect solution using the normal link for that week’s practice so
+that I can see your work. You only need to do this for problems that Canvas
+hasn’t already marked as correct.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="a1-monster-battle"><a class="header" href="#a1-monster-battle">A1: Monster Battle</a></h1>
+<p>This program simulates a series of battles between a hero and several monsters
+(technically the hero is also a monster, but nobody else needs to know that). It
+involves the following topics:</p>
+<ul>
+<li>Writing a class to represent a simple object (Monster)</li>
+<li>Writing code that instantiates and uses the public API of a class you wrote</li>
+<li>Reading from a text file and handling exceptions</li>
+</ul>
+<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<p>Submit this assignment on Canvas, attaching the following files:</p>
+<ul>
+<li>Monster.java</li>
+<li>MonsterBattle.java</li>
+</ul>
+<p>Please don’t zip them or include extra files with them. I don’t need any of the
+text files you used during your own testing.</p>
+<h2 id="aia-policy"><a class="header" href="#aia-policy">AIA Policy</a></h2>
+<p>Our usual <a href="#academic-integrity-and-accountability-aia-policy">AIA Policy</a> applies to this assignment. In
+addition to that policy:</p>
+<ul>
+<li>You are allowed to reuse material from your lab assignments on this project.</li>
+</ul>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>You must use the parts of the Java API that we covered in class for File I/O and
+exception handling. Do not use the <code>java.nio</code> package or any static variables in
+your program.</p>
+<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
+<h3 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h3>
+<p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
+constructors, and methods described below. You should not have any other
+instance variables or static variables. You’re free to include other methods and
+constructors if you wish.</p>
+<ul>
+<li>instance variables (must be private)
+<ul>
+<li><code>name: String</code></li>
+<li><code>health: double</code></li>
+<li><code>strength: double</code></li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li><code>Monster(String, double, double)</code> initializes the name, health (second
+parameter), and strength (third parameter)</li>
+</ul>
+</li>
+<li>methods
+<ul>
+<li>getter methods: <code>getName()</code>, <code>getHealth()</code>, and <code>getStrength()</code></li>
+<li><code>attack(): double</code> returns a random number from 0.0 to strength (strength
+multiplied by <code>Math.random()</code>)</li>
+<li><code>takeDamage(double): void</code> decreases the monster’s health by the parameter,
+which represents how much damage the monster took</li>
+<li><code>isAlive(): boolean</code> returns <code>true</code> if the monster’s health is positive and
+<code>false</code> otherwise</li>
+<li><code>toString(): String</code> returns a <code>String</code> containing the monster’s name,
+health, and strength, with health and strength rounded to two decimal places</li>
+</ul>
+</li>
+</ul>
+<p>Use the following test program to verify your <code>Monster</code> class works:</p>
+<pre><code class="language-java">public class MonsterTest {
+    public static void main(String[] args) {
+        Monster a = new Monster("Goblin", 100, 10);
+
+        System.out.printf("%s is here to show how monsters work!\n", a.getName());
+        System.out.printf("%s has the following stats:\n", a.getName());
+        System.out.printf("\thealth: %.2f\n", a.getHealth());
+        System.out.printf("\tstrength: %.2f\n", a.getStrength());
+        System.out.println();
+
+        System.out.println("We can also print the monster like this:");
+        System.out.println(a);
+        System.out.println("If that doesn't look right, then you need to fix your toString().");
+
+        System.out.printf(
+                "%s accidentally punches itself to demonstrate attacking:\n", a.getName());
+
+        // monster a attacks something
+        double damage = a.attack();
+
+        // monster a receives the damage from an attack
+        a.takeDamage(damage);
+
+        // we report the incident
+        System.out.printf("%s attacked %s for %.2f damage.\n", a.getName(), a.getName(), damage);
+        System.out.println(a);
+
+        // falling rocks are a workplace hazard
+        double boulderDamage = 100;
+        a.takeDamage(boulderDamage);
+        System.out.printf(
+                "A large boulder landed on %s, dealing %.2f damage!\n", a.getName(), boulderDamage);
+
+        if (a.isAlive()) {
+            System.out.printf("%s survived the boulder.\n", a.getName());
+        } else {
+            System.out.printf("%s was squashed by the boulder.\n", a.getName());
+        }
+    }
+}
+</code></pre>
+<p>Advice:</p>
+<ul>
+<li>This task is similar to one of your lab assignments, so use that code as a
+starting point and modify it to meet the above requirements</li>
+<li>You can use <code>String.format()</code> in your <code>toString()</code> method to round numbers
+(see the test code for an example using <code>printf()</code>, which has the same syntax
+as the format strings in <code>String.format()</code>)</li>
+</ul>
+<p>Requirements:</p>
+<ul>
+<li>Includes the required variables, constructor, and methods
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">The toString method must include an emoji of your
+choice next to the monster's name (use a unicode escape)</div>
+
+</li>
+<li>All instance variables are private</li>
+<li>Does not include extra instance or static variables</li>
+<li>Does not include extra methods, such as setters for the instance variables</li>
+<li>Provided test code compiles and runs with your <code>Monster</code> class</li>
+</ul>
+<h3 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h3>
+<p>In a separate <code>MonsterBattle</code> class (<code>MonsterBattle.java</code>), write a static
+<code>loadMonster()</code> method that takes a string representing a filename and returns a
+monster with the properties given in the file. Expect the file to contain the
+monster’s name, health, and strength in that order, each on a separate line. For
+example:</p>
+<pre><code>Sans
+1.0
+1.0
+</code></pre>
+<p>You may assume all files this method attempts to read are formatted correctly.</p>
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">
+If any number in the file is exactly zero, then replace it with 100. If a monster
+has negative health when saved, then write 0 to the file instead of a negative value.
+</div>
+
+<p>Requirements:</p>
+<ul>
+<li>First task is complete</li>
+<li>Returns a monster with the correct properties when given a valid file</li>
+<li>Returns a default monster or <code>null</code> (your choice) if the file doesn’t exist</li>
+<li>Must correctly handle a <code>FileNotFoundException</code> with try-catch</li>
+<li>Must close the scanner when finished reading the file</li>
+</ul>
+<h3 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h3>
+<p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
+<code>Monster</code> parameters and has them take turns attacking until one is dead. Print
+a summary of each attack: state the name of the attacker, the amount of damage,
+and the name of the defender.</p>
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">
+Include a description of how badly the monster was damaged by each attack. A
+minor hit is 0 to 5 damage, a medium hit is 6 to 15 damage, and a serious hit
+is more than 15 damage.
+</div>
+
+<p>Advice:</p>
+<ul>
+<li>Look at the example code from the monster lab if you’re not sure how to do
+this</li>
+</ul>
+<p>Requirements</p>
+<ul>
+<li>First task is complete</li>
+<li>Starting with the first parameter, monsters alternate between attacking each
+other and continue until one runs out of health</li>
+<li>Uses the <code>attack</code> and <code>takeDamage</code> methods correctly to make each monster
+attack the other (use <code>attack</code> to generate the damage and pass it to
+<code>takeDamage</code> to apply the damage)</li>
+<li>Feedback is printed for attacks as described above</li>
+</ul>
+<h3 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h3>
+<p>Add a <code>main</code> method to your <code>MonsterBattle</code> class so we can run it as a program.
+Your program should do the following:</p>
+<ul>
+<li>Load four monster files: <code>Hero.txt</code>, <code>Minion1.txt</code>, <code>Minion2.txt</code>, <code>Boss.txt</code>
+<ul>
+<li>You can make up whatever names and stats you want for each monster, but I
+will use my own when testing and will expect your code to load the names
+shown above (always assume filenames are case-sensitive)</li>
+</ul>
+</li>
+<li>Print all of the monsters</li>
+<li>Have the hero fight the other three monsters in order until either the hero
+dies or all three other monsters die</li>
+<li>Print a summary after the battles are over:
+<ul>
+<li>State whether the hero won or lost</li>
+<li>List the names of any monsters the hero defeated</li>
+<li>If the hero won, then print them so we can see their stats at the end of the
+journey</li>
+<li>If the hero lost, then print the monster that defeated the hero</li>
+<li>Include any other descriptive text or formatting you would like</li>
+</ul>
+</li>
+</ul>
+<p>Requirements</p>
+<ul>
+<li>First three tasks are complete</li>
+<li>Implement <code>main</code> as described above</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="schedule"><a class="header" href="#schedule">Schedule</a></h1>
 <p>This is a tentative schedule for topics, assigned readings, and activities.

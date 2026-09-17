@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>File APIs - CSC 111 Data Structures and Abstractions</title>
+        <title>A1: Monster Battle - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -12,32 +12,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="shortcut icon" href="../../favicon-c3b505ff.png">
-        <link rel="stylesheet" href="../../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../../css/general-d1f80d55.css">
-        <link rel="stylesheet" href="../../css/chrome-ae938929.css">
-        <link rel="stylesheet" href="../../css/print-9e4910d8.css" media="print">
+        <link rel="shortcut icon" href="../favicon-c3b505ff.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-d1f80d55.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../../fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="../../highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../../tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../../ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../../";
+            const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-50712ec4.js";
+            window.path_to_searchindex_js = "../searchindex-50712ec4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-6dda1ee0.js"></script>
+        <script src="../toc-6dda1ee0.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -104,7 +104,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -139,7 +139,7 @@
                     <h1 class="menu-title">CSC 111 Data Structures and Abstractions</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
@@ -173,49 +173,219 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="file-apis"><a class="header" href="#file-apis">File APIs</a></h1>
+                        <h1 id="a1-monster-battle"><a class="header" href="#a1-monster-battle">A1: Monster Battle</a></h1>
+<p>This program simulates a series of battles between a hero and several monsters
+(technically the hero is also a monster, but nobody else needs to know that). It
+involves the following topics:</p>
 <ul>
-<li>java standard library:
+<li>Writing a class to represent a simple object (Monster)</li>
+<li>Writing code that instantiates and uses the public API of a class you wrote</li>
+<li>Reading from a text file and handling exceptions</li>
+</ul>
+<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<p>Submit this assignment on Canvas, attaching the following files:</p>
 <ul>
-<li><code>java.io</code> package:
-<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html</a></li>
-<li><code>java.nio</code> package:
-<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html</a></li>
-<li>the nio (new io) APIs are more convenient and abstracted</li>
-<li>we will use the IO APIs for now
+<li>Monster.java</li>
+<li>MonsterBattle.java</li>
+</ul>
+<p>Please don’t zip them or include extra files with them. I don’t need any of the
+text files you used during your own testing.</p>
+<h2 id="aia-policy"><a class="header" href="#aia-policy">AIA Policy</a></h2>
+<p>Our usual <a href="../policies/aia.html">AIA Policy</a> applies to this assignment. In
+addition to that policy:</p>
 <ul>
-<li>better to know how to implement something yourself when a more convenient
-API doesn’t do the job (either it can’t do what you want or you need
-better performance)</li>
-<li>knowing a simplified API like <code>nio</code> doesn’t help if you need to work with
-another API (such as in another programming language), but knowing how
-file I/O works at a lower level makes it easier to learn other file APIs</li>
+<li>You are allowed to reuse material from your lab assignments on this project.</li>
+</ul>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>You must use the parts of the Java API that we covered in class for File I/O and
+exception handling. Do not use the <code>java.nio</code> package or any static variables in
+your program.</p>
+<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
+<h3 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h3>
+<p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
+constructors, and methods described below. You should not have any other
+instance variables or static variables. You’re free to include other methods and
+constructors if you wish.</p>
+<ul>
+<li>instance variables (must be private)
+<ul>
+<li><code>name: String</code></li>
+<li><code>health: double</code></li>
+<li><code>strength: double</code></li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li><code>Monster(String, double, double)</code> initializes the name, health (second
+parameter), and strength (third parameter)</li>
+</ul>
+</li>
+<li>methods
+<ul>
+<li>getter methods: <code>getName()</code>, <code>getHealth()</code>, and <code>getStrength()</code></li>
+<li><code>attack(): double</code> returns a random number from 0.0 to strength (strength
+multiplied by <code>Math.random()</code>)</li>
+<li><code>takeDamage(double): void</code> decreases the monster’s health by the parameter,
+which represents how much damage the monster took</li>
+<li><code>isAlive(): boolean</code> returns <code>true</code> if the monster’s health is positive and
+<code>false</code> otherwise</li>
+<li><code>toString(): String</code> returns a <code>String</code> containing the monster’s name,
+health, and strength, with health and strength rounded to two decimal places</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>classes we’ll use:
+<p>Use the following test program to verify your <code>Monster</code> class works:</p>
+<pre><code class="language-java">public class MonsterTest {
+    public static void main(String[] args) {
+        Monster a = new Monster("Goblin", 100, 10);
+
+        System.out.printf("%s is here to show how monsters work!\n", a.getName());
+        System.out.printf("%s has the following stats:\n", a.getName());
+        System.out.printf("\thealth: %.2f\n", a.getHealth());
+        System.out.printf("\tstrength: %.2f\n", a.getStrength());
+        System.out.println();
+
+        System.out.println("We can also print the monster like this:");
+        System.out.println(a);
+        System.out.println("If that doesn't look right, then you need to fix your toString().");
+
+        System.out.printf(
+                "%s accidentally punches itself to demonstrate attacking:\n", a.getName());
+
+        // monster a attacks something
+        double damage = a.attack();
+
+        // monster a receives the damage from an attack
+        a.takeDamage(damage);
+
+        // we report the incident
+        System.out.printf("%s attacked %s for %.2f damage.\n", a.getName(), a.getName(), damage);
+        System.out.println(a);
+
+        // falling rocks are a workplace hazard
+        double boulderDamage = 100;
+        a.takeDamage(boulderDamage);
+        System.out.printf(
+                "A large boulder landed on %s, dealing %.2f damage!\n", a.getName(), boulderDamage);
+
+        if (a.isAlive()) {
+            System.out.printf("%s survived the boulder.\n", a.getName());
+        } else {
+            System.out.printf("%s was squashed by the boulder.\n", a.getName());
+        }
+    }
+}
+</code></pre>
+<p>Advice:</p>
 <ul>
-<li><code>java.io.File</code> to represent and query files</li>
-<li><code>java.util.Scanner</code> to read from files</li>
-<li><code>java.io.PrintWriter</code> to write to files</li>
-<li>note that <code>PrintWriter</code> is similar to <code>PrintStream</code> (<code>System.out</code> and
-<code>System.err</code>), so it will feel familiar</li>
-<li><code>java.io.FileNotFoundException</code> and <code>java.io.IOException</code> are two checked
-exceptions we’ll have to deal with</li>
+<li>This task is similar to one of your lab assignments, so use that code as a
+starting point and modify it to meet the above requirements</li>
+<li>You can use <code>String.format()</code> in your <code>toString()</code> method to round numbers
+(see the test code for an example using <code>printf()</code>, which has the same syntax
+as the format strings in <code>String.format()</code>)</li>
+</ul>
+<p>Requirements:</p>
+<ul>
+<li>Includes the required variables, constructor, and methods
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">The toString method must include an emoji of your
+choice next to the monster's name (use a unicode escape)</div>
+
+</li>
+<li>All instance variables are private</li>
+<li>Does not include extra instance or static variables</li>
+<li>Does not include extra methods, such as setters for the instance variables</li>
+<li>Provided test code compiles and runs with your <code>Monster</code> class</li>
+</ul>
+<h3 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h3>
+<p>In a separate <code>MonsterBattle</code> class (<code>MonsterBattle.java</code>), write a static
+<code>loadMonster()</code> method that takes a string representing a filename and returns a
+monster with the properties given in the file. Expect the file to contain the
+monster’s name, health, and strength in that order, each on a separate line. For
+example:</p>
+<pre><code>Sans
+1.0
+1.0
+</code></pre>
+<p>You may assume all files this method attempts to read are formatted correctly.</p>
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">
+If any number in the file is exactly zero, then replace it with 100. If a monster
+has negative health when saved, then write 0 to the file instead of a negative value.
+</div>
+
+<p>Requirements:</p>
+<ul>
+<li>First task is complete</li>
+<li>Returns a monster with the correct properties when given a valid file</li>
+<li>Returns a default monster or <code>null</code> (your choice) if the file doesn’t exist</li>
+<li>Must correctly handle a <code>FileNotFoundException</code> with try-catch</li>
+<li>Must close the scanner when finished reading the file</li>
+</ul>
+<h3 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h3>
+<p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
+<code>Monster</code> parameters and has them take turns attacking until one is dead. Print
+a summary of each attack: state the name of the attacker, the amount of damage,
+and the name of the defender.</p>
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">
+Include a description of how badly the monster was damaged by each attack. A
+minor hit is 0 to 5 damage, a medium hit is 6 to 15 damage, and a serious hit
+is more than 15 damage.
+</div>
+
+<p>Advice:</p>
+<ul>
+<li>Look at the example code from the monster lab if you’re not sure how to do
+this</li>
+</ul>
+<p>Requirements</p>
+<ul>
+<li>First task is complete</li>
+<li>Starting with the first parameter, monsters alternate between attacking each
+other and continue until one runs out of health</li>
+<li>Uses the <code>attack</code> and <code>takeDamage</code> methods correctly to make each monster
+attack the other (use <code>attack</code> to generate the damage and pass it to
+<code>takeDamage</code> to apply the damage)</li>
+<li>Feedback is printed for attacks as described above</li>
+</ul>
+<h3 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h3>
+<p>Add a <code>main</code> method to your <code>MonsterBattle</code> class so we can run it as a program.
+Your program should do the following:</p>
+<ul>
+<li>Load four monster files: <code>Hero.txt</code>, <code>Minion1.txt</code>, <code>Minion2.txt</code>, <code>Boss.txt</code>
+<ul>
+<li>You can make up whatever names and stats you want for each monster, but I
+will use my own when testing and will expect your code to load the names
+shown above (always assume filenames are case-sensitive)</li>
 </ul>
 </li>
+<li>Print all of the monsters</li>
+<li>Have the hero fight the other three monsters in order until either the hero
+dies or all three other monsters die</li>
+<li>Print a summary after the battles are over:
+<ul>
+<li>State whether the hero won or lost</li>
+<li>List the names of any monsters the hero defeated</li>
+<li>If the hero won, then print them so we can see their stats at the end of the
+journey</li>
+<li>If the hero lost, then print the monster that defeated the hero</li>
+<li>Include any other descriptive text or formatting you would like</li>
+</ul>
+</li>
+</ul>
+<p>Requirements</p>
+<ul>
+<li>First three tasks are complete</li>
+<li>Implement <code>main</code> as described above</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w3/try_catch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../assignments/practice.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w3/file_io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../schedule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -225,11 +395,11 @@ exceptions we’ll have to deal with</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w3/try_catch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../assignments/practice.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w3/file_io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../schedule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -249,13 +419,13 @@ exceptions we’ll have to deal with</li>
         </script>
 
 
-        <script src="../../elasticlunr-ef4e11c1.min.js"></script>
-        <script src="../../mark-09e88c2c.min.js"></script>
-        <script src="../../searcher-c2a407aa.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
 
-        <script src="../../clipboard-1626706a.min.js"></script>
-        <script src="../../highlight-abc7f01d.js"></script>
-        <script src="../../book-a0b12cfe.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 
