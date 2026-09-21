@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-50712ec4.js";
+            window.path_to_searchindex_js = "searchindex-7e3d55aa.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-6dda1ee0.js"></script>
+        <script src="toc-9eee2067.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -2949,6 +2949,162 @@ public class ListTest {
     }
 }
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-5-0922-0924"><a class="header" href="#week-5-0922-0924">Week 5 (09/22, 09/24)</a></h1>
+<h3 id="tuesday-agenda-4"><a class="header" href="#tuesday-agenda-4">Tuesday Agenda</a></h3>
+<ul>
+<li>review practice?</li>
+<li>first assignment</li>
+<li>algorithm analysis</li>
+<li>linear search</li>
+</ul>
+<h3 id="thursday-agenda-4"><a class="header" href="#thursday-agenda-4">Thursday Agenda</a></h3>
+<ul>
+<li>number guessing game</li>
+<li>binary search</li>
+<li>sorted list</li>
+<li>homework
+<ul>
+<li>TBD</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="first-major-assignment"><a class="header" href="#first-major-assignment">First Major Assignment</a></h1>
+<p>see <a href="#a1-monster-battle">A1: Monster Battle</a></p>
+<h2 id="grading-1"><a class="header" href="#grading-1">Grading</a></h2>
+<ul>
+<li>remember <a href="#academic-integrity-and-accountability-aia-policy">AIA</a> and <a href="#artificial-intelligence-ai-policy">AI</a> policies</li>
+<li>submissions graded based on task requirements
+<ul>
+<li>complete: meets all requirements, full credit for task</li>
+<li>incomplete: doesn’t meet all requirements, no points until revised</li>
+</ul>
+</li>
+<li>expected to take several revisions before receiving full credit, and first
+attempt is usually zero points</li>
+<li>I grade twice/week on Mondays and Fridays and will upload feedback to Canvas
+<ul>
+<li>I leave comments to help with revisions</li>
+<li>I also leave comments to help you learn more from the assignment</li>
+<li>email me if you have questions about feedback</li>
+</ul>
+</li>
+<li>only your best attempt counts (no penalty for mistakes as long as you fix
+them)</li>
+<li>submit work as soon as you complete the first task</li>
+<li>I can think of three ways to earn less than 100% on an assignment:
+<ul>
+<li>choose to skip all or part of the assignment</li>
+<li>run out of time before completing a task</li>
+<li>cheat on the assignment</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="algorithm-analysis"><a class="header" href="#algorithm-analysis">Algorithm Analysis</a></h1>
+<ul>
+<li>problem vs algorithm vs implementation</li>
+<li>best vs average vs worst case</li>
+<li>asymtotic anylisis
+<ul>
+<li>big-oh: upper bound</li>
+<li>big-omega: lower bound</li>
+<li>big-theta: upper and lower bound</li>
+</ul>
+</li>
+<li>the easy version
+<ul>
+<li>usually looking at big-oh for the average case</li>
+<li>simplifying rules mean we get to delete the complex math</li>
+<li>rank the growth rates: constant, linear, etc.</li>
+</ul>
+</li>
+<li>how to be pendantic about exponential growth</li>
+<li>algorithm analysis will be a recurring topic
+<ul>
+<li>we want to understand the basic idea for now</li>
+<li>we’ll analyse various algorithms and data structures throughout the semester
+as we learn about them</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linear-search"><a class="header" href="#linear-search">Linear Search</a></h1>
+<ul>
+<li>textbook calls it sequential search, same thing</li>
+<li>summary:
+<ul>
+<li>search collection sequentially from the beginning</li>
+<li>stop early if you find what you’re looking for</li>
+<li>report failure if you reach the end without finding it</li>
+</ul>
+</li>
+<li>we already coded this last week!
+<ul>
+<li>let’s code it again: write our own static <code>indexOf</code> method for a <code>String</code></li>
+</ul>
+</li>
+<li>analyze best, worst, and average cases
+<ul>
+<li>we can be really precise about this</li>
+<li>we can also just say the big-oh for the average case</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="number-guessing-game"><a class="header" href="#number-guessing-game">Number Guessing Game</a></h1>
+<ul>
+<li>I’m thinking of a number from 1 to 1000 (inclusive)
+<ul>
+<li>students take turns</li>
+<li>two options in a turn:
+<ul>
+<li>“is your number greater than _?”</li>
+<li>“is your number _?”</li>
+</ul>
+</li>
+<li>no discussing strategy until we’re done</li>
+<li>how many questions did it take?</li>
+<li>what strategy developed?</li>
+</ul>
+</li>
+<li>if time: write a program to play the game optimally (may save this for a
+practice exercise instead)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binary-search"><a class="header" href="#binary-search">Binary Search</a></h1>
+<ul>
+<li>faster than linear search (logarithmic instead of linear search)</li>
+<li>requires collection to already be sorted (sort + binary search is slower than
+linear search)</li>
+<li>summary:
+<ul>
+<li>start in the middle of the collection</li>
+<li>check whether middle is greater than what you’re searching for</li>
+<li>repeat search on just the lower or upper half of the collection</li>
+</ul>
+</li>
+<li>guessing game is an example of binary search</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorted-list"><a class="header" href="#sorted-list">Sorted List</a></h1>
+<ul>
+<li>implement a second list class called <code>SortedIntArrayList</code></li>
+<li>same as the unsorted version, except:
+<ul>
+<li>add and remove must ensure the list’s elements are sorted from least to
+greatest</li>
+<li>contains can now use binary search instead of linear search!</li>
+</ul>
+</li>
+<li>what trade-offs does this list have compared to the unsorted list?
+<ul>
+<li>what does big-oh tell us about the add, remove, and contains operations?</li>
+<li>why might one implementation be better than the other?</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
