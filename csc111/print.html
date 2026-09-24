@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-7e3d55aa.js";
+            window.path_to_searchindex_js = "searchindex-de951bbe.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-9eee2067.js"></script>
@@ -2849,9 +2849,11 @@ public class ListTest {
                 save FNAME
                     save the list to the file FNAME (be careful not to overwrite anything important!)
                 add N0 N1 N2...
-                    adds each number after the command to the list
+                    adds each number to the list
                 rem N0 N1 N2...
-                    removes one copy of each number after the command from the list
+                    removes one copy of each number from the list
+                contains N0 N1 N2...
+                    prints whether the list contains each number
                 print
                     prints the list
                 help
@@ -2916,6 +2918,19 @@ public class ListTest {
                         }
                     }
                 }
+                case "c", "con", "contains" -&gt; {
+                    for (int i = 1; i &lt; parts.length; i++) {
+                        try {
+                            if (list.contains(Integer.parseInt(parts[i]))) {
+                                System.out.println("List DOES contain " + parts[i] + ".");
+                            } else {
+                                System.out.println("List DOES NOT contain " + parts[i] + ".");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Can only look for integers in the list.");
+                        }
+                    }
+                }
                 case "p", "print" -&gt; {
                     int[] data = list.toArray();
                     System.out.print("{");
@@ -2942,6 +2957,8 @@ public class ListTest {
         // NOT catch any exceptions. The main method's code will handle the exceptions
         // for you. There's nothing interesting to do when the exception occurs anyway,
         // so there's little point in having you handle it here.
+
+        return null; // TODO: delete this once you implement the method
     }
 
     public static void saveList(String fname, UnorderedIntList list) throws FileNotFoundException {
@@ -2960,12 +2977,27 @@ public class ListTest {
 </ul>
 <h3 id="thursday-agenda-4"><a class="header" href="#thursday-agenda-4">Thursday Agenda</a></h3>
 <ul>
+<li>finish Tuesday’s material
+<ul>
+<li>linear search demo</li>
+<li>explain log functions</li>
+</ul>
+</li>
 <li>number guessing game</li>
 <li>binary search</li>
 <li>sorted list</li>
 <li>homework
 <ul>
-<li>TBD</li>
+<li>read chapter 7:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/RecIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/RecIntro.html</a>
+<ul>
+<li>note that 7.3, 7.5, 7.6, 7.8, and 7.9 are only practice exercises</li>
+<li>I plan to assign some of the exercises for homework, but the rest are
+optional</li>
+</ul>
+</li>
+<li>practice will be posted after class, depends on what which examples we have
+time to cover during class</li>
 </ul>
 </li>
 </ul>
@@ -3072,6 +3104,52 @@ as we learn about them</li>
 <li>if time: write a program to play the game optimally (may save this for a
 practice exercise instead)</li>
 </ul>
+<p>starter code for program:</p>
+<pre><code class="language-java">import java.util.Scanner;
+
+public class GuessingGame {
+    public static void main(String[] args) {
+        if (args.length &lt; 2) {
+            System.err.println("USAGE: java GuessingGame.java MIN MAX");
+        }
+
+        int min = 0, max = 0;
+
+        try {
+            min = Integer.parseInt(args[0]);
+            max = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.err.println("ERROR: MIN and MAX must be integers.");
+            System.exit(1);
+        }
+
+        if (min &gt;= max) {
+            System.err.println("ERROR: MIN must be less than MAX.");
+            System.exit(1);
+        }
+
+        try (Scanner stdin = new Scanner(System.in)) {
+            int maxGuesses = (int) Math.ceil(Math.log(max + 1 - min) / Math.log(2));
+
+            System.out.printf(
+                    """
+                    Think of a number from %d to %d (inclusive) and press ENTER to continue.
+
+                    I can guess your number after asking at most %d yes or no questions.
+
+                    """,
+                    min, max, maxGuesses);
+            // read a line and ignore it
+            // pauses the program until the user presses enter
+            stdin.nextLine();
+
+            // TODO: implement binary search algorithm to play game optimally
+
+            System.out.printf("Your number is %d!\n", min);
+        }
+    }
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="binary-search"><a class="header" href="#binary-search">Binary Search</a></h1>
 <ul>

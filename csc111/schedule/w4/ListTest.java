@@ -19,9 +19,11 @@ public class ListTest {
                 save FNAME
                     save the list to the file FNAME (be careful not to overwrite anything important!)
                 add N0 N1 N2...
-                    adds each number after the command to the list
+                    adds each number to the list
                 rem N0 N1 N2...
-                    removes one copy of each number after the command from the list
+                    removes one copy of each number from the list
+                contains N0 N1 N2...
+                    prints whether the list contains each number
                 print
                     prints the list
                 help
@@ -83,6 +85,19 @@ public class ListTest {
                             list.remove(Integer.parseInt(parts[i]));
                         } catch (NumberFormatException e) {
                             System.out.println("Can only remove integers from the list.");
+                        }
+                    }
+                }
+                case "c", "con", "contains" -> {
+                    for (int i = 1; i < parts.length; i++) {
+                        try {
+                            if (list.contains(Integer.parseInt(parts[i]))) {
+                                System.out.println("List DOES contain " + parts[i] + ".");
+                            } else {
+                                System.out.println("List DOES NOT contain " + parts[i] + ".");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Can only look for integers in the list.");
                         }
                     }
                 }

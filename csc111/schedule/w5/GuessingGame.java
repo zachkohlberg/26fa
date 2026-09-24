@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class GuessingGame {
+    public static void main(String[] args) {
+        if (args.length < 2) {
+            System.err.println("USAGE: java GuessingGame.java MIN MAX");
+        }
+
+        int min = 0, max = 0;
+
+        try {
+            min = Integer.parseInt(args[0]);
+            max = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.err.println("ERROR: MIN and MAX must be integers.");
+            System.exit(1);
+        }
+
+        if (min >= max) {
+            System.err.println("ERROR: MIN must be less than MAX.");
+            System.exit(1);
+        }
+
+        try (Scanner stdin = new Scanner(System.in)) {
+            int maxGuesses = (int) Math.ceil(Math.log(max + 1 - min) / Math.log(2));
+
+            System.out.printf(
+                    """
+                    Think of a number from %d to %d (inclusive) and press ENTER to continue.
+
+                    I can guess your number after asking at most %d yes or no questions.
+
+                    """,
+                    min, max, maxGuesses);
+            // read a line and ignore it
+            // pauses the program until the user presses enter
+            stdin.nextLine();
+
+            while (min < max) {
+                int mid = (min + max) / 2;
+                System.out.printf("Is your number greater than %d? (y/n)\n", mid);
+                String answer = stdin.nextLine().toLowerCase();
+                switch (answer) {
+                    case "y", "yes" -> {
+                        min = mid + 1;
+                    }
+                    case "n", "no" -> {
+                        max = mid;
+                    }
+                    default -> {
+                        System.out.println("Invalid answer. I will repeat the question.");
+                    }
+                }
+            }
+
+            System.out.printf("Your number is %d!\n", min);
+        }
+    }
+}

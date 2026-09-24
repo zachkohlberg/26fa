@@ -19,9 +19,11 @@ public class ListTest {
                 save FNAME
                     save the list to the file FNAME (be careful not to overwrite anything important!)
                 add N0 N1 N2...
-                    adds each number after the command to the list
+                    adds each number to the list
                 rem N0 N1 N2...
-                    removes one copy of each number after the command from the list
+                    removes one copy of each number from the list
+                contains N0 N1 N2...
+                    prints whether the list contains each number
                 print
                     prints the list
                 help
@@ -86,6 +88,19 @@ public class ListTest {
                         }
                     }
                 }
+                case "c", "con", "contains" -> {
+                    for (int i = 1; i < parts.length; i++) {
+                        try {
+                            if (list.contains(Integer.parseInt(parts[i]))) {
+                                System.out.println("List DOES contain " + parts[i] + ".");
+                            } else {
+                                System.out.println("List DOES NOT contain " + parts[i] + ".");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Can only look for integers in the list.");
+                        }
+                    }
+                }
                 case "p", "print" -> {
                     int[] data = list.toArray();
                     System.out.print("{");
@@ -112,6 +127,8 @@ public class ListTest {
         // NOT catch any exceptions. The main method's code will handle the exceptions
         // for you. There's nothing interesting to do when the exception occurs anyway,
         // so there's little point in having you handle it here.
+
+        return null; // TODO: delete this once you implement the method
     }
 
     public static void saveList(String fname, UnorderedIntList list) throws FileNotFoundException {

@@ -34,7 +34,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-7e3d55aa.js";
+            window.path_to_searchindex_js = "../../searchindex-de951bbe.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-9eee2067.js"></script>
@@ -192,6 +192,52 @@
 <li>if time: write a program to play the game optimally (may save this for a
 practice exercise instead)</li>
 </ul>
+<p>starter code for program:</p>
+<pre><code class="language-java">import java.util.Scanner;
+
+public class GuessingGame {
+    public static void main(String[] args) {
+        if (args.length &lt; 2) {
+            System.err.println("USAGE: java GuessingGame.java MIN MAX");
+        }
+
+        int min = 0, max = 0;
+
+        try {
+            min = Integer.parseInt(args[0]);
+            max = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.err.println("ERROR: MIN and MAX must be integers.");
+            System.exit(1);
+        }
+
+        if (min &gt;= max) {
+            System.err.println("ERROR: MIN must be less than MAX.");
+            System.exit(1);
+        }
+
+        try (Scanner stdin = new Scanner(System.in)) {
+            int maxGuesses = (int) Math.ceil(Math.log(max + 1 - min) / Math.log(2));
+
+            System.out.printf(
+                    """
+                    Think of a number from %d to %d (inclusive) and press ENTER to continue.
+
+                    I can guess your number after asking at most %d yes or no questions.
+
+                    """,
+                    min, max, maxGuesses);
+            // read a line and ignore it
+            // pauses the program until the user presses enter
+            stdin.nextLine();
+
+            // TODO: implement binary search algorithm to play game optimally
+
+            System.out.printf("Your number is %d!\n", min);
+        }
+    }
+}
+</code></pre>
 
                     </main>
 
