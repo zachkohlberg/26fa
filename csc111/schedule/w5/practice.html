@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Number Guessing Demo - CSC 111 Data Structures and Abstractions</title>
+        <title>Practice - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -173,67 +173,121 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="number-guessing-game"><a class="header" href="#number-guessing-game">Number Guessing Game</a></h1>
-<ul>
-<li>I’m thinking of a number from 1 to 1000 (inclusive)
-<ul>
-<li>students take turns</li>
-<li>two options in a turn:
-<ul>
-<li>“is your number greater than _?”</li>
-<li>“is your number _?”</li>
-</ul>
-</li>
-<li>no discussing strategy until we’re done</li>
-<li>how many questions did it take?</li>
-<li>what strategy developed?</li>
-</ul>
-</li>
-<li>if time: write a program to play the game optimally (may save this for a
-practice exercise instead)</li>
-</ul>
-<p>starter code for program:</p>
-<pre><code class="language-java">import java.util.Scanner;
+                        <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
+<ol>
+<li>We didn’t get to the sorted list implementation during class, so try
+implementing it yourself! Use the starter code below and complete each task
+given by the TODO comments. You can test your code using the <code>ListTest</code>
+program from last week. Just find and replace every mention of
+<code>UnsortedIntArrayList</code> with <code>SortedIntArrayList</code>.</li>
+</ol>
+<pre><code class="language-java">public class SortedIntArrayList implements UnorderedIntList {
+    // all of this is exactly the same as the unsorted list
 
-public class GuessingGame {
-    public static void main(String[] args) {
-        if (args.length &lt; 2) {
-            System.err.println("USAGE: java GuessingGame.java MIN MAX");
+    private int[] data;
+    private int size;
+
+    public SortedIntArrayList(int capacity) {
+        data = new int[capacity];
+        size = 0;
+    }
+
+    public int capacity() {
+        return data.length;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void clear() {
+        size = 0;
+    }
+
+    public int[] toArray() {
+        int[] array = new int[size()];
+
+        for (int i = 0; i &lt; size(); i++) {
+            array[i] = data[i];
         }
 
-        int min = 0, max = 0;
+        return array;
+    }
 
-        try {
-            min = Integer.parseInt(args[0]);
-            max = Integer.parseInt(args[1]);
-        } catch (NumberFormatException e) {
-            System.err.println("ERROR: MIN and MAX must be integers.");
-            System.exit(1);
+    // the add, remove, and contains method are the only changes
+
+    public boolean add(int element) {
+        if (size() &gt;= capacity()) {
+            return false;
         }
 
-        if (min &gt;= max) {
-            System.err.println("ERROR: MIN must be less than MAX.");
-            System.exit(1);
+        // start at the end of the list
+        int i = size();
+        // shift elements over to make room until we find the correct place for
+        // our new element
+        while (i &gt; 0 &amp;&amp; data[i - 1] &gt; element) {
+            // TODO: copy the next element (at i-1) to the current index (i)
+
+            // we're moving from the end of the list (size) to the start (0), so
+            // we decrement i
+            i -= 1;
         }
 
-        try (Scanner stdin = new Scanner(System.in)) {
-            int maxGuesses = (int) Math.ceil(Math.log(max + 1 - min) / Math.log(2));
+        // TODO: place the new element at i, update size, and return whether the
+        // operation succeeded
+    }
 
-            System.out.printf(
-                    """
-                    Think of a number from %d to %d (inclusive) and press ENTER to continue.
+    public boolean remove(int element) {
+        // uses a binary search to locate the element we want to remove
+        int index = indexOf(element);
 
-                    I can guess your number after asking at most %d yes or no questions.
+        // can't remove it if it doesn't exist
+        if (index == -1) {
+            return false;
+        }
 
-                    """,
-                    min, max, maxGuesses);
-            // read a line and ignore it
-            // pauses the program until the user presses enter
-            stdin.nextLine();
+        // TODO: update size
 
-            // TODO: implement binary search algorithm to play game optimally
+        // shift everything after the removed element one space to the left
+        for (int i = index; i &lt; size(); i++) {
+            // TODO: replace the element at i with the element at i+1
+        }
 
-            System.out.printf("Your number is %d!\n", min);
+        // TODO: return whether the operation succeeded
+    }
+
+    public boolean contains(int element) {
+        // uses a binary search to locate the element
+        int index = indexOf(element);
+
+        // TODO: return whether the list contains the element (hint: what will
+        // indexOf return if the element doesn't exist?)
+    }
+
+    // binary search
+    private int indexOf(int element) {
+        // lower bound, inclusive
+        int min = // TODO: what is the first index in the list?
+        // upper bound, inclusive
+        int max = // TODO: what is the last index in the list?
+
+        // same condition as our guessing game because the bounds are inclusive
+        while (min &lt; max) {
+            int mid = // TODO: calculate the mid index
+
+            // TODO: compare element to data[mid] and update min or max
+        }
+
+        // min and max are the same at this point, so we can use either as the
+        // element's index
+        //
+        // we need to check for equality because it's possible that the element
+        // doesn't exist (we've just found where it should be if it does exist)
+
+        if (data[min] == element) {
+            return min;
+        } else {
+            return -1;
         }
     }
 }
@@ -243,13 +297,10 @@ public class GuessingGame {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w5/linear_search.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w5/sorted_list.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w5/binary_search.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -257,13 +308,10 @@ public class GuessingGame {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w5/linear_search.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w5/sorted_list.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w5/binary_search.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
-                    </a>
             </nav>
 
         </div>

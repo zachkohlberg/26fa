@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-de951bbe.js";
+            window.path_to_searchindex_js = "searchindex-19e9e066.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-9eee2067.js"></script>
+        <script src="toc-6a1a77c2.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -2996,8 +2996,8 @@ public class ListTest {
 optional</li>
 </ul>
 </li>
-<li>practice will be posted after class, depends on what which examples we have
-time to cover during class</li>
+<li>complete the <code>SortedIntArrayList</code> class based on the starter code in the
+<a href="#practice-4">practice</a> exercise</li>
 </ul>
 </li>
 </ul>
@@ -3183,6 +3183,126 @@ greatest</li>
 </ul>
 </li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-4"><a class="header" href="#practice-4">Practice</a></h1>
+<ol>
+<li>We didn’t get to the sorted list implementation during class, so try
+implementing it yourself! Use the starter code below and complete each task
+given by the TODO comments. You can test your code using the <code>ListTest</code>
+program from last week. Just find and replace every mention of
+<code>UnsortedIntArrayList</code> with <code>SortedIntArrayList</code>.</li>
+</ol>
+<pre><code class="language-java">public class SortedIntArrayList implements UnorderedIntList {
+    // all of this is exactly the same as the unsorted list
+
+    private int[] data;
+    private int size;
+
+    public SortedIntArrayList(int capacity) {
+        data = new int[capacity];
+        size = 0;
+    }
+
+    public int capacity() {
+        return data.length;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void clear() {
+        size = 0;
+    }
+
+    public int[] toArray() {
+        int[] array = new int[size()];
+
+        for (int i = 0; i &lt; size(); i++) {
+            array[i] = data[i];
+        }
+
+        return array;
+    }
+
+    // the add, remove, and contains method are the only changes
+
+    public boolean add(int element) {
+        if (size() &gt;= capacity()) {
+            return false;
+        }
+
+        // start at the end of the list
+        int i = size();
+        // shift elements over to make room until we find the correct place for
+        // our new element
+        while (i &gt; 0 &amp;&amp; data[i - 1] &gt; element) {
+            // TODO: copy the next element (at i-1) to the current index (i)
+
+            // we're moving from the end of the list (size) to the start (0), so
+            // we decrement i
+            i -= 1;
+        }
+
+        // TODO: place the new element at i, update size, and return whether the
+        // operation succeeded
+    }
+
+    public boolean remove(int element) {
+        // uses a binary search to locate the element we want to remove
+        int index = indexOf(element);
+
+        // can't remove it if it doesn't exist
+        if (index == -1) {
+            return false;
+        }
+
+        // TODO: update size
+
+        // shift everything after the removed element one space to the left
+        for (int i = index; i &lt; size(); i++) {
+            // TODO: replace the element at i with the element at i+1
+        }
+
+        // TODO: return whether the operation succeeded
+    }
+
+    public boolean contains(int element) {
+        // uses a binary search to locate the element
+        int index = indexOf(element);
+
+        // TODO: return whether the list contains the element (hint: what will
+        // indexOf return if the element doesn't exist?)
+    }
+
+    // binary search
+    private int indexOf(int element) {
+        // lower bound, inclusive
+        int min = // TODO: what is the first index in the list?
+        // upper bound, inclusive
+        int max = // TODO: what is the last index in the list?
+
+        // same condition as our guessing game because the bounds are inclusive
+        while (min &lt; max) {
+            int mid = // TODO: calculate the mid index
+
+            // TODO: compare element to data[mid] and update min or max
+        }
+
+        // min and max are the same at this point, so we can use either as the
+        // element's index
+        //
+        // we need to check for equality because it's possible that the element
+        // doesn't exist (we've just found where it should be if it does exist)
+
+        if (data[min] == element) {
+            return min;
+        } else {
+            return -1;
+        }
+    }
+}
+</code></pre>
 
                     </main>
 
