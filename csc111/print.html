@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-19e9e066.js";
+            window.path_to_searchindex_js = "searchindex-a006e2d8.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-6a1a77c2.js"></script>
+        <script src="toc-fb15fa56.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3303,6 +3303,277 @@ program from last week. Just find and replace every mention of
     }
 }
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-6-0929-1001"><a class="header" href="#week-6-0929-1001">Week 6 (09/29, 10/01)</a></h1>
+<h3 id="tuesday-agenda-5"><a class="header" href="#tuesday-agenda-5">Tuesday Agenda</a></h3>
+<ul>
+<li>practice review</li>
+<li>recursion</li>
+<li>factorial</li>
+<li>fibonacci</li>
+<li>infinite recursion</li>
+</ul>
+<h3 id="thursday-agenda-5"><a class="header" href="#thursday-agenda-5">Thursday Agenda</a></h3>
+<ul>
+<li>additional recursion topics, depending on how far we get Tuesday</li>
+<li>homework TBA</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="recursion-intro"><a class="header" href="#recursion-intro">Recursion Intro</a></h1>
+<p>what is recursion?</p>
+<ul>
+<li>a recursive function is a function that calls itself</li>
+<li>a recursive algorithm appears in its own steps</li>
+</ul>
+<p>why learn/use it?</p>
+<ul>
+<li>to repeat something, like a loop</li>
+<li>compared to iterative (loop) version, recursive algorithms can be simple and
+concise</li>
+<li>more powerful than plain loops and nested loops</li>
+<li>some problems are easier to understand through recursive algorithms, even if
+you end up converting it to an iterative algorithm</li>
+<li>important in functional programming, math (have you seen proof by induction
+yet?)</li>
+</ul>
+<p>why not use it?</p>
+<ul>
+<li>expensive: function call overhead &gt; loop overhead
+<ul>
+<li>some compilers can optimize recursive functions into loops</li>
+</ul>
+</li>
+<li>loops are equally powerful when combined with a stack</li>
+</ul>
+<p>from
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/RecIntro.html">section 7.1.1</a>
+of our textbook:</p>
+<blockquote>
+<p>Newcomers who are unfamiliar with recursion often find it hard to accept that
+it is used primarily as a tool for simplifying the design and description of
+algorithms. A recursive algorithm does not always yield the most efficient
+computer program for solving the problem because recursion involves function
+calls, which are typically more expensive than other alternatives such as a
+while loop. However, the recursive approach usually provides an algorithm that
+is reasonably efficient. If necessary, the clear, recursive solution can later
+be modified to yield a faster implementation.</p>
+</blockquote>
+<p>we’ll cover recursion in three phases:</p>
+<ol>
+<li>use recursive functions to perform iteration, imitate loops</li>
+<li>write more complex recursive functions involving branching/backtracking</li>
+<li>solve recursive problems with loops and stacks instead of recursion</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="recursion-for-iteration"><a class="header" href="#recursion-for-iteration">Recursion For Iteration</a></h1>
+<p>two goals:</p>
+<ul>
+<li>start developing an intuition for recursive functions</li>
+<li>practice writing simple recursive functions</li>
+</ul>
+<h2 id="comparison"><a class="header" href="#comparison">Comparison</a></h2>
+<ul>
+<li>how do we design loops?
+<ul>
+<li>where does the loop start?</li>
+<li>how does the loop make progress?</li>
+<li>how does the loop end?</li>
+<li>what if loop doesn’t end?</li>
+</ul>
+</li>
+<li>how do we design recursive functions?
+<ul>
+<li>where does the function start?</li>
+<li>how does the function make progress?</li>
+<li>how does the function end?</li>
+<li>what if function doesn’t end?</li>
+</ul>
+</li>
+</ul>
+<h2 id="function-design"><a class="header" href="#function-design">Function Design</a></h2>
+<ul>
+<li>base case
+<ul>
+<li>no recursion</li>
+</ul>
+</li>
+<li>recursive case
+<ul>
+<li>solve part of problem</li>
+<li>recursive call to solve <em>a smaller version of the problem</em></li>
+</ul>
+</li>
+</ul>
+<p>let’s steal the textbook’s idea: count the occupants of this room.</p>
+<p>how to find out how many (seated) people are in a room:</p>
+<ol>
+<li>stand up</li>
+<li>if nobody is seated, then the answer is one</li>
+<li>if at least one person is seated, then find someone else who’s seated
+<ol>
+<li>ask them how many people are sitting</li>
+<li><strong>remain standing</strong> and wait for them to tell you the answer</li>
+<li>when they tell you, go sit down</li>
+<li>the answer is now whatever they said plus one (you just sat down, which
+increased the count they gave you)</li>
+</ol>
+</li>
+</ol>
+<p>let’s analyze:</p>
+<ul>
+<li>what’s our base case?</li>
+<li>how did we solve part of the problem?</li>
+<li>how did we shrink the problem before delegating the rest?</li>
+</ul>
+<h2 id="recursive-for-function"><a class="header" href="#recursive-for-function">“Recursive For” Function</a></h2>
+<p>write a for loop as a class:</p>
+<ul>
+<li>write a for loop that counts from 1 to 10</li>
+<li>make it its own function</li>
+<li>parameterize it: caller says where we count from and to</li>
+</ul>
+<p>write a recursive version:</p>
+<ul>
+<li>what’s the base case?</li>
+<li>what’s the recursive case?
+<ul>
+<li>what work do we do?</li>
+<li>what’s the recursive call?</li>
+</ul>
+</li>
+</ul>
+<p>generalize it: for loop skeleton vs recursive “for function” skeleton</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="factorial"><a class="header" href="#factorial">Factorial</a></h1>
+<ul>
+<li>what is it?</li>
+<li>math version, piecewise function</li>
+<li>iterative version</li>
+<li>recursive version</li>
+<li>box trace: <a href="https://homepages.uc.edu/~jonesbr/boxtrace.shtml">https://homepages.uc.edu/~jonesbr/boxtrace.shtml</a></li>
+</ul>
+<pre><code class="language-java">import java.math.BigInteger;
+
+public class Factorial {
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]);
+
+        System.out.printf("factorialIter(%d) = %d\n", n, factorialIter(n));
+        System.out.printf(
+                "factorialIterBig(%d) = %s\n", n, factorialIterBig(new BigInteger("" + n)));
+        System.out.printf("factorialRec(%d) = %d\n", n, factorialRec(n));
+        System.out.printf("factorialRecBig(%d) = %s\n", n, factorialRecBig(new BigInteger("" + n)));
+    }
+
+    // NOTE: factorial will quickly overflow an int
+    //
+    // - long will work until around n=20, test this
+    // - BigInteger can handle arbitrarily large numbers, but it's slower
+
+    public static long factorialIter(long n) {
+        // TODO
+    }
+
+    public static BigInteger factorialIterBig(BigInteger n) {
+        // TODO
+    }
+
+    public static long factorialRec(long n) {
+        // TODO
+    }
+
+    public static BigInteger factorialRecBig(BigInteger n) {
+        // TODO
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fibonacci-sequence"><a class="header" href="#fibonacci-sequence">Fibonacci Sequence</a></h1>
+<p>generating <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence">fibonacci numbers</a>
+is a simple recursive algorithm</p>
+<ul>
+<li>first two numbers in the sequence are 1</li>
+<li>all other numbers are the sum of the previous two numbers</li>
+</ul>
+<p>as a class:</p>
+<ul>
+<li>write a piecewise fibonacci function (math)</li>
+<li>design and write a recursive function (code) to calculate the nth fibonacci
+number</li>
+</ul>
+<p>is this a good implementation?</p>
+<ul>
+<li>we can test it to see how fast it is</li>
+<li>we can measure the time it takes to run</li>
+</ul>
+<p>box trace</p>
+<ul>
+<li>try a box trace to understand how the algorithm calculates the number</li>
+<li>use substitution to evaluate the piecewise function, compare to box trace</li>
+</ul>
+<p>pros/cons of recursion for fibonacci?</p>
+<pre><code class="language-java">public class Fib {
+    public static void main(String[] args) {
+        int count = Integer.parseInt(args[0]);
+
+        // time the whole sequence
+        long start = System.nanoTime();
+
+        for (long n = 1; n &lt;= count; n++) {
+            long fibN = fib(n);
+            System.out.printf("fib(%d) = %d\n", n, fibN);
+        }
+
+        long end = System.nanoTime();
+        long elapsed = end - start;
+        System.out.printf(
+                "Took %d nanoseconds to calculate the first %d fibonacci numbers.\n",
+                elapsed, count);
+    }
+
+    // TODO: fibonacci implementations
+
+    // NOTE: as with factorial, overflow will occur quickly
+    //
+    // - use long for N up to the 80s
+    // - use BigInteger for N in the 90s and higher
+    // - demonstrate overflow with fast version
+    // - could compare speed of long and BigInteger
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fibonacci-performance"><a class="header" href="#fibonacci-performance">Fibonacci Performance</a></h1>
+<p>make a faster iterative algorithm for fibonacci:</p>
+<ul>
+<li>where do we start?</li>
+<li>when do we stop?</li>
+<li>what do we do in the loop body?</li>
+</ul>
+<p>does the recursive algorithm have to be so slow?</p>
+<ul>
+<li>use the iterative algorithm to make a faster recursive algorithm</li>
+<li>compare them, which is faster?</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="infinite-recursion"><a class="header" href="#infinite-recursion">Infinite Recursion</a></h1>
+<p>memory is limited, which limits recursion</p>
+<ul>
+<li>when stack memory runs out, you get a <code>StackOverflowError</code></li>
+<li>normal recursive functions can do this if their depth is too great</li>
+<li>infinite recursion will cause this if the compiler doesn’t optimize it into a
+loop</li>
+</ul>
+<p>what causes infinite recursion?</p>
+<ul>
+<li>no base case</li>
+<li>can’t reach the base case (growing or failing to shrink the problem, skipping
+the base case)</li>
+</ul>
+<p>demonstrate:</p>
+<ul>
+<li>factorial with no base case</li>
+<li>accidental recursion</li>
+</ul>
 
                     </main>
 

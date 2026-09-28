@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>File APIs - CSC 111 Data Structures and Abstractions</title>
+        <title>Fibonacci Sequence - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -173,49 +173,69 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="file-apis"><a class="header" href="#file-apis">File APIs</a></h1>
+                        <h1 id="fibonacci-sequence"><a class="header" href="#fibonacci-sequence">Fibonacci Sequence</a></h1>
+<p>generating <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence">fibonacci numbers</a>
+is a simple recursive algorithm</p>
 <ul>
-<li>java standard library:
+<li>first two numbers in the sequence are 1</li>
+<li>all other numbers are the sum of the previous two numbers</li>
+</ul>
+<p>as a class:</p>
 <ul>
-<li><code>java.io</code> package:
-<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html</a></li>
-<li><code>java.nio</code> package:
-<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html</a></li>
-<li>the nio (new io) APIs are more convenient and abstracted</li>
-<li>we will use the IO APIs for now
+<li>write a piecewise fibonacci function (math)</li>
+<li>design and write a recursive function (code) to calculate the nth fibonacci
+number</li>
+</ul>
+<p>is this a good implementation?</p>
 <ul>
-<li>better to know how to implement something yourself when a more convenient
-API doesn’t do the job (either it can’t do what you want or you need
-better performance)</li>
-<li>knowing a simplified API like <code>nio</code> doesn’t help if you need to work with
-another API (such as in another programming language), but knowing how
-file I/O works at a lower level makes it easier to learn other file APIs</li>
+<li>we can test it to see how fast it is</li>
+<li>we can measure the time it takes to run</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>classes we’ll use:
+<p>box trace</p>
 <ul>
-<li><code>java.io.File</code> to represent and query files</li>
-<li><code>java.util.Scanner</code> to read from files</li>
-<li><code>java.io.PrintWriter</code> to write to files</li>
-<li>note that <code>PrintWriter</code> is similar to <code>PrintStream</code> (<code>System.out</code> and
-<code>System.err</code>), so it will feel familiar</li>
-<li><code>java.io.FileNotFoundException</code> and <code>java.io.IOException</code> are two checked
-exceptions we’ll have to deal with</li>
+<li>try a box trace to understand how the algorithm calculates the number</li>
+<li>use substitution to evaluate the piecewise function, compare to box trace</li>
 </ul>
-</li>
-</ul>
+<p>pros/cons of recursion for fibonacci?</p>
+<pre><code class="language-java">public class Fib {
+    public static void main(String[] args) {
+        int count = Integer.parseInt(args[0]);
+
+        // time the whole sequence
+        long start = System.nanoTime();
+
+        for (long n = 1; n &lt;= count; n++) {
+            long fibN = fib(n);
+            System.out.printf("fib(%d) = %d\n", n, fibN);
+        }
+
+        long end = System.nanoTime();
+        long elapsed = end - start;
+        System.out.printf(
+                "Took %d nanoseconds to calculate the first %d fibonacci numbers.\n",
+                elapsed, count);
+    }
+
+    // TODO: fibonacci implementations
+
+    // NOTE: as with factorial, overflow will occur quickly
+    //
+    // - use long for N up to the 80s
+    // - use BigInteger for N in the 90s and higher
+    // - demonstrate overflow with fast version
+    // - could compare speed of long and BigInteger
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w3/try_catch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w6/factorial.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w3/file_io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w6/fib_perf.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -225,11 +245,11 @@ exceptions we’ll have to deal with</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w3/try_catch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w6/factorial.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w3/file_io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w6/fib_perf.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>File APIs - CSC 111 Data Structures and Abstractions</title>
+        <title>Recursion For Iteration - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -173,49 +173,94 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="file-apis"><a class="header" href="#file-apis">File APIs</a></h1>
+                        <h1 id="recursion-for-iteration"><a class="header" href="#recursion-for-iteration">Recursion For Iteration</a></h1>
+<p>two goals:</p>
 <ul>
-<li>java standard library:
+<li>start developing an intuition for recursive functions</li>
+<li>practice writing simple recursive functions</li>
+</ul>
+<h2 id="comparison"><a class="header" href="#comparison">Comparison</a></h2>
 <ul>
-<li><code>java.io</code> package:
-<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html</a></li>
-<li><code>java.nio</code> package:
-<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html</a></li>
-<li>the nio (new io) APIs are more convenient and abstracted</li>
-<li>we will use the IO APIs for now
+<li>how do we design loops?
 <ul>
-<li>better to know how to implement something yourself when a more convenient
-API doesn’t do the job (either it can’t do what you want or you need
-better performance)</li>
-<li>knowing a simplified API like <code>nio</code> doesn’t help if you need to work with
-another API (such as in another programming language), but knowing how
-file I/O works at a lower level makes it easier to learn other file APIs</li>
+<li>where does the loop start?</li>
+<li>how does the loop make progress?</li>
+<li>how does the loop end?</li>
+<li>what if loop doesn’t end?</li>
+</ul>
+</li>
+<li>how do we design recursive functions?
+<ul>
+<li>where does the function start?</li>
+<li>how does the function make progress?</li>
+<li>how does the function end?</li>
+<li>what if function doesn’t end?</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>classes we’ll use:
+<h2 id="function-design"><a class="header" href="#function-design">Function Design</a></h2>
 <ul>
-<li><code>java.io.File</code> to represent and query files</li>
-<li><code>java.util.Scanner</code> to read from files</li>
-<li><code>java.io.PrintWriter</code> to write to files</li>
-<li>note that <code>PrintWriter</code> is similar to <code>PrintStream</code> (<code>System.out</code> and
-<code>System.err</code>), so it will feel familiar</li>
-<li><code>java.io.FileNotFoundException</code> and <code>java.io.IOException</code> are two checked
-exceptions we’ll have to deal with</li>
+<li>base case
+<ul>
+<li>no recursion</li>
+</ul>
+</li>
+<li>recursive case
+<ul>
+<li>solve part of problem</li>
+<li>recursive call to solve <em>a smaller version of the problem</em></li>
 </ul>
 </li>
 </ul>
+<p>let’s steal the textbook’s idea: count the occupants of this room.</p>
+<p>how to find out how many (seated) people are in a room:</p>
+<ol>
+<li>stand up</li>
+<li>if nobody is seated, then the answer is one</li>
+<li>if at least one person is seated, then find someone else who’s seated
+<ol>
+<li>ask them how many people are sitting</li>
+<li><strong>remain standing</strong> and wait for them to tell you the answer</li>
+<li>when they tell you, go sit down</li>
+<li>the answer is now whatever they said plus one (you just sat down, which
+increased the count they gave you)</li>
+</ol>
+</li>
+</ol>
+<p>let’s analyze:</p>
+<ul>
+<li>what’s our base case?</li>
+<li>how did we solve part of the problem?</li>
+<li>how did we shrink the problem before delegating the rest?</li>
+</ul>
+<h2 id="recursive-for-function"><a class="header" href="#recursive-for-function">“Recursive For” Function</a></h2>
+<p>write a for loop as a class:</p>
+<ul>
+<li>write a for loop that counts from 1 to 10</li>
+<li>make it its own function</li>
+<li>parameterize it: caller says where we count from and to</li>
+</ul>
+<p>write a recursive version:</p>
+<ul>
+<li>what’s the base case?</li>
+<li>what’s the recursive case?
+<ul>
+<li>what work do we do?</li>
+<li>what’s the recursive call?</li>
+</ul>
+</li>
+</ul>
+<p>generalize it: for loop skeleton vs recursive “for function” skeleton</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w3/try_catch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w6/rec_intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w3/file_io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w6/factorial.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -225,11 +270,11 @@ exceptions we’ll have to deal with</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w3/try_catch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w6/rec_intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w3/file_io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w6/factorial.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
