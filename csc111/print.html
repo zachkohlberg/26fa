@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a006e2d8.js";
+            window.path_to_searchindex_js = "searchindex-54c62b39.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-fb15fa56.js"></script>
+        <script src="toc-6d843a02.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3308,15 +3308,22 @@ program from last week. Just find and replace every mention of
 <h3 id="tuesday-agenda-5"><a class="header" href="#tuesday-agenda-5">Tuesday Agenda</a></h3>
 <ul>
 <li>practice review</li>
-<li>recursion</li>
-<li>factorial</li>
-<li>fibonacci</li>
+<li>recursion intro</li>
 <li>infinite recursion</li>
 </ul>
 <h3 id="thursday-agenda-5"><a class="header" href="#thursday-agenda-5">Thursday Agenda</a></h3>
 <ul>
-<li>additional recursion topics, depending on how far we get Tuesday</li>
-<li>homework TBA</li>
+<li>factorial</li>
+<li>fibonacci</li>
+<li>branching recursion</li>
+<li>homework
+<ul>
+<li>read section 6.1 (skip 6.2 for now):
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/StackArray.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/StackArray.html</a></li>
+<li>complete this week’s <a href="#practice-5">practice exercises</a> and submit your
+code on Canvas</li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="recursion-intro"><a class="header" href="#recursion-intro">Recursion Intro</a></h1>
@@ -3444,6 +3451,26 @@ increased the count they gave you)</li>
 </ul>
 <p>generalize it: for loop skeleton vs recursive “for function” skeleton</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="infinite-recursion"><a class="header" href="#infinite-recursion">Infinite Recursion</a></h1>
+<p>memory is limited, which limits recursion</p>
+<ul>
+<li>when stack memory runs out, you get a <code>StackOverflowError</code></li>
+<li>normal recursive functions can do this if their depth is too great</li>
+<li>infinite recursion will cause this if the compiler doesn’t optimize it into a
+loop</li>
+</ul>
+<p>what causes infinite recursion?</p>
+<ul>
+<li>no base case</li>
+<li>can’t reach the base case (growing or failing to shrink the problem, skipping
+the base case)</li>
+</ul>
+<p>demonstrate:</p>
+<ul>
+<li>factorial with no base case</li>
+<li>accidental recursion</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="factorial"><a class="header" href="#factorial">Factorial</a></h1>
 <ul>
 <li>what is it?</li>
@@ -3555,25 +3582,119 @@ number</li>
 <li>compare them, which is faster?</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="infinite-recursion"><a class="header" href="#infinite-recursion">Infinite Recursion</a></h1>
-<p>memory is limited, which limits recursion</p>
+<h1 id="branching-recursion"><a class="header" href="#branching-recursion">Branching Recursion</a></h1>
+<h2 id="review"><a class="header" href="#review">Review</a></h2>
+<p>recursive algorithms require:</p>
 <ul>
-<li>when stack memory runs out, you get a <code>StackOverflowError</code></li>
-<li>normal recursive functions can do this if their depth is too great</li>
-<li>infinite recursion will cause this if the compiler doesn’t optimize it into a
-loop</li>
-</ul>
-<p>what causes infinite recursion?</p>
+<li>a base case</li>
+<li>one or more recursive cases that
 <ul>
-<li>no base case</li>
-<li>can’t reach the base case (growing or failing to shrink the problem, skipping
-the base case)</li>
+<li>solve part of the problem</li>
+<li>recursively solve a <em>smaller version</em> of the problem</li>
 </ul>
-<p>demonstrate:</p>
+</li>
+<li>the base case to always be reached</li>
+</ul>
+<p>executing/tracing a recursive function (see
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/Trace.html">7.7.1</a>):</p>
 <ul>
-<li>factorial with no base case</li>
-<li>accidental recursion</li>
+<li>wind-up phase: stacking up unfinished function calls</li>
+<li>unwinding phase: resolving each function call, passing information back to
+eventually reach the original function call</li>
 </ul>
+<p>compare to the counting example:</p>
+<ul>
+<li>wind-up: delegating counting task to other students</li>
+<li>unwind: getting other student’s answer and reporting your answer to whoever
+asked you</li>
+</ul>
+<h2 id="branching"><a class="header" href="#branching">Branching</a></h2>
+<p>what changes when we allow multiple recursive calls?</p>
+<ul>
+<li>multiple wind-up/unwind phases</li>
+<li>these normally happen sequentially, but if we imagine them in parallel we can
+see a branching tree structure rather than a simple stack of function calls</li>
+<li>this branching is what makes recursion more powerful than loops</li>
+</ul>
+<p>example problem: print <em>all</em> the files in a directory and its subdirectories</p>
+<ul>
+<li>try solving this with a loop
+<ul>
+<li>why doesn’t the loop work?</li>
+</ul>
+</li>
+<li>try solving this with recursion
+<ul>
+<li>why does recursion work?</li>
+</ul>
+</li>
+</ul>
+<p>another way to look at this: exploring a maze (this will be an assignment later)</p>
+<ul>
+<li>when you reach a branching point, you…
+<ul>
+<li>explore one path</li>
+<li>determine it’s a dead end</li>
+<li>backtrack to the branching point</li>
+<li>and repeat!</li>
+</ul>
+</li>
+<li>exploration and backtracking are just the wind-up and unwind phases from
+before</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-5"><a class="header" href="#practice-5">Practice</a></h1>
+<p>Complete the eight practice exercises in section 7.3
+(<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/CodeCompletionEx.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/CodeCompletionEx.html</a>)
+of the OpenDSA textbook and submit your code on Canvas. I won’t be able to set
+up the OpenDSA/Canvas integration, so you’ll just submit code as you have for
+all your other practice exercises.</p>
+<p>You can use the OpenDSA website to test any code you write for these exercises.
+It should tell you whether your solution is correct, but it won’t record these
+results on Canvas or send me a copy of your code. You still need to upload
+everything on Canvas when you’re finished. You also don’t need to use or pass
+those tests to receive credit. As with all other practice assignments I only
+need to see that you attempted to solve each problem.</p>
+<p>You can put all of your functions in one class. Feel free to use the starter
+code below:</p>
+<pre><code class="language-java">// starter code for 7.3 practice problems from OpenDSA's CS2 sample book:
+//
+// https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/CodeCompletionEx.html
+
+public class Practice {
+    public int largest(int[] numbers, int index) {
+        // 7.3.2
+    }
+
+    public int multiply(int x, int y) {
+        // 7.3.3
+    }
+
+    public int GCD(int x, int y) {
+        // 7.3.4
+    }
+
+    public int log(int b, int n) {
+        // 7.3.5
+    }
+
+    public int sumtok(int k) {
+        // 7.3.6
+    }
+
+    public int addOdd(int n) {
+        // 7.3.7
+    }
+
+    public int sumOfDigits(int number) {
+        // 7.3.8
+    }
+
+    public int countChr(String str) {
+        // 7.3.9
+    }
+}
+</code></pre>
 
                     </main>
 
