@@ -1,0 +1,190 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Drawing {
+    private JFrame frame;
+    private JPanel panel;
+
+    public Drawing() {
+        // change the canvas size here
+        final int w = 800, h = 800;
+
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        panel =
+                new JPanel() {
+                    @Override
+                    public void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+
+                        // draw a level 2 version of either fractal
+                        // sierpinski(g, Color.WHITE, 2, 400, 10, 790, 790, 10, 790);
+                        // hydrangea(g, Color.WHITE, Color.GRAY, 2, 400, 400, 780, false);
+                    }
+                };
+        // you can change the background color here
+        panel.setBackground(Color.BLACK);
+        panel.setPreferredSize(new Dimension(w, h));
+
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
+
+        frame.setFocusable(true);
+        frame.addKeyListener(
+                new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                        }
+                    }
+                });
+    }
+
+    public static void main(String[] args) {
+        new Drawing();
+    }
+
+    // draws a sierpinski triangle between the points oriented as shown below:
+    //
+    //      1
+    //     / \
+    //    /---\
+    //   / \ / \
+    //  3-------2
+    //
+    public static void sierpinski(
+            Graphics g, Color color, int level, int x1, int y1, int x2, int y2, int x3, int y3) {
+        // kinda silly to do this with every function call, but it won't be
+        // enough that we'll notice a slowdown
+        g.setColor(color);
+
+        // TODO: implement a recursive algorithm to draw the sierpinski triangle
+
+        if (level > 1) {
+            int x12 = (x1 + x2) / 2,
+                    y12 = (y1 + y2) / 2,
+                    x23 = (x2 + x3) / 2,
+                    y23 = (y2 + y3) / 2,
+                    x31 = (x3 + x1) / 2,
+                    y31 = (y3 + y1) / 2;
+            sierpinski(g, color, level - 1, x1, y1, x12, y12, x31, y31);
+            sierpinski(g, color, level - 1, x12, y12, x2, y2, x23, y23);
+            sierpinski(g, color, level - 1, x31, y31, x23, y23, x3, y3);
+
+        } else {
+            // here's the base case for free!
+            triangle(g, x1, y1, x2, y2, x3, y3);
+        }
+    }
+
+    // draws a hydrangea centered on (x, y) with a width and height equal to size
+    // the diagonal parameter indicates whether the hydrangea is oriented as a
+    // diamond (true) or a square (false)
+    public static void hydrangea(
+            Graphics g,
+            Color fill,
+            Color outline,
+            int level,
+            int x,
+            int y,
+            int size,
+            boolean diagonal) {
+        // TODO: implement a recursive algorithm to draw the hydrangea
+
+        // NOTE: going from one level of the hydrangea to the next divides the
+        // size by the square root of 2 and changes the orientation
+        petals(g, fill, outline, x, y, size, diagonal);
+        if (level > 1) {
+            hydrangea(g, fill, outline, level - 1, x, y, (int) (size / Math.sqrt(2)), !diagonal);
+        }
+    }
+
+    // helper method to draw a triangle
+    public static void triangle(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3) {
+        g.drawLine(x1, y1, x2, y2);
+        g.drawLine(x2, y2, x3, y3);
+        g.drawLine(x3, y3, x1, y1);
+    }
+
+    // helper method to draw the hydrangea petals from the center point (x, y) with the
+    // given hydrangea size and orientation
+    public static void petals(
+            Graphics g, Color fill, Color outline, int x, int y, int size, boolean diagonal) {
+        // the math here isn't complicated if you understand some trig, but
+        // there's a lot, it's tedious, and it has nothing to do with recursion
+
+        int[] xs1, xs2, xs3, xs4;
+        int[] ys1, ys2, ys3, ys4;
+        if (diagonal) {
+            // this is the length of one petal
+            int len = (int) (size / Math.sqrt(2));
+
+            // we need 4/4, 3/4, and 1/4 offsets, but no 2/4 offset, which is
+            // why we're skipping 2
+            int xl4 = x - len,
+                    xl3 = x - len * 3 / 4,
+                    xl1 = x - len / 4,
+                    xr1 = x + len / 4,
+                    xr3 = x + len * 3 / 4,
+                    xr4 = x + len;
+            int yu4 = y - len,
+                    yu3 = y - len * 3 / 4,
+                    yu1 = y - len / 4,
+                    yd1 = y + len / 4,
+                    yd3 = y + len * 3 / 4,
+                    yd4 = y + len;
+            xs1 = new int[] {x, xl1, xl1, x, xr1, xr1};
+            ys1 = new int[] {y, yu1, yu3, yu4, yu3, yu1};
+            xs2 = new int[] {x, xr1, xr3, xr4, xr3, xr1};
+            ys2 = new int[] {y, yu1, yu1, y, yd1, yd1};
+            xs3 = new int[] {x, xr1, xr1, x, xl1, xl1};
+            ys3 = new int[] {y, yd1, yd3, yd4, yd3, yd1};
+            xs4 = new int[] {x, xl1, xl3, xl4, xl3, xl1};
+            ys4 = new int[] {y, yd1, yd1, y, yu1, yu1};
+        } else {
+            // we'll be using x and y values adjusted by 1/4 or 1/2 of the
+            // length, so this will calculate them and give them shorter names
+            // to make the coordinate lists easy to read
+            int xl2 = x - size / 2, xl1 = x - size / 4, xr1 = x + size / 4, xr2 = x + size / 2;
+            int yu2 = y - size / 2, yu1 = y - size / 4, yd1 = y + size / 4, yd2 = y + size / 2;
+            xs1 = new int[] {x, x, xr1, xr2, xr2, xr1};
+            ys1 = new int[] {y, yu1, yu2, yu2, yu1, y};
+            xs2 = new int[] {x, xr1, xr2, xr2, xr1, x};
+            ys2 = new int[] {y, y, yd1, yd2, yd2, yd1};
+            xs3 = new int[] {x, x, xl1, xl2, xl2, xl1};
+            ys3 = new int[] {y, yd1, yd2, yd2, yd1, y};
+            xs4 = new int[] {x, xl1, xl2, xl2, xl1, x};
+            ys4 = new int[] {y, y, yu1, yu2, yu2, yu1};
+        }
+
+        g.setColor(fill);
+        g.fillPolygon(xs1, ys1, 6);
+        g.fillPolygon(xs2, ys2, 6);
+        g.fillPolygon(xs3, ys3, 6);
+        g.fillPolygon(xs4, ys4, 6);
+        g.setColor(outline);
+        g.drawPolygon(xs1, ys1, 6);
+        g.drawPolygon(xs2, ys2, 6);
+        g.drawPolygon(xs3, ys3, 6);
+        g.drawPolygon(xs4, ys4, 6);
+    }
+
+    // if you want to get creative:
+    //
+    // - change the color with each level of the fractal, either with a set
+    //   color palette or by interpolating between two colors
+    // - fill in the triangles instead of or in addition to drawing the outlines
+    // - scale the fractal with the panel size so that you can stretch it by
+    //   resizing the window
+    // - add more fractals!
+}

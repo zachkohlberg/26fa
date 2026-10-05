@@ -1,0 +1,14 @@
+5 19
+# # ### #   #   ###
+# # #   #   #   # #
+### ### #   #   # #
+# # #   #   #   # #
+# # ### ### ### ###
+
+This is extra text in the comments section. Your code shouldn't read this part,
+or at least shouldn't use it when initializing a Maze object.
+
+Also, nothing in the format says the maze file has to be an actual solvable
+maze. This maze is just the word HELLO so you can tell that your maze read the
+file correctly and that its toString method works correctly.
+

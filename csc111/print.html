@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-3249046f.js";
+            window.path_to_searchindex_js = "searchindex-3fc0e439.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-6d843a02.js"></script>
+        <script src="toc-734c7b7e.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1447,8 +1447,7 @@ addition to that policy:</p>
 <p>You must use the parts of the Java API that we covered in class for File I/O and
 exception handling. Do not use the <code>java.nio</code> package or any static variables in
 your program.</p>
-<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
-<h3 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h3>
+<h2 id="task-1-monster-class-5-points"><a class="header" href="#task-1-monster-class-5-points">Task 1: Monster Class (5 points)</a></h2>
 <p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
 constructors, and methods described below. You should not have any other
 instance variables or static variables. You’re free to include other methods and
@@ -1531,7 +1530,7 @@ starting point and modify it to meet the above requirements</li>
 (see the test code for an example using <code>printf()</code>, which has the same syntax
 as the format strings in <code>String.format()</code>)</li>
 </ul>
-<p>Requirements:</p>
+<h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
 <ul>
 <li>Includes the required variables, constructor, and methods
 <div style="position: absolute; left: -100px; width: 0%; display: hidden">The toString method must include an emoji of your
@@ -1543,7 +1542,7 @@ choice next to the monster's name (use a unicode escape)</div>
 <li>Does not include extra methods, such as setters for the instance variables</li>
 <li>Provided test code compiles and runs with your <code>Monster</code> class</li>
 </ul>
-<h3 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h3>
+<h2 id="task-2-load-monster-function-5-points"><a class="header" href="#task-2-load-monster-function-5-points">Task 2: Load Monster Function (5 points)</a></h2>
 <p>In a separate <code>MonsterBattle</code> class (<code>MonsterBattle.java</code>), write a static
 <code>loadMonster()</code> method that takes a string representing a filename and returns a
 monster with the properties given in the file. Expect the file to contain the
@@ -1559,7 +1558,7 @@ If any number in the file is exactly zero, then replace it with 100. If a monste
 has negative health when saved, then write 0 to the file instead of a negative value.
 </div>
 
-<p>Requirements:</p>
+<h3 id="requirements-1"><a class="header" href="#requirements-1">Requirements</a></h3>
 <ul>
 <li>First task is complete</li>
 <li>Returns a monster with the correct properties when given a valid file</li>
@@ -1567,7 +1566,7 @@ has negative health when saved, then write 0 to the file instead of a negative v
 <li>Must correctly handle a <code>FileNotFoundException</code> with try-catch</li>
 <li>Must close the scanner when finished reading the file</li>
 </ul>
-<h3 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h3>
+<h2 id="task-3-battle-function-5-points"><a class="header" href="#task-3-battle-function-5-points">Task 3: Battle Function (5 points)</a></h2>
 <p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
 <code>Monster</code> parameters and has them take turns attacking until one is dead. Print
 a summary of each attack: state the name of the attacker, the amount of damage,
@@ -1583,7 +1582,7 @@ is more than 15 damage.
 <li>Look at the example code from the monster lab if you’re not sure how to do
 this</li>
 </ul>
-<p>Requirements</p>
+<h3 id="requirements-2"><a class="header" href="#requirements-2">Requirements</a></h3>
 <ul>
 <li>First task is complete</li>
 <li>Starting with the first parameter, monsters alternate between attacking each
@@ -1593,7 +1592,7 @@ attack the other (use <code>attack</code> to generate the damage and pass it to
 <code>takeDamage</code> to apply the damage)</li>
 <li>Feedback is printed for attacks as described above</li>
 </ul>
-<h3 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h3>
+<h2 id="task-4-main-function-5-points"><a class="header" href="#task-4-main-function-5-points">Task 4: Main Function (5 points)</a></h2>
 <p>Add a <code>main</code> method to your <code>MonsterBattle</code> class so we can run it as a program.
 Your program should do the following:</p>
 <ul>
@@ -1618,11 +1617,495 @@ journey</li>
 </ul>
 </li>
 </ul>
-<p>Requirements</p>
+<h3 id="requirements-3"><a class="header" href="#requirements-3">Requirements</a></h3>
 <ul>
 <li>First three tasks are complete</li>
 <li>Implement <code>main</code> as described above</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="a2-maze-solver"><a class="header" href="#a2-maze-solver">A2: Maze Solver</a></h1>
+<p>This program implements a recursive depth-first search algorithm to solve a
+maze.</p>
+<p>This assignment involves the following topics:</p>
+<ul>
+<li>Writing a class to represent a simple object (Maze)</li>
+<li>Writing code that instantiates and uses the public API of a class you wrote</li>
+<li>Reading from a text file and handling exceptions</li>
+<li>Writing recursive methods that involve multiple recursive calls and
+backtracking</li>
+</ul>
+<h2 id="submission-1"><a class="header" href="#submission-1">Submission</a></h2>
+<p>Submit this assignment on Blackboard, attaching the following files:</p>
+<ul>
+<li>Maze.java</li>
+<li>MazeSolver.java</li>
+</ul>
+<p>Please don’t zip them or include extra files with them. I don’t need any of the
+text files you used during your own testing.</p>
+<h2 id="aia-policy-1"><a class="header" href="#aia-policy-1">AIA Policy</a></h2>
+<p>Our usual <a href="#academic-integrity-and-accountability-aia-policy">AIA Policy</a> applies to this assignment. In
+addition to that policy:</p>
+<ul>
+<li>You are allowed to reuse material from your lap assignments on this project.</li>
+</ul>
+<h2 id="code-restrictions-1"><a class="header" href="#code-restrictions-1">Code Restrictions</a></h2>
+<p>You must use the parts of the Java API that we covered in class for File I/O and
+exception handling. Do not use any static variables in your program unless they
+are marked <code>final</code> and store immutable data (such as primitives or <code>Strings</code>,
+not arrays). Do not use any other parts of the Java API, especially any data
+structures like <code>ArrayList</code> or <code>Stack</code>.</p>
+<h2 id="task-1-maze-class-5-points"><a class="header" href="#task-1-maze-class-5-points">Task 1: Maze Class (5 points)</a></h2>
+<p>Write a <code>Maze</code> class (<code>Maze.java</code>). This class must have the variables,
+constructors, and methods described below. It should not include any other
+instance/static variables or instance methods.</p>
+<ul>
+<li>instance variables (private)
+<ul>
+<li><code>data: char[][]</code></li>
+<li><code>rows: int</code></li>
+<li><code>cols: int</code></li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li><code>Maze(r: int, c: int)</code>
+<ul>
+<li>initialize a new maze with <code>r</code> rows and <code>c</code> cols</li>
+<li>initialize every character in the maze to <code>MazeConstants.EMPTY</code></li>
+<li>assume that <code>r</code> and <code>c</code> are positive</li>
+</ul>
+</li>
+<li><code>Maze(f: File) throws FileNotFoundException</code>
+<ul>
+<li>initialize the maze with the information read from <code>f</code></li>
+<li>assume <code>f</code> is formatted exactly as described in the maze file format
+explained below</li>
+<li>don’t catch the FNF exception, just let the caller deal with it (see the
+test code for an example)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>methods
+<ul>
+<li><code>inBounds(row: int, col: int): boolean</code>
+<ul>
+<li>returns <code>true</code> if and only if <code>0 &lt;= row &lt; rows</code> and <code>0 &lt;= col &lt; cols</code></li>
+</ul>
+</li>
+<li><code>get(row: int, col: int): char</code>
+<ul>
+<li>returns the character at the given row and column</li>
+<li>throw an <code>IndexOutOfBoundsException</code> if the coordinates are out of bounds</li>
+</ul>
+</li>
+<li><code>set(row: int, col: int, symbol: char): void</code>
+<ul>
+<li>sets the character at (x, y) to <code>c</code></li>
+<li>throw an <code>IndexOutOfBoundsException</code> if the coordinates are out of bounds</li>
+</ul>
+</li>
+<li><code>getRows(): int</code></li>
+<li><code>getCols(): int</code></li>
+<li><code>toString(): String</code>
+<ul>
+<li>return a string representation of the maze</li>
+<li>the rows must be in order starting with the first row (0) and ending with
+the last row (rows - 1)</li>
+<li>each row must end with a newline character (<code>\n</code>), including the final row</li>
+<li>the columns within each row must be in order starting with the first
+column (0) and ending with the last column (cols - 1)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">
+    use a StringBuffer to make each row of the maze and a StringJoiner to
+combine them into one string</div>
+
+<p>Use the following test program to verify your <code>Maze</code> class works:</p>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+
+public class MazeTest {
+    public static void main(String[] args) {
+        Maze maze1 = new Maze(4, 13);
+        for (int i = 0; i &lt; 26; i++) {
+            maze1.set(i / 13, i % 13, (char) ('a' + i));
+            maze1.set(2 + i / 13, i % 13, (char) ('A' + i));
+        }
+        test(maze1);
+        // the for loop above should result in the following maze:
+        //
+        // abcdefghijklm
+        // nopqrstuvwxyz
+        // ABCDEFGHIJKLM
+        // NOPQRSTUVWXYZ
+
+        try {
+            Maze maze2 = new Maze(new File("maze.txt"));
+            test(maze2);
+            // the maze should look exactly as shown in the file, minus the dimensions and comments
+        } catch (FileNotFoundException e) {
+            System.out.println(
+                    "ERROR: You're missing maze.txt! Can't test whether the file constructor"
+                            + " works.");
+        }
+    }
+
+    public static void test(Maze m) {
+        int rows = m.getRows();
+        int cols = m.getCols();
+        System.out.printf("%dx%d maze:\n%s\n\n", rows, cols, m);
+        System.out.printf(
+                "Corners:\n%s%s\n%s%s\n\n",
+                m.get(0, 0), m.get(rows - 1, 0), m.get(0, cols - 1), m.get(rows - 1, cols - 1));
+        // should say yes
+        checkInBounds(m, 0, 0);
+        checkInBounds(m, rows / 2, cols / 2);
+        // should say no
+        checkOutOfBounds(m, -1, 0);
+        checkOutOfBounds(m, 0, -1);
+        checkOutOfBounds(m, 0, cols);
+        checkOutOfBounds(m, rows, 0);
+        checkOutOfBounds(m, rows, cols);
+    }
+
+    public static void checkInBounds(Maze m, int row, int col) {
+        if (m.inBounds(row, col)) {
+            System.out.printf("CORRECT: r%dc%d is in bounds\n", row, col);
+        } else {
+            System.out.printf("  ERROR: r%dc%d is out of bounds\n", row, col);
+        }
+    }
+
+    public static void checkOutOfBounds(Maze m, int row, int col) {
+        if (m.inBounds(row, col)) {
+            System.out.printf("  ERROR: r%dc%d is in bounds\n", row, col);
+        } else {
+            System.out.printf("CORRECT: r%dc%d is out of bounds\n", row, col);
+        }
+    }
+}
+</code></pre>
+<h3 id="maze-file-format"><a class="header" href="#maze-file-format">Maze File Format</a></h3>
+<p>A properly-formatted maze file is structured as follows:</p>
+<ul>
+<li>first line: the rows and cols separated by a space</li>
+<li>maze: one line for each row, with each line containing a number of characters
+equal to the cols (in other words, the exact output of the toString method)</li>
+<li>comments/extra: may have additional lines of text after the maze; these should
+be ignored when reading the file</li>
+</ul>
+<p>Example maze file (save as maze.txt for the maze test program to find it):</p>
+<pre><code>5 19
+# # ### #   #   ###
+# # #   #   #   # #
+### ### #   #   # #
+# # #   #   #   # #
+# # ### ### ### ###
+
+This is extra text in the comments section. Your code shouldn't read this part,
+or at least shouldn't use it when initializing a Maze object.
+
+Also, nothing in the format says the maze file has to be an actual solvable
+maze. This maze is just the word HELLO so you can tell that your maze read the
+file correctly and that its toString method works correctly.
+</code></pre>
+<h3 id="coordinates"><a class="header" href="#coordinates">Coordinates</a></h3>
+<p>Our maze uses row/column coordinates instead of x/y coordinates. We could design
+the maze class to use either, but once we’ve made that choice we need to be
+consistent with the order of these coordinates and how we refer to them.</p>
+<p>If we use x/y coordinates, then we expect the following:</p>
+<ul>
+<li>x is the horizontal axis and y is the vertical axis</li>
+<li>x is the first coordinate, and y is the second coordinate</li>
+<li>width is the first dimension, and height is the second dimension</li>
+<li>up is usually positive and down is usually negative</li>
+</ul>
+<p>If we use row/column coordinates, then we expect the following:</p>
+<ul>
+<li>row is the <strong>vertical axis</strong> (changing rows moves you up or down), and col is
+the <strong>horizontal axis</strong></li>
+<li>row is the first coordinate, and col is the second coordinate</li>
+<li>rows is the first dimension, and cols is the second dimension</li>
+<li>up is usually <strong>negative</strong> and down is usually <strong>positive</strong></li>
+</ul>
+<p>If you want the short version: row/col puts the vertical axis first, and x/y
+puts the horizontal axis first. To avoid mixing up the order and introducing
+some very annoying bugs, <strong>do not refer to your coordinates/dimensions as x, y,
+width, or height anywhere in your code!</strong> Use “rows” and “cols” instead of
+“width” and “height” to refer to the dimensions of a maze for the same reason.</p>
+<p>If this sounds confusing, don’t worry! The difficulty here isn’t the code you’ll
+be writing, it’s thinking about the difference between x/y and row/col
+coordinates. I’m only explaining it so you know why the assignment works this
+way and can avoid some of the more common mistakes. You shouldn’t need to worry
+about the above explanation while coding as long as you follow the advice about
+not referring to variables as x, y, width, or height.</p>
+<h3 id="requirements-4"><a class="header" href="#requirements-4">Requirements</a></h3>
+<ul>
+<li>Includes the required variables, constructor, and methods</li>
+<li>All instance variables are private</li>
+<li>Does not include extra instance variables, static variables, or methods</li>
+<li>Provided test code compiles and runs with your <code>Maze</code> class</li>
+</ul>
+<h2 id="task-2-solver-program-5-points"><a class="header" href="#task-2-solver-program-5-points">Task 2: Solver Program (5 points)</a></h2>
+<p>Write a <code>MazeSolver.java</code> program that takes five command line args: the name of
+a file, a starting row (int), a starting column (int), an ending row, and an
+ending column. The file should be a maze, and the coordinates should indicate
+the start and end of the path the solver needs to find.</p>
+<p>Your program should:</p>
+<ul>
+<li>load the maze from the file</li>
+<li>print the start and end coordinates</li>
+<li>print the maze</li>
+</ul>
+<p>Your program should print an error message (one that you wrote, not a stack
+trace) and exit if:</p>
+<ul>
+<li>the user provides less than five command line arguments (<code>args.length</code> is less
+than 5)</li>
+<li>any of the coordinates can’t be parsed as integers (<code>Integer.parseInt</code> will
+throw a <code>NumberFormatException</code>, which you can catch)</li>
+<li>either set of coordinates is out of bounds (use the maze’s <code>inBounds</code> method
+to check)</li>
+<li>either set of coordinates refers to an occupied position</li>
+</ul>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>You can access command line args through the main method’s <code>String[] args</code>
+parameter. Some of our example programs demonstrate how to use this args
+array. When you run your program, you type these arguments after the program
+name like so:</p>
+<p><code>java MazeSolver.java maze.txt 1 1 19 19</code></p>
+<p>This would open the file <code>maze.txt</code> and try to find a path from r1c1 to
+r19c19.</p>
+</blockquote>
+<h3 id="requirements-1-1"><a class="header" href="#requirements-1-1">Requirements</a></h3>
+<ul>
+<li>Task 1 is complete</li>
+<li>Uses command line args for all user input (no <code>System.in</code> scanner)</li>
+<li>Loads a maze file</li>
+<li>Prints the start and end coordinates</li>
+<li>Prints the maze</li>
+<li>Prints an appropriate error message if the file can’t be loaded or the
+coordinates are invalid (no crashing with a stack trace)</li>
+</ul>
+<h2 id="task-3-recursive-solve-method-5-points"><a class="header" href="#task-3-recursive-solve-method-5-points">Task 3: Recursive Solve Method (5 points)</a></h2>
+<p>Add the <code>MazeConstants.java</code> file to your project folder before writing the
+solve method:</p>
+<pre><code class="language-java">public class MazeConstants {
+    public static final char EMPTY = ' ';
+    public static final char PATH = '.';
+    public static final char START = 'S';
+    public static final char END = 'E';
+    public static final char VISITED = 'v';
+    public static final char WALL = '#';
+}
+</code></pre>
+<p>We must obey the following rules when trying to solve the maze:</p>
+<ul>
+<li>positions containing the space character <code>' '</code> are considered <strong>empty</strong></li>
+<li>positions containing any other character are considered <strong>occupied</strong>, and we
+cannot move through them</li>
+<li>when we begin solving the maze, we will start at an empty position within the
+bounds of the maze</li>
+<li>from our current position, we are allowed to move to the adjacent north,
+south, east, or west position as long as it is empty
+<ul>
+<li>for example, we could move from r3c7 to r4c7, which is one cell south, but
+not to r5c7 (two cells south) r4c8 (one cell diagonally southeast)</li>
+</ul>
+</li>
+<li>our goal is to find a path that leads from the start position to the end
+position</li>
+</ul>
+<p>You will use the following recursive algorithm to solve the maze:</p>
+<ul>
+<li><strong>input</strong>
+<ul>
+<li>a maze to solve</li>
+<li>a start row and start column</li>
+<li>an end row and end column</li>
+</ul>
+</li>
+<li><strong>first base case</strong>
+<ul>
+<li>condition: our start position is out of bounds or isn’t empty
+<ul>
+<li>you can use the maze’s <code>get</code> method to check whether a position is empty:
+<code>m.get(12, 27) == MazeConstants.EMPTY</code> will tell you whether r12c27 is
+empty</li>
+</ul>
+</li>
+<li>result: we’ve failed to solve the maze because we can’t move out of bounds
+or through an occupied cell</li>
+</ul>
+</li>
+<li><strong>second base case</strong>
+<ul>
+<li>condition: our start position matches our end position</li>
+<li>result: we’ve solved the maze!</li>
+</ul>
+</li>
+<li><strong>recursive case</strong>
+<ul>
+<li>condition: base case conditions are false (in code, this should just be an
+<code>else</code>)</li>
+<li>mark our starting position as <code>MazeConstants.VISITED</code>
+<ul>
+<li>you can use the maze’s <code>set</code> method to mark a position:
+<code>m.set(5, 11, MazeConstants.VISITED);</code> would mark r5c11 as visited</li>
+</ul>
+</li>
+<li>for each position we are allowed to move to, attempt to solve the maze
+starting at that position
+<ul>
+<li>these positions are (row - 1, col), (row + 1, col), (row, col - 1), and
+(row, col + 1)</li>
+</ul>
+</li>
+<li>if we succeed in solving the maze, then mark our starting position as
+<code>MazeConstants.PATH</code></li>
+</ul>
+</li>
+</ul>
+<p>You must implement this algorithm as a recursive <code>static</code> method:</p>
+<ul>
+<li>name: <code>solveMaze</code></li>
+<li>return type: <code>boolean</code> (<code>true</code> if solved and <code>false</code> if not)</li>
+<li>parameters:
+<ul>
+<li><code>m: Maze</code> is the maze to solve</li>
+<li><code>startRow: int</code> is the start row</li>
+<li><code>startCol: int</code> is the start column</li>
+<li><code>endRow: int</code> is the end row</li>
+<li><code>endCol: int</code> is the end column</li>
+</ul>
+</li>
+</ul>
+<h3 id="requirements-2-1"><a class="header" href="#requirements-2-1">Requirements</a></h3>
+<ul>
+<li>Task 1 is complete</li>
+<li><code>solveMaze</code> implements the recursive algorithm described above</li>
+<li><code>solveMaze</code> marks a path to an exit if it solves the maze</li>
+<li><code>solveMaze</code> correctly returns whether or not it solved the maze</li>
+</ul>
+<h2 id="task-4-finished-program"><a class="header" href="#task-4-finished-program">Task 4: Finished Program</a></h2>
+<p>Update your <code>main</code> method to use solve maze and print the result:</p>
+<ul>
+<li>print the coordinates and maze as before</li>
+<li>exit early with an error message for a missing file or invalid input as before</li>
+<li>call the solve method and store the result in a variable</li>
+<li>mark the start position as <code>MazeConstants.START</code></li>
+<li>mark the end position as <code>MazeConstants.END</code></li>
+<li>print the maze again to show the result of attempting to solve it</li>
+<li>print a success message if solve returned true or a failure message if solve
+returned false</li>
+</ul>
+<h3 id="requirements-3-1"><a class="header" href="#requirements-3-1">Requirements</a></h3>
+<ul>
+<li>Tasks 1-3 are complete</li>
+<li>Uses solve method to attempt to solve the maze</li>
+<li>Prints the maze before and after solving, showing which spaces were marked by
+the solve method</li>
+<li>Marks the start/end spaces <strong>AFTER</strong> calling the solve method (they will
+interfere with the solver if marked before calling solve)</li>
+<li>Prints whether the solve succeeded</li>
+</ul>
+<h2 id="example-mazes"><a class="header" href="#example-mazes">Example Mazes</a></h2>
+<p>These two mazes should be solvable with any valid start and end position.</p>
+<pre><code>11 11
+###########
+# #     # #
+# ### # # #
+#     # # #
+####### # #
+# #     # #
+# # ##### #
+# #   #   #
+# ### ### #
+#         #
+###########
+
+</code></pre>
+<pre><code>21 31
+###############################
+# #             #       #     #
+# # ##### ####### ### # ### # #
+# #     # #     # #   #     # #
+# ####### # ### # # ######### #
+# #     #     #   #   #       #
+# # ### ######### ### ####### #
+#   # #     #   # # #       # #
+##### ##### # # # # ####### # #
+#   #     #   # #         # # #
+### # ### ##### ########### # #
+#   # # # #     #       #   # #
+# ### # # # ##### ##### # ### #
+#   # # #   #     # #   #   # #
+# # # # ##### ##### # ### # # #
+# #   #           #   #   # # #
+# ########### ### ### ##### # #
+#           #   #   #       # #
+########### ####### ######### #
+#                   #         #
+###############################
+
+</code></pre>
+<p>This maze has two sections: a roughly L-shaped area that includes r1c1, and the
+rest of the maze. It should be solvable if the starting and ending point are in
+the same area, and unsolvable if not. For example, you can get from r1c1 to
+r9c5, but not from r11c5 to r1c20.</p>
+<pre><code>21 31
+###############################
+#   #     #   #               #
+### # ### # # # ##### ####### #
+# # # # #   # #   #   #     # #
+# # # # ##### ### # ### ### # #
+#   # #     #   # # #   # # # #
+# ### ##### # ### # # ### # # #
+# #         #     #       # # #
+# ################# ####### # #
+# #   #   #   #   # #   #   # #
+# # # # # # # # # # # # # ### #
+#   #   #   #   # # # # # # # #
+####################### # # # #
+#       #         #     # # # #
+##### # # ##### # # ##### # # #
+#     # # #   # # #   #   #   #
+# ##### # ### # ##### # #######
+# #     #   # #     # #       #
+# ######### # ### ### ####### #
+#               #             #
+###############################
+
+</code></pre>
+<p>Same maze, but with the smaller section filled in so you can more easily see it:</p>
+<pre><code>###############################
+#ooo#     #   #               #
+###o# ### # # # ##### ####### #
+#o#o# # #   # #   #   #     # #
+#o#o# # ##### ### # ### ### # #
+#ooo# #     #   # # #   # # # #
+#o### ##### # ### # # ### # # #
+#o#         #     #       # # #
+#o################# ####### # #
+#o#ooo#ooo#ooo#ooo# #   #   # #
+#o#o#o#o#o#o#o#o#o# # # # ### #
+#ooo#ooo#ooo#ooo#o# # # # # # #
+####################### # # # #
+#       #         #     # # # #
+##### # # ##### # # ##### # # #
+#     # # #   # # #   #   #   #
+# ##### # ### # ##### # #######
+# #     #   # #     # #       #
+# ######### # ### ### ####### #
+#               #             #
+###############################
+
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="schedule"><a class="header" href="#schedule">Schedule</a></h1>
 <p>This is a tentative schedule for topics, assigned readings, and activities.
@@ -3704,6 +4187,560 @@ public class Practice {
     }
 }
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-7-1006-1008"><a class="header" href="#week-7-1006-1008">Week 7 (10/06, 10/08)</a></h1>
+<h3 id="tuesday-agenda-6"><a class="header" href="#tuesday-agenda-6">Tuesday Agenda</a></h3>
+<ul>
+<li>maze assignment</li>
+<li>finish fibonacci from last week</li>
+<li>recursion and backtracking</li>
+<li>eight queens</li>
+</ul>
+<h3 id="thursday-agenda-6"><a class="header" href="#thursday-agenda-6">Thursday Agenda</a></h3>
+<ul>
+<li>drawing fractals and origami</li>
+<li>stack ADT</li>
+<li>array-based stack</li>
+<li>uses for stacks</li>
+<li>homework
+<ul>
+<li>read chapter 8:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/InSort.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/InSort.html</a></li>
+<li>complete this week’s <a href="#practice-6">practice exercises</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="depth-first-search"><a class="header" href="#depth-first-search">Depth-First Search</a></h1>
+<ul>
+<li>scenario:
+<ul>
+<li>a problem has many possible solutions</li>
+<li>path to one solution branches out into many other possible solutions</li>
+</ul>
+</li>
+<li>examples:
+<ul>
+<li>solving a maze (next project)</li>
+<li>searching a directory for a file (directory can have subdirectories, which
+can have subdirectories, which can have subdirectories, …)</li>
+<li>eight queens problem (next example)</li>
+</ul>
+</li>
+<li>depth-first search:
+<ul>
+<li>explore one solution path until it either solves the problem or fails</li>
+<li>if the path failed, then backtrack to the last point where the path branches
+and try a different path</li>
+<li>keep exploring and backtracking until we’ve found a solution or ruled out
+every possible solution</li>
+</ul>
+</li>
+<li>backtracking
+<ul>
+<li>some implementations may involve mutable (changeable) state</li>
+<li>if exploring one path modifies this state, then to backtrack we must undo
+those changes</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="eight-queens"><a class="header" href="#eight-queens">Eight Queens</a></h1>
+<p>background:</p>
+<ul>
+<li>a chessboard is an 8x8 grid</li>
+<li>a queen can attack spaces in the same row, column, and diagonals</li>
+</ul>
+<p>The below example shows a queen (Q) at r2c1 and all spaces it can attack (x)
+from r2c1:</p>
+<pre><code>   0 1 2 3 4 5 6 7
+  +-+-+-+-+-+-+-+-+
+0 | |x| |x| | | | |
+  +-+-+-+-+-+-+-+-+
+1 |x|x|x| | | | | |
+  +-+-+-+-+-+-+-+-+
+2 |x|Q|x|x|x|x|x|x|
+  +-+-+-+-+-+-+-+-+
+3 |x|x|x| | | | | |
+  +-+-+-+-+-+-+-+-+
+4 | |x| |x| | | | |
+  +-+-+-+-+-+-+-+-+
+5 | |x| | |x| | | |
+  +-+-+-+-+-+-+-+-+
+6 | |x| | | |x| | |
+  +-+-+-+-+-+-+-+-+
+7 | |x| | | | |x| |
+  +-+-+-+-+-+-+-+-+
+</code></pre>
+<p>that queen can attack spaces…</p>
+<ul>
+<li>in the same row: r2c0, r2c2, r2c3, r2c4, r2c5, r2c6, and r2c7</li>
+<li>in the same column: r0c1, r1c1, r3c1, r4c1, r5c1, r6c1, and r7c1</li>
+<li>in the positive diagonal: r1c0, r3c2, r4c3, r5c4, r6c5, and r7c6</li>
+<li>in the same negative diagonal: r3c0, r1c2, and r0c3</li>
+</ul>
+<p>eight queens problem: find a way to place eight queens in different spaces on a
+chessboard so that no queen can attack another queen</p>
+<p>exercise:</p>
+<ul>
+<li>design a recursive solution
+<ul>
+<li>this will be a brute-force algorithm that systematically checks every
+possible placement until it finds one that works</li>
+<li>involves “backtracking” after determining that the current placements cannot
+lead to a solution</li>
+</ul>
+</li>
+<li>implement solution as a recursive function</li>
+</ul>
+<pre><code class="language-java">public class EightQueens {
+    public static void main(String[] args) {
+        int[][] board = new int[ROWS][COLS];
+
+        // demonstrate the print method (remove this)
+        board[2][1] = QUEEN;
+        printBoard(board);
+
+        // TODO: demonstrate placeQueens method and print the solution
+    }
+
+    // constants for board spaces
+    static final int QUEEN = -1;
+    static final int SAFE = 0;
+
+    // constants for board dimensions, which we will assume the array conforms to
+    static final int ROWS = 8, COLS = 8;
+
+    // this function will attempt to place a queen in each column starting at
+    // col and ending at COLS - 1 so that no queen attacks any other queen, then
+    // returns whether it was able to do so
+    //
+    // this function is also responsible for cleaning up any unsuccessful queen
+    // placements; this means if we return false, then the board must be in
+    // exactly the same state as when this function call began
+    //
+    // the board is represented as an 8x8 array of integers
+    //
+    // - -1 indicates that a queen occupies that space
+    // - 0 indicates that the space is unoccupied and safe from attack
+    // - positive integers indicate how many queens are attacking that space
+    //
+    // we'll make several assumptions about the board in our code
+    //
+    // - the array is 8x8
+    // - every column less than col already has a queen placed
+    // - every column from col to COLS - 1 does not contain a queen
+    // - given the existing queen placements, every unoccupied space correctly
+    //   indicates how many queens are attacking it
+    //
+    // we could make a class for the board that encapsulates the array and
+    // guarantees the above invariants, but I think that's excessive for this
+    // exercise, obfuscates what we're actually doing to the array, and focuses
+    // too much on OOP
+    public static boolean placeQueens(int[][] board, int col) {
+        // TODO
+        return false; // temp, remove this
+    }
+
+    // update board state after placing a queen
+    public static void attack(int[][] board, int row, int col) {
+        // TODO
+    }
+
+    // update board state after undoing a queen placement
+    public static void unattack(int[][] board, int row, int col) {
+        // TODO
+    }
+
+    // print the board as displayed in the example image (a little overkill, but
+    // it's fun to display stuff in ascii and this makes for a nice example if
+    // you want to do something similar)
+    //
+    // this method could be made far more efficient, but I want to break down the
+    // process clearly so that it works better as an example, and it's not called
+    // frequently enough for the speed to matter
+    //
+    // expected output for a queen on r2c1:
+    //
+    //    0 1 2 3 4 5 6 7
+    //   +-+-+-+-+-+-+-+-+
+    // 0 | | | | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    // 1 | | | | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    // 2 | |Q| | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    // 3 | | | | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    // 4 | | | | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    // 5 | | | | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    // 6 | | | | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    // 7 | | | | | | | | |
+    //   +-+-+-+-+-+-+-+-+
+    public static void printBoard(int[][] board) {
+        // column header
+
+        // padding
+        System.out.print("  ");
+        // column numbers
+        for (int col = 0; col &lt; COLS; col++) {
+            System.out.print(" " + col);
+        }
+        // end the column header
+        System.out.println();
+
+        // row separator could be hard-coded, but it's easy to generate based on
+        // the number of columns and makes this code easier to adapt to other
+        // board sizes
+
+        // padding and first +
+        String rowSeparator = "  +";
+        for (int col = 0; col &lt; COLS; col++) {
+            rowSeparator += "-+";
+        }
+
+        // first row separator for the top of the board
+        System.out.println(rowSeparator);
+
+        // print each row with a separator beneath it
+
+        for (int row = 0; row &lt; ROWS; row++) {
+            // row label and left wall
+            System.out.print(row + " |");
+
+            // print each cell in the row
+            for (int col = 0; col &lt; COLS; col++) {
+                // we can modify this to show which spaces are attacked, but I
+                // think we'd usually prefer to just see the queen placements,
+                // which would make a bunch of numbers or x's distracting
+                if (board[row][col] == QUEEN) {
+                    System.out.print("Q|");
+                } else {
+                    System.out.print(" |");
+                }
+            }
+
+            // end the row
+            System.out.println();
+
+            // row separator before the next row
+            System.out.println(rowSeparator);
+        }
+
+        // that's it, we're done!
+    }
+
+    // some additional questions/exercises to consider after we finish this
+    // program:
+    //
+    // - Are all of the changes we made to the board in the attack and unattack
+    //   methods necessary? (hint: the answer is no, but what really matters is
+    //   which changes are unnecessary and why)
+    // - Try generalizing this function to work with a rectangular board of any
+    //   size.
+    // - How efficient is this algorithm? What size board do you think would
+    //   take too long to search for a solution?
+    // - Is recursion necessary? Could you implement this as an iterative
+    //   algorithm without adding a stack?
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="drawing-fractals-and-origami"><a class="header" href="#drawing-fractals-and-origami">Drawing Fractals and Origami</a></h1>
+<p>fractals</p>
+<ul>
+<li>fractals are shapes and patterns consisting of smaller versions of themselves,
+such as the sierpinski triangle
+(<a href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle</a>)</li>
+<li>some origami designs, such as Shuzo Fujimoto’s Hydrangea
+(<a href="https://origami.kosmulski.org/instructions/hydrangea-fujimoto">https://origami.kosmulski.org/instructions/hydrangea-fujimoto</a>), are also
+fractals</li>
+</ul>
+<p>exercise</p>
+<ul>
+<li>discuss and design a recursive solution to drawing a fractal</li>
+<li>use the provided starter code to draw the fractal at varying levels of detail</li>
+</ul>
+<p>other fractals to try:</p>
+<ul>
+<li>sierpinski carpet: <a href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_carpet">https://en.wikipedia.org/wiki/Sierpi%C5%84ski_carpet</a></li>
+<li>koch snowflake and its variations:
+<a href="https://en.wikipedia.org/wiki/Koch_snowflake">https://en.wikipedia.org/wiki/Koch_snowflake</a></li>
+</ul>
+<p>starter code includes</p>
+<ul>
+<li>swing code to display and draw to a window</li>
+<li>method to draw one petal of a hydrangea</li>
+<li>method to draw one triangle</li>
+</ul>
+<pre><code class="language-java">import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Drawing {
+    private JFrame frame;
+    private JPanel panel;
+
+    public Drawing() {
+        // change the canvas size here
+        final int w = 800, h = 800;
+
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        panel =
+                new JPanel() {
+                    @Override
+                    public void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+
+                        // draw a level 2 version of either fractal
+                        // sierpinski(g, Color.WHITE, 2, 400, 10, 790, 790, 10, 790);
+                        // hydrangea(g, Color.WHITE, Color.GRAY, 2, 400, 400, 780, false);
+                    }
+                };
+        // you can change the background color here
+        panel.setBackground(Color.BLACK);
+        panel.setPreferredSize(new Dimension(w, h));
+
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
+
+        frame.setFocusable(true);
+        frame.addKeyListener(
+                new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                        }
+                    }
+                });
+    }
+
+    public static void main(String[] args) {
+        new Drawing();
+    }
+
+    // draws a sierpinski triangle between the points oriented as shown below:
+    //
+    //      1
+    //     / \
+    //    /---\
+    //   / \ / \
+    //  3-------2
+    //
+    public static void sierpinski(
+            Graphics g, Color color, int level, int x1, int y1, int x2, int y2, int x3, int y3) {
+        // kinda silly to do this with every function call, but it won't be
+        // enough that we'll notice a slowdown
+        g.setColor(color);
+
+        // TODO: implement a recursive algorithm to draw the sierpinski triangle
+
+        // here's the base case for free!
+        triangle(g, x1, y1, x2, y2, x3, y3);
+    }
+
+    // draws a hydrangea centered on (x, y) with a width and height equal to size
+    // the diagonal parameter indicates whether the hydrangea is oriented as a
+    // diamond (true) or a square (false)
+    public static void hydrangea(
+            Graphics g,
+            Color fill,
+            Color outline,
+            int level,
+            int x,
+            int y,
+            int size,
+            boolean diagonal) {
+        // TODO: implement a recursive algorithm to draw the hydrangea
+
+        // NOTE: going from one level of the hydrangea to the next divides the
+        // size by the square root of 2 and changes the orientation
+    }
+
+    // helper method to draw a triangle
+    public static void triangle(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3) {
+        g.drawLine(x1, y1, x2, y2);
+        g.drawLine(x2, y2, x3, y3);
+        g.drawLine(x3, y3, x1, y1);
+    }
+
+    // helper method to draw the hydrangea petals from the center point (x, y) with the
+    // given hydrangea size and orientation
+    public static void petals(
+            Graphics g, Color fill, Color outline, int x, int y, int size, boolean diagonal) {
+        // the math here isn't complicated if you understand some trig, but
+        // there's a lot, it's tedious, and it has nothing to do with recursion
+
+        int[] xs1, xs2, xs3, xs4;
+        int[] ys1, ys2, ys3, ys4;
+        if (diagonal) {
+            // this is the length of one petal
+            int len = (int) (size / Math.sqrt(2));
+
+            // we need 4/4, 3/4, and 1/4 offsets, but no 2/4 offset, which is
+            // why we're skipping 2
+            int xl4 = x - len,
+                    xl3 = x - len * 3 / 4,
+                    xl1 = x - len / 4,
+                    xr1 = x + len / 4,
+                    xr3 = x + len * 3 / 4,
+                    xr4 = x + len;
+            int yu4 = y - len,
+                    yu3 = y - len * 3 / 4,
+                    yu1 = y - len / 4,
+                    yd1 = y + len / 4,
+                    yd3 = y + len * 3 / 4,
+                    yd4 = y + len;
+            xs1 = new int[] {x, xl1, xl1, x, xr1, xr1};
+            ys1 = new int[] {y, yu1, yu3, yu4, yu3, yu1};
+            xs2 = new int[] {x, xr1, xr3, xr4, xr3, xr1};
+            ys2 = new int[] {y, yu1, yu1, y, yd1, yd1};
+            xs3 = new int[] {x, xr1, xr1, x, xl1, xl1};
+            ys3 = new int[] {y, yd1, yd3, yd4, yd3, yd1};
+            xs4 = new int[] {x, xl1, xl3, xl4, xl3, xl1};
+            ys4 = new int[] {y, yd1, yd1, y, yu1, yu1};
+        } else {
+            // we'll be using x and y values adjusted by 1/4 or 1/2 of the
+            // length, so this will calculate them and give them shorter names
+            // to make the coordinate lists easy to read
+            int xl2 = x - size / 2, xl1 = x - size / 4, xr1 = x + size / 4, xr2 = x + size / 2;
+            int yu2 = y - size / 2, yu1 = y - size / 4, yd1 = y + size / 4, yd2 = y + size / 2;
+            xs1 = new int[] {x, x, xr1, xr2, xr2, xr1};
+            ys1 = new int[] {y, yu1, yu2, yu2, yu1, y};
+            xs2 = new int[] {x, xr1, xr2, xr2, xr1, x};
+            ys2 = new int[] {y, y, yd1, yd2, yd2, yd1};
+            xs3 = new int[] {x, x, xl1, xl2, xl2, xl1};
+            ys3 = new int[] {y, yd1, yd2, yd2, yd1, y};
+            xs4 = new int[] {x, xl1, xl2, xl2, xl1, x};
+            ys4 = new int[] {y, y, yu1, yu2, yu2, yu1};
+        }
+
+        g.setColor(fill);
+        g.fillPolygon(xs1, ys1, 6);
+        g.fillPolygon(xs2, ys2, 6);
+        g.fillPolygon(xs3, ys3, 6);
+        g.fillPolygon(xs4, ys4, 6);
+        g.setColor(outline);
+        g.drawPolygon(xs1, ys1, 6);
+        g.drawPolygon(xs2, ys2, 6);
+        g.drawPolygon(xs3, ys3, 6);
+        g.drawPolygon(xs4, ys4, 6);
+    }
+
+    // if you want to get creative:
+    //
+    // - change the color with each level of the fractal, either with a set
+    //   color palette or by interpolating between two colors
+    // - fill in the triangles instead of or in addition to drawing the outlines
+    // - scale the fractal with the panel size so that you can stretch it by
+    //   resizing the window
+    // - add more fractals!
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="recursive-search-algorithms"><a class="header" href="#recursive-search-algorithms">Recursive Search Algorithms</a></h1>
+<p>practice: design and code recursive implementations of the linear search and
+binary search algorithms</p>
+<p>function requirements:</p>
+<ul>
+<li>takes the following parameters:
+<ul>
+<li>array of ints</li>
+<li>start index (inclusive)</li>
+<li>end index (exclusive)</li>
+<li>x (the int to search for)</li>
+</ul>
+</li>
+<li>returns the index of x (if x is in the array) or -1 (if x isn’t in the array)</li>
+</ul>
+<p>recursion design:</p>
+<ul>
+<li>identify and describe base case(s)
+<ul>
+<li>condition</li>
+<li>result</li>
+</ul>
+</li>
+<li>identify and describe recursive case(s)
+<ul>
+<li>condition</li>
+<li>split into trivial problem (solve now) and smaller version of the main
+problem (solve recursively)</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="stack-adt"><a class="header" href="#stack-adt">Stack ADT</a></h1>
+<p>what is it?</p>
+<ul>
+<li>LIFO: last in, first out</li>
+<li>simplest data structure to implement</li>
+</ul>
+<p><code>IntStack</code> ADT:</p>
+<ul>
+<li><code>init(capacity: int)</code> as with list, this is just our constructor and not part
+of our interface</li>
+<li><code>push(element: int): boolean</code> adds element to the stack, returning whether it
+succeeded</li>
+<li><code>pop(): int</code> removes and returns the top element from the stack; throws an
+<code>EmptyStackException</code> if the stack is empty</li>
+<li><code>peek(): int</code> as remove, but leaves the element on the stack</li>
+<li><code>size(): int</code> returns number of elements on the stack</li>
+<li><code>clear()</code> removes every element on the stack</li>
+<li><code>isEmpty(): boolean</code> returns <code>size() == 0</code></li>
+</ul>
+<p>Why not a list?</p>
+<ul>
+<li>a proper list can do anything a stack can do and more</li>
+<li>sometimes constraints are useful, and many algorithms can be implemented
+efficiently with a stack’s limited set of operations</li>
+<li>we can make push and pop O(1) operations, and our code is far simpler if we
+don’t support other list operations</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="array-based-stack"><a class="header" href="#array-based-stack">Array-Based Stack</a></h1>
+<ul>
+<li><code>IntArrayStack</code> will look similar to our bad list class from a few weeks ago</li>
+<li>all operations are simple because we never have to shift elements to make
+room; just add and remove at the end of the array (or the part that we’re
+using)</li>
+<li>because the rest of the code is simple, this is a good time to show how to
+dynamically grow an array-based data structure</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="stack-applications"><a class="header" href="#stack-applications">Stack Applications</a></h1>
+<p>some problems we might want to solve with a stack:</p>
+<ul>
+<li>implementing a depth-first search algorithm, such as the one from our maze
+assignment</li>
+<li>implementing a calculator to evaluate
+<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">postfix expressions</a></li>
+<li>implementing any recursive algorithm without recursive functions: you only
+need a stack and one or more loops</li>
+<li>the call stack used for function arguments and local variables</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-6"><a class="header" href="#practice-6">Practice</a></h1>
+<ul>
+<li>complete the three practice exercises in section 7.5:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/HarderCodeCompletionEx.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/HarderCodeCompletionEx.html</a></li>
+<li>complete two or more of the practice exercises in section 7.6:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/WritingEx.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/WritingEx.html</a></li>
+</ul>
+<p>As with <a href="#practice-5">last week’s practice</a>, you can test your code on
+OpenDSA, but you must submit all code on Canvas.</p>
 
                     </main>
 

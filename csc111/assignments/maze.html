@@ -1,0 +1,716 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>A2: Maze Solver - CSC 111 Data Structures and Abstractions</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="shortcut icon" href="../favicon-c3b505ff.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-d1f80d55.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "navy";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-3fc0e439.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-734c7b7e.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CSC 111 Data Structures and Abstractions</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="a2-maze-solver"><a class="header" href="#a2-maze-solver">A2: Maze Solver</a></h1>
+<p>This program implements a recursive depth-first search algorithm to solve a
+maze.</p>
+<p>This assignment involves the following topics:</p>
+<ul>
+<li>Writing a class to represent a simple object (Maze)</li>
+<li>Writing code that instantiates and uses the public API of a class you wrote</li>
+<li>Reading from a text file and handling exceptions</li>
+<li>Writing recursive methods that involve multiple recursive calls and
+backtracking</li>
+</ul>
+<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<p>Submit this assignment on Blackboard, attaching the following files:</p>
+<ul>
+<li>Maze.java</li>
+<li>MazeSolver.java</li>
+</ul>
+<p>Please don’t zip them or include extra files with them. I don’t need any of the
+text files you used during your own testing.</p>
+<h2 id="aia-policy"><a class="header" href="#aia-policy">AIA Policy</a></h2>
+<p>Our usual <a href="../policies/aia.html">AIA Policy</a> applies to this assignment. In
+addition to that policy:</p>
+<ul>
+<li>You are allowed to reuse material from your lap assignments on this project.</li>
+</ul>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>You must use the parts of the Java API that we covered in class for File I/O and
+exception handling. Do not use any static variables in your program unless they
+are marked <code>final</code> and store immutable data (such as primitives or <code>Strings</code>,
+not arrays). Do not use any other parts of the Java API, especially any data
+structures like <code>ArrayList</code> or <code>Stack</code>.</p>
+<h2 id="task-1-maze-class-5-points"><a class="header" href="#task-1-maze-class-5-points">Task 1: Maze Class (5 points)</a></h2>
+<p>Write a <code>Maze</code> class (<code>Maze.java</code>). This class must have the variables,
+constructors, and methods described below. It should not include any other
+instance/static variables or instance methods.</p>
+<ul>
+<li>instance variables (private)
+<ul>
+<li><code>data: char[][]</code></li>
+<li><code>rows: int</code></li>
+<li><code>cols: int</code></li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li><code>Maze(r: int, c: int)</code>
+<ul>
+<li>initialize a new maze with <code>r</code> rows and <code>c</code> cols</li>
+<li>initialize every character in the maze to <code>MazeConstants.EMPTY</code></li>
+<li>assume that <code>r</code> and <code>c</code> are positive</li>
+</ul>
+</li>
+<li><code>Maze(f: File) throws FileNotFoundException</code>
+<ul>
+<li>initialize the maze with the information read from <code>f</code></li>
+<li>assume <code>f</code> is formatted exactly as described in the maze file format
+explained below</li>
+<li>don’t catch the FNF exception, just let the caller deal with it (see the
+test code for an example)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>methods
+<ul>
+<li><code>inBounds(row: int, col: int): boolean</code>
+<ul>
+<li>returns <code>true</code> if and only if <code>0 &lt;= row &lt; rows</code> and <code>0 &lt;= col &lt; cols</code></li>
+</ul>
+</li>
+<li><code>get(row: int, col: int): char</code>
+<ul>
+<li>returns the character at the given row and column</li>
+<li>throw an <code>IndexOutOfBoundsException</code> if the coordinates are out of bounds</li>
+</ul>
+</li>
+<li><code>set(row: int, col: int, symbol: char): void</code>
+<ul>
+<li>sets the character at (x, y) to <code>c</code></li>
+<li>throw an <code>IndexOutOfBoundsException</code> if the coordinates are out of bounds</li>
+</ul>
+</li>
+<li><code>getRows(): int</code></li>
+<li><code>getCols(): int</code></li>
+<li><code>toString(): String</code>
+<ul>
+<li>return a string representation of the maze</li>
+<li>the rows must be in order starting with the first row (0) and ending with
+the last row (rows - 1)</li>
+<li>each row must end with a newline character (<code>\n</code>), including the final row</li>
+<li>the columns within each row must be in order starting with the first
+column (0) and ending with the last column (cols - 1)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="position: absolute; left: -100px; width: 0%; display: hidden">
+    use a StringBuffer to make each row of the maze and a StringJoiner to
+combine them into one string</div>
+
+<p>Use the following test program to verify your <code>Maze</code> class works:</p>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+
+public class MazeTest {
+    public static void main(String[] args) {
+        Maze maze1 = new Maze(4, 13);
+        for (int i = 0; i &lt; 26; i++) {
+            maze1.set(i / 13, i % 13, (char) ('a' + i));
+            maze1.set(2 + i / 13, i % 13, (char) ('A' + i));
+        }
+        test(maze1);
+        // the for loop above should result in the following maze:
+        //
+        // abcdefghijklm
+        // nopqrstuvwxyz
+        // ABCDEFGHIJKLM
+        // NOPQRSTUVWXYZ
+
+        try {
+            Maze maze2 = new Maze(new File("maze.txt"));
+            test(maze2);
+            // the maze should look exactly as shown in the file, minus the dimensions and comments
+        } catch (FileNotFoundException e) {
+            System.out.println(
+                    "ERROR: You're missing maze.txt! Can't test whether the file constructor"
+                            + " works.");
+        }
+    }
+
+    public static void test(Maze m) {
+        int rows = m.getRows();
+        int cols = m.getCols();
+        System.out.printf("%dx%d maze:\n%s\n\n", rows, cols, m);
+        System.out.printf(
+                "Corners:\n%s%s\n%s%s\n\n",
+                m.get(0, 0), m.get(rows - 1, 0), m.get(0, cols - 1), m.get(rows - 1, cols - 1));
+        // should say yes
+        checkInBounds(m, 0, 0);
+        checkInBounds(m, rows / 2, cols / 2);
+        // should say no
+        checkOutOfBounds(m, -1, 0);
+        checkOutOfBounds(m, 0, -1);
+        checkOutOfBounds(m, 0, cols);
+        checkOutOfBounds(m, rows, 0);
+        checkOutOfBounds(m, rows, cols);
+    }
+
+    public static void checkInBounds(Maze m, int row, int col) {
+        if (m.inBounds(row, col)) {
+            System.out.printf("CORRECT: r%dc%d is in bounds\n", row, col);
+        } else {
+            System.out.printf("  ERROR: r%dc%d is out of bounds\n", row, col);
+        }
+    }
+
+    public static void checkOutOfBounds(Maze m, int row, int col) {
+        if (m.inBounds(row, col)) {
+            System.out.printf("  ERROR: r%dc%d is in bounds\n", row, col);
+        } else {
+            System.out.printf("CORRECT: r%dc%d is out of bounds\n", row, col);
+        }
+    }
+}
+</code></pre>
+<h3 id="maze-file-format"><a class="header" href="#maze-file-format">Maze File Format</a></h3>
+<p>A properly-formatted maze file is structured as follows:</p>
+<ul>
+<li>first line: the rows and cols separated by a space</li>
+<li>maze: one line for each row, with each line containing a number of characters
+equal to the cols (in other words, the exact output of the toString method)</li>
+<li>comments/extra: may have additional lines of text after the maze; these should
+be ignored when reading the file</li>
+</ul>
+<p>Example maze file (save as maze.txt for the maze test program to find it):</p>
+<pre><code>5 19
+# # ### #   #   ###
+# # #   #   #   # #
+### ### #   #   # #
+# # #   #   #   # #
+# # ### ### ### ###
+
+This is extra text in the comments section. Your code shouldn't read this part,
+or at least shouldn't use it when initializing a Maze object.
+
+Also, nothing in the format says the maze file has to be an actual solvable
+maze. This maze is just the word HELLO so you can tell that your maze read the
+file correctly and that its toString method works correctly.
+</code></pre>
+<h3 id="coordinates"><a class="header" href="#coordinates">Coordinates</a></h3>
+<p>Our maze uses row/column coordinates instead of x/y coordinates. We could design
+the maze class to use either, but once we’ve made that choice we need to be
+consistent with the order of these coordinates and how we refer to them.</p>
+<p>If we use x/y coordinates, then we expect the following:</p>
+<ul>
+<li>x is the horizontal axis and y is the vertical axis</li>
+<li>x is the first coordinate, and y is the second coordinate</li>
+<li>width is the first dimension, and height is the second dimension</li>
+<li>up is usually positive and down is usually negative</li>
+</ul>
+<p>If we use row/column coordinates, then we expect the following:</p>
+<ul>
+<li>row is the <strong>vertical axis</strong> (changing rows moves you up or down), and col is
+the <strong>horizontal axis</strong></li>
+<li>row is the first coordinate, and col is the second coordinate</li>
+<li>rows is the first dimension, and cols is the second dimension</li>
+<li>up is usually <strong>negative</strong> and down is usually <strong>positive</strong></li>
+</ul>
+<p>If you want the short version: row/col puts the vertical axis first, and x/y
+puts the horizontal axis first. To avoid mixing up the order and introducing
+some very annoying bugs, <strong>do not refer to your coordinates/dimensions as x, y,
+width, or height anywhere in your code!</strong> Use “rows” and “cols” instead of
+“width” and “height” to refer to the dimensions of a maze for the same reason.</p>
+<p>If this sounds confusing, don’t worry! The difficulty here isn’t the code you’ll
+be writing, it’s thinking about the difference between x/y and row/col
+coordinates. I’m only explaining it so you know why the assignment works this
+way and can avoid some of the more common mistakes. You shouldn’t need to worry
+about the above explanation while coding as long as you follow the advice about
+not referring to variables as x, y, width, or height.</p>
+<h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
+<ul>
+<li>Includes the required variables, constructor, and methods</li>
+<li>All instance variables are private</li>
+<li>Does not include extra instance variables, static variables, or methods</li>
+<li>Provided test code compiles and runs with your <code>Maze</code> class</li>
+</ul>
+<h2 id="task-2-solver-program-5-points"><a class="header" href="#task-2-solver-program-5-points">Task 2: Solver Program (5 points)</a></h2>
+<p>Write a <code>MazeSolver.java</code> program that takes five command line args: the name of
+a file, a starting row (int), a starting column (int), an ending row, and an
+ending column. The file should be a maze, and the coordinates should indicate
+the start and end of the path the solver needs to find.</p>
+<p>Your program should:</p>
+<ul>
+<li>load the maze from the file</li>
+<li>print the start and end coordinates</li>
+<li>print the maze</li>
+</ul>
+<p>Your program should print an error message (one that you wrote, not a stack
+trace) and exit if:</p>
+<ul>
+<li>the user provides less than five command line arguments (<code>args.length</code> is less
+than 5)</li>
+<li>any of the coordinates can’t be parsed as integers (<code>Integer.parseInt</code> will
+throw a <code>NumberFormatException</code>, which you can catch)</li>
+<li>either set of coordinates is out of bounds (use the maze’s <code>inBounds</code> method
+to check)</li>
+<li>either set of coordinates refers to an occupied position</li>
+</ul>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>You can access command line args through the main method’s <code>String[] args</code>
+parameter. Some of our example programs demonstrate how to use this args
+array. When you run your program, you type these arguments after the program
+name like so:</p>
+<p><code>java MazeSolver.java maze.txt 1 1 19 19</code></p>
+<p>This would open the file <code>maze.txt</code> and try to find a path from r1c1 to
+r19c19.</p>
+</blockquote>
+<h3 id="requirements-1"><a class="header" href="#requirements-1">Requirements</a></h3>
+<ul>
+<li>Task 1 is complete</li>
+<li>Uses command line args for all user input (no <code>System.in</code> scanner)</li>
+<li>Loads a maze file</li>
+<li>Prints the start and end coordinates</li>
+<li>Prints the maze</li>
+<li>Prints an appropriate error message if the file can’t be loaded or the
+coordinates are invalid (no crashing with a stack trace)</li>
+</ul>
+<h2 id="task-3-recursive-solve-method-5-points"><a class="header" href="#task-3-recursive-solve-method-5-points">Task 3: Recursive Solve Method (5 points)</a></h2>
+<p>Add the <code>MazeConstants.java</code> file to your project folder before writing the
+solve method:</p>
+<pre><code class="language-java">public class MazeConstants {
+    public static final char EMPTY = ' ';
+    public static final char PATH = '.';
+    public static final char START = 'S';
+    public static final char END = 'E';
+    public static final char VISITED = 'v';
+    public static final char WALL = '#';
+}
+</code></pre>
+<p>We must obey the following rules when trying to solve the maze:</p>
+<ul>
+<li>positions containing the space character <code>' '</code> are considered <strong>empty</strong></li>
+<li>positions containing any other character are considered <strong>occupied</strong>, and we
+cannot move through them</li>
+<li>when we begin solving the maze, we will start at an empty position within the
+bounds of the maze</li>
+<li>from our current position, we are allowed to move to the adjacent north,
+south, east, or west position as long as it is empty
+<ul>
+<li>for example, we could move from r3c7 to r4c7, which is one cell south, but
+not to r5c7 (two cells south) r4c8 (one cell diagonally southeast)</li>
+</ul>
+</li>
+<li>our goal is to find a path that leads from the start position to the end
+position</li>
+</ul>
+<p>You will use the following recursive algorithm to solve the maze:</p>
+<ul>
+<li><strong>input</strong>
+<ul>
+<li>a maze to solve</li>
+<li>a start row and start column</li>
+<li>an end row and end column</li>
+</ul>
+</li>
+<li><strong>first base case</strong>
+<ul>
+<li>condition: our start position is out of bounds or isn’t empty
+<ul>
+<li>you can use the maze’s <code>get</code> method to check whether a position is empty:
+<code>m.get(12, 27) == MazeConstants.EMPTY</code> will tell you whether r12c27 is
+empty</li>
+</ul>
+</li>
+<li>result: we’ve failed to solve the maze because we can’t move out of bounds
+or through an occupied cell</li>
+</ul>
+</li>
+<li><strong>second base case</strong>
+<ul>
+<li>condition: our start position matches our end position</li>
+<li>result: we’ve solved the maze!</li>
+</ul>
+</li>
+<li><strong>recursive case</strong>
+<ul>
+<li>condition: base case conditions are false (in code, this should just be an
+<code>else</code>)</li>
+<li>mark our starting position as <code>MazeConstants.VISITED</code>
+<ul>
+<li>you can use the maze’s <code>set</code> method to mark a position:
+<code>m.set(5, 11, MazeConstants.VISITED);</code> would mark r5c11 as visited</li>
+</ul>
+</li>
+<li>for each position we are allowed to move to, attempt to solve the maze
+starting at that position
+<ul>
+<li>these positions are (row - 1, col), (row + 1, col), (row, col - 1), and
+(row, col + 1)</li>
+</ul>
+</li>
+<li>if we succeed in solving the maze, then mark our starting position as
+<code>MazeConstants.PATH</code></li>
+</ul>
+</li>
+</ul>
+<p>You must implement this algorithm as a recursive <code>static</code> method:</p>
+<ul>
+<li>name: <code>solveMaze</code></li>
+<li>return type: <code>boolean</code> (<code>true</code> if solved and <code>false</code> if not)</li>
+<li>parameters:
+<ul>
+<li><code>m: Maze</code> is the maze to solve</li>
+<li><code>startRow: int</code> is the start row</li>
+<li><code>startCol: int</code> is the start column</li>
+<li><code>endRow: int</code> is the end row</li>
+<li><code>endCol: int</code> is the end column</li>
+</ul>
+</li>
+</ul>
+<h3 id="requirements-2"><a class="header" href="#requirements-2">Requirements</a></h3>
+<ul>
+<li>Task 1 is complete</li>
+<li><code>solveMaze</code> implements the recursive algorithm described above</li>
+<li><code>solveMaze</code> marks a path to an exit if it solves the maze</li>
+<li><code>solveMaze</code> correctly returns whether or not it solved the maze</li>
+</ul>
+<h2 id="task-4-finished-program"><a class="header" href="#task-4-finished-program">Task 4: Finished Program</a></h2>
+<p>Update your <code>main</code> method to use solve maze and print the result:</p>
+<ul>
+<li>print the coordinates and maze as before</li>
+<li>exit early with an error message for a missing file or invalid input as before</li>
+<li>call the solve method and store the result in a variable</li>
+<li>mark the start position as <code>MazeConstants.START</code></li>
+<li>mark the end position as <code>MazeConstants.END</code></li>
+<li>print the maze again to show the result of attempting to solve it</li>
+<li>print a success message if solve returned true or a failure message if solve
+returned false</li>
+</ul>
+<h3 id="requirements-3"><a class="header" href="#requirements-3">Requirements</a></h3>
+<ul>
+<li>Tasks 1-3 are complete</li>
+<li>Uses solve method to attempt to solve the maze</li>
+<li>Prints the maze before and after solving, showing which spaces were marked by
+the solve method</li>
+<li>Marks the start/end spaces <strong>AFTER</strong> calling the solve method (they will
+interfere with the solver if marked before calling solve)</li>
+<li>Prints whether the solve succeeded</li>
+</ul>
+<h2 id="example-mazes"><a class="header" href="#example-mazes">Example Mazes</a></h2>
+<p>These two mazes should be solvable with any valid start and end position.</p>
+<pre><code>11 11
+###########
+# #     # #
+# ### # # #
+#     # # #
+####### # #
+# #     # #
+# # ##### #
+# #   #   #
+# ### ### #
+#         #
+###########
+
+</code></pre>
+<pre><code>21 31
+###############################
+# #             #       #     #
+# # ##### ####### ### # ### # #
+# #     # #     # #   #     # #
+# ####### # ### # # ######### #
+# #     #     #   #   #       #
+# # ### ######### ### ####### #
+#   # #     #   # # #       # #
+##### ##### # # # # ####### # #
+#   #     #   # #         # # #
+### # ### ##### ########### # #
+#   # # # #     #       #   # #
+# ### # # # ##### ##### # ### #
+#   # # #   #     # #   #   # #
+# # # # ##### ##### # ### # # #
+# #   #           #   #   # # #
+# ########### ### ### ##### # #
+#           #   #   #       # #
+########### ####### ######### #
+#                   #         #
+###############################
+
+</code></pre>
+<p>This maze has two sections: a roughly L-shaped area that includes r1c1, and the
+rest of the maze. It should be solvable if the starting and ending point are in
+the same area, and unsolvable if not. For example, you can get from r1c1 to
+r9c5, but not from r11c5 to r1c20.</p>
+<pre><code>21 31
+###############################
+#   #     #   #               #
+### # ### # # # ##### ####### #
+# # # # #   # #   #   #     # #
+# # # # ##### ### # ### ### # #
+#   # #     #   # # #   # # # #
+# ### ##### # ### # # ### # # #
+# #         #     #       # # #
+# ################# ####### # #
+# #   #   #   #   # #   #   # #
+# # # # # # # # # # # # # ### #
+#   #   #   #   # # # # # # # #
+####################### # # # #
+#       #         #     # # # #
+##### # # ##### # # ##### # # #
+#     # # #   # # #   #   #   #
+# ##### # ### # ##### # #######
+# #     #   # #     # #       #
+# ######### # ### ### ####### #
+#               #             #
+###############################
+
+</code></pre>
+<p>Same maze, but with the smaller section filled in so you can more easily see it:</p>
+<pre><code>###############################
+#ooo#     #   #               #
+###o# ### # # # ##### ####### #
+#o#o# # #   # #   #   #     # #
+#o#o# # ##### ### # ### ### # #
+#ooo# #     #   # # #   # # # #
+#o### ##### # ### # # ### # # #
+#o#         #     #       # # #
+#o################# ####### # #
+#o#ooo#ooo#ooo#ooo# #   #   # #
+#o#o#o#o#o#o#o#o#o# # # # ### #
+#ooo#ooo#ooo#ooo#o# # # # # # #
+####################### # # # #
+#       #         #     # # # #
+##### # # ##### # # ##### # # #
+#     # # #   # # #   #   #   #
+# ##### # ### # ##### # #######
+# #     #   # #     # #       #
+# ######### # ### ### ####### #
+#               #             #
+###############################
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../assignments/monster.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../schedule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../assignments/monster.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../schedule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

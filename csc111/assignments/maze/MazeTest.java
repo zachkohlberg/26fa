@@ -3,72 +3,23 @@ import java.io.FileNotFoundException;
 
 public class MazeTest {
     public static void main(String[] args) {
-        Maze maze1 = new Maze(6, 6);
-        for (int i = 0; i < 36; i++) {
-            if (i < 10) {
-                maze1.set((char) ('0' + i), i % 6, i / 6);
-            } else {
-                maze1.set((char) ('A' + i - 10), i % 6, i / 6);
-            }
+        Maze maze1 = new Maze(4, 13);
+        for (int i = 0; i < 26; i++) {
+            maze1.set(i / 13, i % 13, (char) ('a' + i));
+            maze1.set(2 + i / 13, i % 13, (char) ('A' + i));
         }
         test(maze1);
-        // the for loop above should result in the following maze
-        // 012345
-        // 6789AB
-        // CDEFGH
-        // IJKLMN
-        // OPQRST
-        // UVWXYZ
-
-        char[][] data =
-                new char[][] {
-                    new char[] {'X', 'S', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', ' ', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', ' ', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', ' ', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', ' ', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', ' ', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', ' ', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', ' ', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', ' ', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', ' ', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', ' ', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', ' ', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', ' ', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', ' ', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', ' ', 'X', 'X', 'X', 'X', 'X'},
-                    new char[] {'X', ' ', ' ', ' ', ' ', ' ', 'X'},
-                    new char[] {'X', 'X', 'X', 'X', 'X', 'F', 'X'}
-                };
-        // The char array above represents the following maze:
-        // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        // S X   X   X   X   X   X   X   X
-        // X X X X X X X X X X X X X X X X
-        // X X X X X X X X X X X X X X X X
-        // X X X X X X X X X X X X X X X X
-        // X   X   X   X   X   X   X   X F
-        // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        Maze maze2 = new Maze(data);
-        test(maze2);
+        // the for loop above should result in the following maze:
+        //
+        // abcdefghijklm
+        // nopqrstuvwxyz
+        // ABCDEFGHIJKLM
+        // NOPQRSTUVWXYZ
 
         try {
-            Maze maze3 = new Maze(new File("maze.txt"));
-            test(maze3);
-            // the maze should look exactly as shown in the file, minus the comments
+            Maze maze2 = new Maze(new File("maze.txt"));
+            test(maze2);
+            // the maze should look exactly as shown in the file, minus the dimensions and comments
         } catch (FileNotFoundException e) {
             System.out.println(
                     "ERROR: You're missing maze.txt! Can't test whether the file constructor"
@@ -77,24 +28,36 @@ public class MazeTest {
     }
 
     public static void test(Maze m) {
-        int w = m.getWidth();
-        int h = m.getHeight();
-        System.out.printf("%dx%d maze:\n%s\n\n", w, h, m);
+        int rows = m.getRows();
+        int cols = m.getCols();
+        System.out.printf("%dx%d maze:\n%s\n\n", rows, cols, m);
         System.out.printf(
                 "Corners:\n%s%s\n%s%s\n\n",
-                m.get(0, 0), m.get(w - 1, 0), m.get(0, h - 1), m.get(w - 1, h - 1));
+                m.get(0, 0), m.get(rows - 1, 0), m.get(0, cols - 1), m.get(rows - 1, cols - 1));
         // should say yes
-        checkBounds(m, 0, 0);
-        checkBounds(m, w / 2, h / 2);
+        checkInBounds(m, 0, 0);
+        checkInBounds(m, rows / 2, cols / 2);
         // should say no
-        checkBounds(m, -1, 0);
-        checkBounds(m, 0, -1);
-        checkBounds(m, 0, h);
-        checkBounds(m, w, 0);
-        checkBounds(m, w, h);
+        checkOutOfBounds(m, -1, 0);
+        checkOutOfBounds(m, 0, -1);
+        checkOutOfBounds(m, 0, cols);
+        checkOutOfBounds(m, rows, 0);
+        checkOutOfBounds(m, rows, cols);
     }
 
-    public static void checkBounds(Maze m, int x, int y) {
-        System.out.printf("Is (%d, %d) in bounds? %s\n", x, y, m.inBounds(x, y) ? "yes" : "no");
+    public static void checkInBounds(Maze m, int row, int col) {
+        if (m.inBounds(row, col)) {
+            System.out.printf("CORRECT: r%dc%d is in bounds\n", row, col);
+        } else {
+            System.out.printf("  ERROR: r%dc%d is out of bounds\n", row, col);
+        }
+    }
+
+    public static void checkOutOfBounds(Maze m, int row, int col) {
+        if (m.inBounds(row, col)) {
+            System.out.printf("  ERROR: r%dc%d is in bounds\n", row, col);
+        } else {
+            System.out.printf("CORRECT: r%dc%d is out of bounds\n", row, col);
+        }
     }
 }

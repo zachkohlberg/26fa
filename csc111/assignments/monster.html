@@ -34,10 +34,10 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-3249046f.js";
+            window.path_to_searchindex_js = "../searchindex-3fc0e439.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-6d843a02.js"></script>
+        <script src="../toc-734c7b7e.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -200,8 +200,7 @@ addition to that policy:</p>
 <p>You must use the parts of the Java API that we covered in class for File I/O and
 exception handling. Do not use the <code>java.nio</code> package or any static variables in
 your program.</p>
-<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
-<h3 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h3>
+<h2 id="task-1-monster-class-5-points"><a class="header" href="#task-1-monster-class-5-points">Task 1: Monster Class (5 points)</a></h2>
 <p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
 constructors, and methods described below. You should not have any other
 instance variables or static variables. You’re free to include other methods and
@@ -284,7 +283,7 @@ starting point and modify it to meet the above requirements</li>
 (see the test code for an example using <code>printf()</code>, which has the same syntax
 as the format strings in <code>String.format()</code>)</li>
 </ul>
-<p>Requirements:</p>
+<h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
 <ul>
 <li>Includes the required variables, constructor, and methods
 <div style="position: absolute; left: -100px; width: 0%; display: hidden">The toString method must include an emoji of your
@@ -296,7 +295,7 @@ choice next to the monster's name (use a unicode escape)</div>
 <li>Does not include extra methods, such as setters for the instance variables</li>
 <li>Provided test code compiles and runs with your <code>Monster</code> class</li>
 </ul>
-<h3 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h3>
+<h2 id="task-2-load-monster-function-5-points"><a class="header" href="#task-2-load-monster-function-5-points">Task 2: Load Monster Function (5 points)</a></h2>
 <p>In a separate <code>MonsterBattle</code> class (<code>MonsterBattle.java</code>), write a static
 <code>loadMonster()</code> method that takes a string representing a filename and returns a
 monster with the properties given in the file. Expect the file to contain the
@@ -312,7 +311,7 @@ If any number in the file is exactly zero, then replace it with 100. If a monste
 has negative health when saved, then write 0 to the file instead of a negative value.
 </div>
 
-<p>Requirements:</p>
+<h3 id="requirements-1"><a class="header" href="#requirements-1">Requirements</a></h3>
 <ul>
 <li>First task is complete</li>
 <li>Returns a monster with the correct properties when given a valid file</li>
@@ -320,7 +319,7 @@ has negative health when saved, then write 0 to the file instead of a negative v
 <li>Must correctly handle a <code>FileNotFoundException</code> with try-catch</li>
 <li>Must close the scanner when finished reading the file</li>
 </ul>
-<h3 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h3>
+<h2 id="task-3-battle-function-5-points"><a class="header" href="#task-3-battle-function-5-points">Task 3: Battle Function (5 points)</a></h2>
 <p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
 <code>Monster</code> parameters and has them take turns attacking until one is dead. Print
 a summary of each attack: state the name of the attacker, the amount of damage,
@@ -336,7 +335,7 @@ is more than 15 damage.
 <li>Look at the example code from the monster lab if you’re not sure how to do
 this</li>
 </ul>
-<p>Requirements</p>
+<h3 id="requirements-2"><a class="header" href="#requirements-2">Requirements</a></h3>
 <ul>
 <li>First task is complete</li>
 <li>Starting with the first parameter, monsters alternate between attacking each
@@ -346,7 +345,7 @@ attack the other (use <code>attack</code> to generate the damage and pass it to
 <code>takeDamage</code> to apply the damage)</li>
 <li>Feedback is printed for attacks as described above</li>
 </ul>
-<h3 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h3>
+<h2 id="task-4-main-function-5-points"><a class="header" href="#task-4-main-function-5-points">Task 4: Main Function (5 points)</a></h2>
 <p>Add a <code>main</code> method to your <code>MonsterBattle</code> class so we can run it as a program.
 Your program should do the following:</p>
 <ul>
@@ -371,7 +370,7 @@ journey</li>
 </ul>
 </li>
 </ul>
-<p>Requirements</p>
+<h3 id="requirements-3"><a class="header" href="#requirements-3">Requirements</a></h3>
 <ul>
 <li>First three tasks are complete</li>
 <li>Implement <code>main</code> as described above</li>
@@ -385,7 +384,7 @@ journey</li>
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../schedule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../assignments/maze.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -399,7 +398,7 @@ journey</li>
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../schedule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../assignments/maze.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
