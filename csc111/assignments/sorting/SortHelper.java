@@ -3,6 +3,12 @@ import java.util.Random;
 public class SortHelper {
     private static Random r = new Random();
 
+    public static void swap(int[] array, int i, int j) {
+        int t = array[i];
+        array[i] = array[j];
+        array[j] = t;
+    }
+
     public static void setSeed(long seed) {
         r.setSeed(seed);
     }

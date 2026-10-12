@@ -5,21 +5,11 @@ public class SortTests {
     // Make sure your class names match the names used below and your sort
     // method has the correct name and parameters.
     public static void main(String[] args) {
-        test("Bubble Sort", new BubbleSort()::sort);
-        test("Selection Sort", new SelectionSort()::sort);
-        test("Insertion Sort", new InsertionSort()::sort);
-        test("Mergesort", new Mergesort()::sort);
-        test("Quicksort", new Quicksort()::sort);
-    }
-
-    // Functional interface, allows me to pass the sort method to test and avoid
-    // a ton of duplicate code. I'm not covering interfaces and any of Java's
-    // functional programming features because the FP stuff is off-topic, SER120
-    // should already cover interfaces, and covering interfaces properly would
-    // take time that we probably don't have. If you're curious about how this
-    // works, then I'd be happy to explain it during office hours.
-    public static interface Sort {
-        void sort(int[] array, int start, int end);
+        test("Bubble Sort", new BubbleSort());
+        test("Selection Sort", new SelectionSort());
+        test("Insertion Sort", new InsertionSort());
+        test("Mergesort", new Mergesort());
+        test("Quicksort", new Quicksort());
     }
 
     // Checks whether a sorting algorithm works correctly. This will throw an
@@ -40,12 +30,12 @@ public class SortTests {
         sort.sort(array, 500, 750);
         // confirm the 500-750 section of the array is sorted
         assertSorted(array, 500, 750);
-        // confirm the 0-500 and 750-1000 sections of the array were not changed
-        assertUnchanged(array, original, 0, 500);
-        assertUnchanged(array, original, 750, 1000);
         // confirm the 500-750 section of the array contains the same elements
         // (ignores order)
         assertSameContents(array, original, 500, 750);
+        // confirm the 0-500 and 750-1000 sections of the array were not changed
+        assertUnchanged(array, original, 0, 500);
+        assertUnchanged(array, original, 750, 1000);
 
         System.out.printf("%s passed.\n", name);
     }

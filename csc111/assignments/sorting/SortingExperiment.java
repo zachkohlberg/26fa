@@ -6,33 +6,42 @@ import java.io.PrintWriter;
  * @author YOUR NAME HERE
  */
 public class SortingExperiment {
+    public static final int TRIALS = 5;
+
     public static void main(String[] args) {
         // TODO: SortHelper.setSeed(?);
 
-        // arrays to store our data
-        int[] bubbleComps = new int[5];
+        // arrays to store our data from each trial
+        int[] bubbleComps = new int[TRIALS];
+        int[] bubbleSwaps = new int[TRIALS];
+        // TODO
 
         // run the experiment
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < TRIALS; i++) {
+            // each trial involves a larger array
             int length = (i + 1) * 10_000;
 
-            // identical random arrays for each algorithm
-            int[] bubbleArray = SortHelper.randomArray(length);
-            int[] selectionArray = SortHelper.copy(bubbleArray);
+            // make identical random arrays for each algorithm
+            int[] originalArray = SortHelper.randomArray(length);
+            int[] bubbleArray = SortHelper.copy(originalArray);
+            // TODO
 
             // instantiate algorithms
             BubbleSort bubble = new BubbleSort();
+            // TODO
 
             // sort
             bubble.sort(bubbleArray, 0, bubbleArray.length);
+            // TODO
 
             // record results
-            bubbleComps[i] = bubble.getComparisons();
-            // TODO: don't forget swaps!
+            bubbleComps[i] = bubble.comparisons();
+            bubbleSwaps[i] = bubble.swaps();
+            // TODO
         }
 
         try (PrintWriter pw = new PrintWriter(new File("data.csv"))) {
-            printData(pw, "bubble", bubbleComps, null);
+            printData(pw, "bubble", bubbleComps, bubbleSwaps);
             // TODO: write data for other algorithms
         } catch (FileNotFoundException e) {
             // TODO: give yourself a helpful error message
@@ -48,6 +57,9 @@ public class SortingExperiment {
             pw.print(i + ",");
         }
         pw.println();
-        // TODO: print swaps
+        pw.print("swaps,");
+        for (int i : swaps) {
+            pw.print(i + ",");
+        }
     }
 }

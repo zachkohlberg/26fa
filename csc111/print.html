@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-b2884539.js";
+            window.path_to_searchindex_js = "searchindex-1b7d1778.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-734c7b7e.js"></script>
+        <script src="toc-fdd459a5.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1368,14 +1368,14 @@ below shows a summary of past, current, and planned assignments:</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Assignment</th><th>Points</th></tr>
+<tr><th>Assignment</th><th>Points</th><th>Due</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="#weekly-practice">Weekly Practice</a></td><td>2 each</td></tr>
-<tr><td><a href="#a1-monster-battle">A1: Monster Battle</a></td><td>20</td></tr>
-<tr><td><a href="#assignments">A2: Maze</a></td><td>20</td></tr>
-<tr><td><a href="#assignments">A3: Sorting Experiment</a></td><td>20</td></tr>
-<tr><td><a href="#assignments">A4: Final Project TBD</a></td><td>20</td></tr>
+<tr><td><a href="#weekly-practice">Weekly Practice</a></td><td>2 each</td><td>weekly on Monday</td></tr>
+<tr><td><a href="#a1-monster-battle">A1: Monster Battle</a></td><td>20</td><td>Sunday, 2026-10-18</td></tr>
+<tr><td><a href="#a2-maze-solver">A2: Maze Solver</a></td><td>20</td><td>Sunday, 2026-11-01</td></tr>
+<tr><td><a href="#a3-sorting-experiment">A3: Sorting Experiment</a></td><td>20</td><td>Sunday, 2026-11-15</td></tr>
+<tr><td><a href="#assignments">A4: Final Project TBD</a></td><td>20</td><td>TBA</td></tr>
 </tbody>
 </table>
 </div>
@@ -1625,7 +1625,7 @@ maze.</p>
 backtracking</li>
 </ul>
 <h2 id="submission-1"><a class="header" href="#submission-1">Submission</a></h2>
-<p>Submit this assignment on Blackboard, attaching the following files:</p>
+<p>Submit this assignment on Canvas, attaching the following files:</p>
 <ul>
 <li>Maze.java</li>
 <li>MazeSolver.java</li>
@@ -2105,6 +2105,336 @@ r9c5, but not from r11c5 to r1c20.</p>
 
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="a3-sorting-experiment"><a class="header" href="#a3-sorting-experiment">A3: Sorting Experiment</a></h1>
+<p>This program implements several sorting algorithms and runs an experiment to
+measure their performance.</p>
+<p>This assignment involves the following topics:</p>
+<ul>
+<li>File I/O (writing data to csv files)</li>
+<li>Sorting algorithms: bubble sort, selection sort, insertion sort, mergesort,
+and quicksort</li>
+<li>Writing recursive methods that involve multiple recursive calls (mergesort,
+quicksort)</li>
+<li>Algorithm analysis</li>
+</ul>
+<h2 id="submission-2"><a class="header" href="#submission-2">Submission</a></h2>
+<p>Submit this assignment on Canvas, attaching the following files:</p>
+<ul>
+<li>BubbleSort.java</li>
+<li>SelectionSort.java</li>
+<li>InsertionSort.java</li>
+<li>Mergesort.java</li>
+<li>Quicksort.java</li>
+<li>SortingExperiment.java</li>
+<li>data.csv</li>
+<li>analysis.txt or analysis.md</li>
+<li>SortHelper.java (if modified)</li>
+</ul>
+<p>Please don’t zip them or include extra files with them.</p>
+<h2 id="aia-policy-2"><a class="header" href="#aia-policy-2">AIA Policy</a></h2>
+<p>Our usual <a href="#academic-integrity-and-accountability-aia-policy">AIA Policy</a> applies to this assignment. In
+addition to that policy:</p>
+<ul>
+<li>You are allowed to reuse all material from relevant CSC111L lab assignments.
+This includes all starter/example code and all code you wrote for these
+assignments.</li>
+<li>Also, a reminder that our AIA policy allows you to use any code from the
+lecture as-is or as a starting point for your work on graded assignments.</li>
+</ul>
+<h2 id="code-restrictions-2"><a class="header" href="#code-restrictions-2">Code Restrictions</a></h2>
+<p>You must use the parts of the Java API that we covered in class for File I/O and
+exception handling. Do not use any static variables in your program unless they
+are marked <code>final</code> and store immutable data (such as primitives or <code>Strings</code>,
+not arrays). Do not use any other parts of the Java API, especially the <code>Arrays</code>
+class or data structures like <code>ArrayList</code> or <code>Stack</code>.</p>
+<h2 id="starter-code"><a class="header" href="#starter-code">Starter Code</a></h2>
+<p>Not exactly starter code, but you should use the
+<a href="#sorting-algorithm-pseudocode">pseudocode</a> from the week 8 outline to get started
+when coding each sorting algorithm.</p>
+<p>Your sorting algorithm implementations will have to implement the <code>Sort</code>
+interface below:</p>
+<pre><code class="language-java">public interface Sort {
+    int comparisons();
+
+    int swaps();
+
+    void sort(int[] array, int start, int end);
+}
+</code></pre>
+<p>The code below provides some functions that you may want to use in your program.
+Feel free to add new functions to <code>SortHelper.java</code>, but you must include the
+modified version of <code>SortHelper.java</code> in your submission. I’ll need it in order
+to run your code, and I want to see any modifications you make.</p>
+<pre><code class="language-java">import java.util.Random;
+
+public class SortHelper {
+    private static Random r = new Random();
+
+    public static void swap(int[] array, int i, int j) {
+        int t = array[i];
+        array[i] = array[j];
+        array[j] = t;
+    }
+
+    public static void setSeed(long seed) {
+        r.setSeed(seed);
+    }
+
+    public static int[] randomArray(int length) {
+        int bound = length / 2;
+        int[] array = new int[length];
+        for (int i = 0; i &lt; length; i++) {
+            array[i] = r.nextInt(bound);
+        }
+        return array;
+    }
+
+    public static int[] copy(int[] original) {
+        int[] array = new int[original.length];
+        for (int i = 0; i &lt; array.length; i++) {
+            array[i] = original[i];
+        }
+        return array;
+    }
+}
+</code></pre>
+<p>Use this code to test your sorting algorithms. It can’t check whether you’ve
+implemented an algorithm correctly, but it can check whether the algorithm sorts
+an array.</p>
+<pre><code class="language-java">import java.util.HashMap;
+
+public class SortTests {
+    // You can comment out the tests for any algorithms you've yet to implement.
+    // Make sure your class names match the names used below and your sort
+    // method has the correct name and parameters.
+    public static void main(String[] args) {
+        test("Bubble Sort", new BubbleSort());
+        test("Selection Sort", new SelectionSort());
+        test("Insertion Sort", new InsertionSort());
+        test("Mergesort", new Mergesort());
+        test("Quicksort", new Quicksort());
+    }
+
+    // Checks whether a sorting algorithm works correctly. This will throw an
+    // exception if your sorting algorithm doesn't pass the test.
+    public static void test(String name, Sort sort) {
+        // sort an entire array
+        int[] array = SortHelper.randomArray(1000);
+        int[] original = SortHelper.copy(array);
+        sort.sort(array, 0, 1000);
+        // confirm the array is sorted
+        assertSorted(array, 0, 1000);
+        // confirm the array contains the same elements (ignores order)
+        assertSameContents(array, original, 0, 1000);
+
+        // sort part of an array
+        array = SortHelper.randomArray(1000);
+        original = SortHelper.copy(array);
+        sort.sort(array, 500, 750);
+        // confirm the 500-750 section of the array is sorted
+        assertSorted(array, 500, 750);
+        // confirm the 500-750 section of the array contains the same elements
+        // (ignores order)
+        assertSameContents(array, original, 500, 750);
+        // confirm the 0-500 and 750-1000 sections of the array were not changed
+        assertUnchanged(array, original, 0, 500);
+        assertUnchanged(array, original, 750, 1000);
+
+        System.out.printf("%s passed.\n", name);
+    }
+
+    // Throws an exception if the specified section of array isn't sorted.
+    public static void assertSorted(int[] array, int start, int end) {
+        for (int i = start + 1; i &lt; end; i++) {
+            if (array[i - 1] &gt; array[i]) {
+                throw new RuntimeException(
+                        String.format(
+                                "array[%d] (%d) is greater than array[%d] (%d)",
+                                i - 1, array[i - 1], i, array[i]));
+            }
+        }
+    }
+
+    // Throws an exception if the specified section of array differs in any way
+    // from original.
+    public static void assertUnchanged(int[] array, int[] original, int start, int end) {
+        for (int i = start; i &lt; end; i++) {
+            if (array[i] != original[i]) {
+                throw new RuntimeException(
+                        String.format(
+                                "array[%d] (%d) is not equal to original[%d] (%d)",
+                                i, array[i], i, original[i]));
+            }
+        }
+    }
+
+    // Throws an exception if the specified section of array doesn't contain the
+    // same elements as original. The order of the elements does not matter.
+    public static void assertSameContents(int[] array, int[] original, int start, int end) {
+        // The hash maps are used to track how many times each integer appears
+        // in this section of array and original. We can't assume anything about
+        // the order of these elements, so we count everything first and then
+        // compare the counts.
+        HashMap&lt;Integer, Integer&gt; arrayCounts = new HashMap&lt;&gt;(), originalCounts = new HashMap&lt;&gt;();
+
+        for (int i = start; i &lt; end; i++) {
+            arrayCounts.put(array[i], arrayCounts.getOrDefault(array[i], 0) + 1);
+            originalCounts.put(original[i], originalCounts.getOrDefault(original[i], 0) + 1);
+        }
+
+        if (!arrayCounts.equals(originalCounts)) {
+            throw new RuntimeException("array and original don't contain the same set of elements");
+        }
+    }
+}
+</code></pre>
+<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
+<h3 id="task-1-bubble-selection-and-insertion-sort-5-points"><a class="header" href="#task-1-bubble-selection-and-insertion-sort-5-points">Task 1: Bubble, Selection, and Insertion Sort (5 points)</a></h3>
+<p>Write a <code>BubbleSort</code>, <code>SelectionSort</code>, and <code>InsertionSort</code> class. Each class
+must implement the <code>Sort</code> interface provided in the starter code. Each class
+must correctly track swaps and comparisons made while sorting.</p>
+<h4 id="requirements-5"><a class="header" href="#requirements-5">Requirements</a></h4>
+<ul>
+<li>Each sorting algorithm must pass the <code>SortTests</code> test.</li>
+<li>Each sorting algorithm must implement the algorithm as shown in the
+pseudocode. If you deviate from the pseudocode, then you must document these
+differences in your comments and explain why you made the changes.</li>
+<li>Each sorting algorithm must track swaps and comparisons.</li>
+<li>If you implement a more optimized version of insertion sort that doesn’t do
+any full swaps, then I still want you to count shifting an element as a swap
+for the sake of simplicity.</li>
+</ul>
+<h3 id="task-2-mergesort-5-points"><a class="header" href="#task-2-mergesort-5-points">Task 2: Mergesort (5 points)</a></h3>
+<p>Implement a mergesort algorithm (<code>Mergesort.java</code>). Same requirements as Task 1,
+but I want you to count copying an element from one array to another as a swap.
+This is less work than a swap (1 assignment rather than 3), but it’s a similar
+operation and I don’t want to complicate our data by tracking a third operation.</p>
+<h3 id="task-3-quicksort-5-points"><a class="header" href="#task-3-quicksort-5-points">Task 3: Quicksort (5 points)</a></h3>
+<p>Implement a quicksort algorithm (<code>Quicksort.java</code>). Same requirements as Task 1.</p>
+<h3 id="task-4-experiment-5-points"><a class="header" href="#task-4-experiment-5-points">Task 4: Experiment (5 points)</a></h3>
+<p>Write a program named <code>SortingExperiment.java</code> that does the following:</p>
+<ul>
+<li>Choose an arbitrary number as a seed and set the seed in <code>SortHelper</code>. This
+will allow others to replicate your exact experiment and confirm your results.</li>
+<li>Generate a random array with 10,000 elements. Make a separate copy for each
+sorting algorithm, have the algorithm sort that array, and record the
+resulting swaps and comparisons.</li>
+<li>Repeat the process with array sizes of 20,000, 30,000, 40,000, and 50,000.</li>
+<li>Save all of your data to a file named <code>data.csv</code>. You can open a
+properly-formatted csv (comma-separated value) file in any spreadsheet editor.</li>
+</ul>
+<p>Starter code for the experiment:</p>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+/**
+ * @author YOUR NAME HERE
+ */
+public class SortingExperiment {
+    public static final int TRIALS = 5;
+
+    public static void main(String[] args) {
+        // TODO: SortHelper.setSeed(?);
+
+        // arrays to store our data from each trial
+        int[] bubbleComps = new int[TRIALS];
+        int[] bubbleSwaps = new int[TRIALS];
+        // TODO
+
+        // run the experiment
+        for (int i = 0; i &lt; TRIALS; i++) {
+            // each trial involves a larger array
+            int length = (i + 1) * 10_000;
+
+            // make identical random arrays for each algorithm
+            int[] originalArray = SortHelper.randomArray(length);
+            int[] bubbleArray = SortHelper.copy(originalArray);
+            // TODO
+
+            // instantiate algorithms
+            BubbleSort bubble = new BubbleSort();
+            // TODO
+
+            // sort
+            bubble.sort(bubbleArray, 0, bubbleArray.length);
+            // TODO
+
+            // record results
+            bubbleComps[i] = bubble.comparisons();
+            bubbleSwaps[i] = bubble.swaps();
+            // TODO
+        }
+
+        try (PrintWriter pw = new PrintWriter(new File("data.csv"))) {
+            printData(pw, "bubble", bubbleComps, bubbleSwaps);
+            // TODO: write data for other algorithms
+        } catch (FileNotFoundException e) {
+            // TODO: give yourself a helpful error message
+        }
+    }
+
+    // You could just copy-paste the print code a bunch of times in the try
+    // block, but a function like this will make it less tedious.
+    static void printData(PrintWriter pw, String name, int[] comparisons, int[] swaps) {
+        pw.println(name + ",,,,,,");
+        pw.print("comparisons,");
+        for (int i : comparisons) {
+            pw.print(i + ",");
+        }
+        pw.println();
+        pw.print("swaps,");
+        for (int i : swaps) {
+            pw.print(i + ",");
+        }
+    }
+}
+</code></pre>
+<p>After you’ve run your experiment, check your data and answer the following
+questions in a markdown (or .txt) file. If you suspect there’s a bug in your
+code (such as it counting comparisons incorrectly), then correct that bug and
+rerun the experiment before answering these questions. Otherwise you may have to
+redo these answers or answer additional questions as part of the revision.</p>
+<ol>
+<li>Recall our class discussion of each algorithm’s efficiency. Come up with
+estimates for the swaps and comparisons you should expect from each algorithm
+when the array length is 10,000 and 50,000. <em>Show your work.</em> I’m not
+expecting you to be precise, but these must be estimates based on the math we
+covered in class and not arbitrary guesses. As a reminder:
+<ul>
+<li>Bubble sort, selection sort, and insertion sort are all O(n^2) algorithms.
+However, this doesn’t mean that both swaps and comparisons are going to be
+n squared, just that at least one of them is n squared.</li>
+<li>Mergesort and quicksort are both O(n*log(n)) algorithms.</li>
+</ul>
+</li>
+<li>How well does the data you collected line up with your estimates? If there
+are significant differences, what do you think might explain those
+differences?</li>
+</ol>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>You should already be aware of our <a href="#academic-integrity-and-accountability-aia-policy">AIA policy</a>, but I
+want to remind you that <em>any</em> use of AI programs to assist with assignments is
+prohibited in this class. It doesn’t matter how the AI software is used
+(answering the questions for you, editing your writing, just making
+suggestions, etc.), it is still a violation of the AIA policy. Suspected AIA
+violations will be reported to the university.</p>
+<p>I’m including a reminder here because, in my experience, some students in
+CSC/SER courses view this kind of written work as unimportant. I consider this
+short assessment of your results to matter as much as any code you write for
+this assignment. Completing the experiment and giving no thought to the
+results misses the point of Task 4. It doesn’t matter if your answers are
+correct, just that they show you took the time to assess your results. I only
+expect you to write enough to clearly explain your thoughts.</p>
+</blockquote>
+<p>This task can still count as as complete if you didn’t finish all of the sorting
+algorithms in the first three tasks. You must have completed at least two of the
+sorting algorithms and you must include <em>all</em> of your completed algorithms in
+the experiment to receive credit for this task. If you revise the assignment and
+complete additional algorithms, then you must update this task to include them
+or it will be marked incomplete on the revision.</p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="schedule"><a class="header" href="#schedule">Schedule</a></h1>
 <p>This is a tentative schedule for topics, assigned readings, and activities.
 Pages for specific dates include more detailed outlines and examples for those
@@ -2121,13 +2451,13 @@ class meetings. Expect this section to be updated frequently.</p>
 <tr><td>4</td><td>09/15</td><td>09/17</td><td>ADTs, interfaces, unordered list</td><td>ch4</td><td></td></tr>
 <tr><td>5</td><td>09/22</td><td>09/24</td><td>algorithm analysis, search</td><td>ch7</td><td></td></tr>
 <tr><td>6</td><td>09/29</td><td>10/01</td><td>recursion</td><td>6.1</td><td></td></tr>
-<tr><td>7</td><td>10/06</td><td>10/08</td><td>recursion, stacks</td><td></td><td></td></tr>
-<tr><td>8</td><td>10/13</td><td>10/15</td><td>sorting algorithms</td><td></td><td></td></tr>
-<tr><td>9</td><td>10/20</td><td>10/22</td><td>queues, linked data structures</td><td></td><td>Monster Battle due 10/18, midterm grades due Wednesday, 10/21</td></tr>
-<tr><td>10</td><td>10/27</td><td>10/29</td><td>lists, generics</td><td></td><td>withdraw deadline Friday, 10/30</td></tr>
-<tr><td>11</td><td>11/03</td><td>11/05</td><td>trees</td><td></td><td></td></tr>
-<tr><td>12</td><td>11/10</td><td>11/12</td><td>hashing</td><td></td><td></td></tr>
-<tr><td>13</td><td>11/17</td><td>11/19</td><td>TBA</td><td></td><td></td></tr>
+<tr><td>7</td><td>10/06</td><td>10/08</td><td>recursion, stacks</td><td>ch8</td><td></td></tr>
+<tr><td>8</td><td>10/13</td><td>10/15</td><td>sorting algorithms</td><td>ch5</td><td></td></tr>
+<tr><td>9</td><td>10/20</td><td>10/22</td><td>linked data structures</td><td>ch9</td><td>Monster Battle due 10/18, midterm grades due Wednesday, 10/21</td></tr>
+<tr><td>10</td><td>10/27</td><td>10/29</td><td>queues, generics</td><td>ch3, ch10</td><td>withdraw deadline Friday, 10/30</td></tr>
+<tr><td>11</td><td>11/03</td><td>11/05</td><td>lists</td><td>ch11</td><td>Maze Solver due 11/01</td></tr>
+<tr><td>12</td><td>11/10</td><td>11/12</td><td>trees</td><td>CS3: ch10</td><td></td></tr>
+<tr><td>13</td><td>11/17</td><td>11/19</td><td>hashing</td><td></td><td>Sorting Experiment due 11/15</td></tr>
 <tr><td>Break</td><td>11/24</td><td>11/26</td><td><strong>NO CLASS</strong></td><td></td><td></td></tr>
 <tr><td>14</td><td>12/01</td><td>12/03</td><td>TBA</td><td></td><td></td></tr>
 <tr><td>Finals</td><td>12/08</td><td>12/10</td><td><strong>NO CLASS</strong></td><td></td><td>final grades due Monday, 12/14</td></tr>
@@ -4739,6 +5069,297 @@ need a stack and one or more loops</li>
 </ul>
 <p>As with <a href="#practice-5">last week’s practice</a>, you can test your code on
 OpenDSA, but you must submit all code on Canvas.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-8-1013-1015"><a class="header" href="#week-8-1013-1015">Week 8 (10/13, 10/15)</a></h1>
+<h3 id="tuesday-agenda-7"><a class="header" href="#tuesday-agenda-7">Tuesday Agenda</a></h3>
+<ul>
+<li>midterm grades
+<ul>
+<li>out of 36 points: 20 for Monster Battle and 16 for W1-W8 practice</li>
+<li>I’ll be submitting them next week after grading final submissions for these
+assignments</li>
+</ul>
+</li>
+<li>sorting problem</li>
+<li>implementing sorting algorithms</li>
+<li>bubble, selection, and insertion sort</li>
+</ul>
+<h3 id="thursday-agenda-7"><a class="header" href="#thursday-agenda-7">Thursday Agenda</a></h3>
+<ul>
+<li>mergesort</li>
+<li>quicksort</li>
+<li>sorting project</li>
+<li>homework
+<ul>
+<li>read 5.1-5.7:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BasicPointers1.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BasicPointers1.html</a></li>
+<li>complete this week’s <a href="#practice-7">practice exercise</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorting-problem"><a class="header" href="#sorting-problem">Sorting Problem</a></h1>
+<p>problem: we need to order a collection of objects from least to greatest
+(ascending order)</p>
+<ul>
+<li>it doesn’t matter if we want ascending or descending order; the algorithms are
+more or less the same, so we’ll default to ascending</li>
+<li>“least to greatest” is easy to determine for numbers, but more complex objects
+may have multiple methods of comparison (for example, sorting posts by likes,
+comments, date, or relevance to a search query)</li>
+</ul>
+<p>why sorting and not a different problem?</p>
+<p>computers have to solve this problem all the time; think about every time you
+use a program and it has to present data in a specific order:</p>
+<ul>
+<li>search results (search engines, pretty much every shopping app/website)</li>
+<li>social media feeds</li>
+<li>high score table or leaderboard in a game</li>
+<li>chat logs and text messages</li>
+<li>photos app</li>
+<li>todo lists or calendars</li>
+<li>music or video playlists</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="implementing-sorting-algorithms"><a class="header" href="#implementing-sorting-algorithms">Implementing Sorting Algorithms</a></h1>
+<p>common operations:</p>
+<ul>
+<li>comparison</li>
+<li>swap</li>
+</ul>
+<p>comparisons are easy for primitive types, but can get expensive for larger
+objects</p>
+<ul>
+<li>compare two numbers using inequality operators: <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+<li>some objects include a <code>compareTo</code> method and implement the <code>Comparable</code>
+interface
+<ul>
+<li>strings include both <code>compareTo</code> and <code>compareToIgnoreCase</code></li>
+</ul>
+</li>
+<li>other objects do not, and you’ll need to write your own comparison method (see
+the <code>Comparator</code> interface)</li>
+<li><code>Camparable</code>’s <code>compareTo</code> and <code>Comparator</code>’s <code>compare</code> return an <code>int</code>:
+<ul>
+<li>a positive number means the first element is greater than the second</li>
+<li>a zero means the objects are equal</li>
+<li>a negative number means the first object is less than the second</li>
+</ul>
+</li>
+</ul>
+<p>some examples:</p>
+<pre><code class="language-java">// comparing primitives
+int a = ...;
+int b = ...;
+
+if (a &lt; b) {
+    // a goes before b
+} else if (a &gt; b) {
+    // a goes after b
+} else { // implies a == b
+    // either order works
+}
+</code></pre>
+<pre><code class="language-java">// comparing with built-in compareTo
+String a = ...;
+String b = ...;
+
+if (a.compareTo(b) &lt; 0) {
+    // a goes before b
+} else if (a.compareTo(b) &gt; 0) {
+    // a goes after b
+} else { //implies a.compareTo(b) == 0
+    // either order works
+}
+</code></pre>
+<pre><code class="language-java">// comparing with a comparator
+String a = ...;
+String b = ...;
+// don't worry about this for now, we'll come back to it later
+java.util.Comparator&lt;String&gt; comp = ...;
+
+if (comp.compare(a, b) &lt; 0) {
+    // a goes before b
+} else if (comp.compare(a, b) &gt; 0) {
+    // a goes after b
+} else { //implies comp.compare(a, b) == 0
+    // either order works
+}
+</code></pre>
+<p>swapping the values of two variables or two positions of an array is simple once
+you know how:</p>
+<pre><code class="language-java">// initial values, who knows what they are
+int a = ...;
+int b = ...;
+
+// temporary variable for the swap
+int temp = a;
+// a has been saved in temp and can now be overwritten with b
+a = b;
+// b has been saved in a and can now be overwritten with a's old value (temp)
+b = temp;
+
+// same thing, but swapping array elements at i and j:
+int temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+</code></pre>
+<p>other operations:</p>
+<ul>
+<li>copy (just a single assignment statement, replace one value with another)</li>
+<li>create a new (temporary) array</li>
+<li>copy a section of one array to another array</li>
+<li>shift elements up or down in an array (we did this in an earlier list example)</li>
+</ul>
+<p>when analyzing these algorithms, we only care about the fastest-growing
+operation; an algorithm that has O(n) comparisons and O(n^2) swaps would still
+be O(n^2), even if swaps are generally cheaper than comparisons</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="slow-algorithms"><a class="header" href="#slow-algorithms">Slow Algorithms</a></h1>
+<p>the algorithms covered in the textbook, all of which are generally inefficient
+and fall in the O(n^2) category:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bubble_sort">bubble sort</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Selection_sort">selection sort</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Insertion_sort">insertion sort</a></li>
+</ul>
+<p>some questions to consider:</p>
+<ul>
+<li>why are these O(n^2)?</li>
+<li>how do they compare to one another?</li>
+<li>are these algorithms useful?</li>
+</ul>
+<p>an ever slower algorithm that you may find interesting: robsort
+(<a href="http://www.robsort.org/">http://www.robsort.org/</a>) was designed to be as inefficient as possible and is
+O(n!)</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fast-algorithms"><a class="header" href="#fast-algorithms">Fast Algorithms</a></h1>
+<p>two recursive algorithms with O(n log n) performance:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Merge_sort">mergesort</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Quicksort">quicksort</a></li>
+</ul>
+<p>another algorithm that we won’t have time to cover:
+<a href="https://en.wikipedia.org/wiki/Radix_sort">radix sort</a> sorts without comparing
+elements and can be very efficient for certain kinds of input</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorting-project"><a class="header" href="#sorting-project">Sorting Project</a></h1>
+<p>A3 will be a sorting project</p>
+<p>default assignment:</p>
+<ul>
+<li>solo assignment like other projects</li>
+<li>implement five sorting algorithms</li>
+<li>implement and run experiment</li>
+</ul>
+<p>alternative: make it a group project</p>
+<ul>
+<li>more algorithms, but divide the work</li>
+<li>experiment and analysis still solo</li>
+<li>share results during class?</li>
+</ul>
+<p>anyone can do the solo project, but let me know by next week if you want to work
+with a group</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorting-algorithm-pseudocode"><a class="header" href="#sorting-algorithm-pseudocode">Sorting Algorithm Pseudocode</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>In my pseudocode, I use “from a <strong>to</strong> b” to imply b is included in the range
+and “from a <strong>until</strong> b” to imply b is excluded from the range. Variables and
+parameters named “start” and “end” imply a range that <strong>includes</strong> “start” and
+<strong>excludes</strong> “end”.</p>
+<p>You’ll also want to pay attention to the direction of a loop. Some loops count
+down instead of up, which affects your update (increment or decrement) and
+which inequality is needed in the condition.</p>
+</blockquote>
+<h2 id="bubble-sort"><a class="header" href="#bubble-sort">Bubble Sort</a></h2>
+<pre><code>sort(array, start, end):
+    // NOTE: counts down, not up!
+    for each lastSwapIndex from end - 2 until start
+        for each i from start to lastSwapIndex
+            if array[i] &gt; array[i + 1]
+                swap array, i, i+1
+</code></pre>
+<h2 id="selection-sort"><a class="header" href="#selection-sort">Selection Sort</a></h2>
+<pre><code>sort(array, start, end):
+    // NOTE: counts down, not up!
+    for each swapIndex from end - 1 to start
+        greatestElementIndex = start
+        for each i from start + 1 to swapIndex
+            if array[i] &gt; array[greatestElementIndex]
+                greatestElementIndex = i
+        swap array, greatestElementIndex, swapIndex
+</code></pre>
+<h2 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion Sort</a></h2>
+<pre><code>sort(array, start, end):
+    for each sortedEnd from start + 1 until end
+        // NOTE: counts down, not up!
+        for each i from sortedEnd until start
+            if array[i] &lt; array[i - 1]
+                swap array, i, i-1
+            else
+                break
+</code></pre>
+<h2 id="mergesort"><a class="header" href="#mergesort">Mergesort</a></h2>
+<pre><code>sort(array, start, end):
+    if end - start &lt; 2
+        return
+    sort(array, start, (end + start) / 2)
+    sort(array, (end + start) / 2, end)
+    merge(array, start, end)
+
+merge(array, start, end):
+    mergeArray = new array with length of (end - start)
+    mid = (start + end) / 2
+    index1 = start
+    end1 = mid
+    index2 = mid
+    end2 = end
+
+    for each i from 0 until mergeArray.length
+        if index1 &lt; end1 and index2 &lt; end2
+            if array[index2] &lt; array[index1]
+                copy array[index2] to mergeArray[i] (counts as a swap)
+                increment index2
+            else
+                copy array[index1] to mergeArray[i] (counts as a swap)
+                increment index1
+        else if index1 &lt; end1
+            copy array[index1] to mergeArray[i] (counts as a swap)
+            increment index1
+        else
+            copy array[index2] to mergeArray[i] (counts as a swap)
+            increment index2
+
+    for each i from 0 until mergeArray.length
+        copy mergeArray[i] to array[start + i] (counts as a swap)
+</code></pre>
+<h2 id="quicksort"><a class="header" href="#quicksort">Quicksort</a></h2>
+<pre><code>sort(array, start, end):
+    if end - start &lt; 2
+        return
+    pivot = partition(array, start, end)
+    sort(array, start, pivot)
+    sort(array, pivot + 1, end)
+
+partition(array, start, end):
+    pivot = random number from start (inclusive) to end (exclusive)
+    swap array, start, pivot
+
+    secondPartitionStart = start + 1
+    for each i from start + 1 until end
+        if array[i] &lt; array[start]
+            swap array, i, secondPartitionStart
+            increment secondPartitionStart
+
+    pivot = secondPartitionStart - 1
+    swap array, start, pivot
+    return pivot
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-7"><a class="header" href="#practice-7">Practice</a></h1>
+<p>Implement one of the recursive fractal functions from last week: either the
+sierpinski triangle or the hydrangea. Use the <code>Drawing.java</code> starter code and
+submit the program on Canvas.</p>
 
                     </main>
 
