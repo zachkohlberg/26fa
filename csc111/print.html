@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1b7d1778.js";
+            window.path_to_searchindex_js = "searchindex-1e6d14ba.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-fdd459a5.js"></script>
+        <script src="toc-b5b79cb1.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -316,11 +316,11 @@ work.</p>
 <h2 id="deadlines"><a class="header" href="#deadlines">Deadlines</a></h2>
 <p>Unless otherwise noted, all deadlines are by 11:59 PM Eastern Time on the given
 date. Late work is not accepted.</p>
-<p>Larger assignments that allow multiple submissions will be graded on Mondays and
-Fridays. You may submit these assignments as often as you want until the
-deadline. Expect to revise these assignments at least two or three times before
-receiving full credit, and make your first submission at least two weeks before
-the deadline to allow time for revisions.</p>
+<p>Larger assignments that allow multiple submissions will be graded on Mondays,
+Wednesdays, and Fridays. You may submit these assignments as often as you want
+until the deadline. Expect to revise these assignments at least two or three
+times before receiving full credit, and make your first submission at least two
+weeks before the deadline to allow time for revisions.</p>
 <h2 id="extensions"><a class="header" href="#extensions">Extensions</a></h2>
 <p>If you would like extra time to work on an assignment, then you can request an
 extension to the deadline via email. When requesting an extension:</p>
@@ -5360,6 +5360,219 @@ partition(array, start, end):
 <p>Implement one of the recursive fractal functions from last week: either the
 sierpinski triangle or the hydrangea. Use the <code>Drawing.java</code> starter code and
 submit the program on Canvas.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-9-1020-1022"><a class="header" href="#week-9-1020-1022">Week 9 (10/20, 10/22)</a></h1>
+<h3 id="tuesday-agenda-8"><a class="header" href="#tuesday-agenda-8">Tuesday Agenda</a></h3>
+<ul>
+<li>java reference basics</li>
+<li>box and node examples</li>
+<li>immutable linked list</li>
+</ul>
+<h3 id="thursday-agenda-8"><a class="header" href="#thursday-agenda-8">Thursday Agenda</a></h3>
+<ul>
+<li>recursive list operations</li>
+<li>linked stack</li>
+<li>other node operations</li>
+<li>homework
+<ul>
+<li>read chapter 9:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/Queue.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/Queue.html</a></li>
+<li><a href="#practice-8">practice</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="java-references"><a class="header" href="#java-references">Java References</a></h1>
+<p>I wrote more than I intended here. I’ll leave all of these notes as a reference
+(haha…) and focus more on writing some examples during class.</p>
+<ul>
+<li>we’ll use “pointer” and “reference” interchangeably
+<ul>
+<li>pointer usually refers to what you’d find in a language like C or C++: more
+powerful and more dangerous than what Java allows</li>
+<li>reference is a more general term for something that doesn’t directly store
+data and provides a way to access that data (such as an index into an array
+or a memory address)</li>
+</ul>
+</li>
+<li>value vs reference
+<ul>
+<li><code>int</code>, <code>float</code>, etc. (all built-in types starting with lowercase letters)
+are “primitive” types; we could also refer to them as “value” types</li>
+<li>value types store data directly in a variable</li>
+<li>all other types in Java are “reference” types</li>
+<li>reference types store their data on the heap; variables only store a
+pointer/reference to that data</li>
+</ul>
+</li>
+<li>pass by value vs pass by reference
+<ul>
+<li>pass by value: calling a function passes a copy of the variable’s value to
+the function’s parameter</li>
+<li>pass by reference: calling a function passes a reference to the variable to
+the function’s parameter</li>
+<li>Java is pass by value
+<ul>
+<li>for primitive types, a copy of the data is passed to the function call</li>
+<li>for reference types, a copy of the reference is passed to the function
+call (this is the value stored in the variable, so it’s still “pass by
+value”)</li>
+</ul>
+</li>
+<li>we’re using reference two different ways (specific meaning in “pass by
+reference” and Java’s “reference types”), so it’s easy to get confused</li>
+</ul>
+</li>
+<li>null references
+<ul>
+<li>any reference type can be equal to <code>null</code></li>
+<li><code>null</code> means that the reference doesn’t point to an object (variable is
+effectively empty)</li>
+</ul>
+</li>
+<li>dereferencing
+<ul>
+<li>putting a dot after a variable to access a variable or method will
+“dereference” the variable, or follow the reference to its data so we can
+access the method or variable</li>
+<li>dereferencing a <code>null</code> will trigger a <code>NullPointerException</code>; you can’t
+follow the reference to its data if it doesn’t reference any data</li>
+</ul>
+</li>
+<li>comparing and copying
+<ul>
+<li><code>==</code> compares the value of two variables, which for reference types is their
+reference (not the data being referenced!)</li>
+<li>assignments between reference types do not copy the data being referenced,
+just the reference
+<ul>
+<li>there’s still only one copy of the object</li>
+<li>if the object is mutable, then we can change it through either variable</li>
+<li>any changes can be seen through either variable</li>
+</ul>
+</li>
+<li>if a reference type implements its own <code>.equals</code> method, then we can use
+this to compare the data instead of the reference</li>
+<li>if we want to copy an object instead of its reference, then we need to make
+a new object and copy all of the data from the old object to the new one</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="box-example"><a class="header" href="#box-example">Box Example</a></h1>
+<p>“Boxing” refers to wrapping a value in an object, usually to turn a primitive
+value into an object. The standard library gives us some immutable box/wrapper
+types for all of the primitive types (see <code>Integer</code>, <code>Double</code>, <code>Character</code>, etc.
+in
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/package-summary.html"><code>java.lang</code></a>).
+We’ll need these when we work with generic types, but for now you don’t need
+them.</p>
+<p>As an example, we’ll write our own <strong>mutable</strong> wrapper type called <code>IntBox</code>.
+This will be an object that stores one integer and allows us to access or modify
+it as we please. We can use this to demonstrate some of the earlier points about
+how reference types work in Java:</p>
+<ul>
+<li><code>null</code> and NPEs</li>
+<li>how to write our own <code>equals</code> method</li>
+<li>what happens when we have multiple references to a mutable object</li>
+<li>comparing reference vs comparing object (shallow vs deep comparison)</li>
+<li>copying reference vs copying object (shallow vs deep copy)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="nodeslinks"><a class="header" href="#nodeslinks">Nodes/Links</a></h1>
+<p>The textbook uses the term “link” for this type of object, but I prefer to call
+them “nodes”. Either term is fine. We can have different kinds of nodes, but for
+now a node is an object with:</p>
+<ul>
+<li>an instance variable that stores some data (we’ll make an <code>int</code> node, but the
+data can be of any type)</li>
+<li>an instance variable that stores a reference to another node</li>
+</ul>
+<p>What’s the point of this new type?</p>
+<ul>
+<li>the node reference allows us to connect multiple nodes to form a chain</li>
+<li>most data structure implementations will either store their data in an array
+(<code>ArrayList</code>, <code>ArrayStack</code>, etc.) or in a chain of nodes (<code>LinkedList</code>,
+<code>LinkedStack</code>, etc.)</li>
+<li>both implementations have different pros and cons and are useful in the right
+situation</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="immutable-linked-list"><a class="header" href="#immutable-linked-list">Immutable Linked List</a></h1>
+<p>Consider this a fun tangent (unless it’s not fun). We’re going to make a linked
+list class that works more like the lists you’d find in a
+<a href="https://en.wikipedia.org/wiki/Functional_programming">functional language</a>:</p>
+<ul>
+<li>the list is immutable: all variables will be marked final</li>
+<li>for convenience, all variables will be public (we can’t mutate them and don’t
+care who can see them)</li>
+<li>there’s no separate node class: the list itself is the node</li>
+</ul>
+<p>This is not how we’ll implement our other data structures, including our proper
+list class. However, it’s an interesting exercise that lets us play with
+recursion and nodes, so I think it’s worth our time.</p>
+<p>This list works well with recursion, so we’ll implement some recursive
+operations for it.</p>
+<p>Our <code>ImmutableIntList</code> class will look like this:</p>
+<ul>
+<li>static variable
+<ul>
+<li><code>EMPTY</code>: <code>ImmutableIntList</code> will equal <code>null</code> as a reminder that <code>null</code>
+represents an empty list</li>
+</ul>
+</li>
+<li>instance variables (<code>public</code> and <code>final</code>)
+<ul>
+<li><code>head</code>: <code>int</code> is the first element in the list</li>
+<li><code>tail</code>: <code>ImmutableIntList</code> is a list of the elements after head</li>
+</ul>
+</li>
+<li>constructors
+<ul>
+<li><code>ImmutableIntList(h: int)</code>: constructs a list with one element</li>
+<li><code>ImmutableIntList(h: int, t: ImmutableIntList)</code>: constructs a list with a
+head element followed by another list</li>
+</ul>
+</li>
+<li>methods
+<ul>
+<li><code>get(index: int)</code>: <code>int</code> recursively finds the element at the specified
+index or throws an <code>IndexOutOfBounds</code> exception if the index is out of
+bounds</li>
+<li><code>last()</code>: <code>int</code> recursively traverses the list and returns the last element</li>
+<li><code>size()</code>: <code>int</code> recursively counts the number of elements in the list and
+returns the size</li>
+<li><code>indexOf(element: int)</code>: <code>int</code> recursively searches the list for an element
+and returns the index if found or -1 if not found</li>
+<li><code>add(element: int)</code>: <code>int</code> returns a new list with <code>element</code> as the head and
+this list as the tail</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linked-stack"><a class="header" href="#linked-stack">Linked Stack</a></h1>
+<p>We’ll use our int node to implement a node-based stack. This will use the same
+ADT as our earlier array-based stack.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="node-operations"><a class="header" href="#node-operations">Node Operations</a></h1>
+<p>The linked stack, like the array stack, is a simple data structure to implement.
+It doesn’t cover much of what you can do with nodes, so we’ll look at some
+examples of how you can work with chains of nodes. This will be useful when we
+implement a linked list.</p>
+<p>Operations we can try (as time allows):</p>
+<ul>
+<li>traverse a chain of nodes using a loop (instead of recursion)</li>
+<li>print the data stored in a chain</li>
+<li>add a node to the start or end of a chain</li>
+<li>add a node somewhere in the middle of a chain</li>
+<li>remove a node from the start or end of a chain</li>
+<li>remove a node from somewhere in the middle of a chain</li>
+<li>search a chain for a node with a specific value</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-8"><a class="header" href="#practice-8">Practice</a></h1>
+<p>TBA, will likely involve some of the node operations that we didn’t have time
+for during class.</p>
 
                     </main>
 
