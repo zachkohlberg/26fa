@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1e6d14ba.js";
+            window.path_to_searchindex_js = "searchindex-b43fa71b.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b5b79cb1.js"></script>
@@ -5366,13 +5366,14 @@ submit the program on Canvas.</p>
 <ul>
 <li>java reference basics</li>
 <li>box and node examples</li>
-<li>immutable linked list</li>
 </ul>
 <h3 id="thursday-agenda-8"><a class="header" href="#thursday-agenda-8">Thursday Agenda</a></h3>
 <ul>
-<li>recursive list operations</li>
+<li>immutable linked list</li>
+<li>stack ADT</li>
+<li>array stack (w7 catchup)</li>
 <li>linked stack</li>
-<li>other node operations</li>
+<li>other node operations (if time allows, which it probably won’t)</li>
 <li>homework
 <ul>
 <li>read chapter 9:
@@ -5571,8 +5572,16 @@ implement a linked list.</p>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="practice-8"><a class="header" href="#practice-8">Practice</a></h1>
-<p>TBA, will likely involve some of the node operations that we didn’t have time
-for during class.</p>
+<ol>
+<li>Write a static method that takes an <code>IntNode</code> and prints how many nodes are
+in the chain. You can assume the chain does not contain a reference cycle, or
+you can include a <code>maxSize</code> parameter and return early or throw an exception
+when the max size is exceeded. Use a for loop or while loop and <strong>no
+recursion</strong>.</li>
+<li>Write a static method that takes an <code>IntNode</code> and prints every number in the
+chain beginning with this node. As before, you can either assume no cycles or
+cap the chain size, and you should not use recursion in this method either.</li>
+</ol>
 
                     </main>
 
