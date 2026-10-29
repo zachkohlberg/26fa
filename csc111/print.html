@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-058cedb8.js";
+            window.path_to_searchindex_js = "searchindex-07953966.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-095d2f20.js"></script>
+        <script src="toc-b772e2d4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -5518,14 +5518,14 @@ operations for it.</p>
 <ul>
 <li>static variable
 <ul>
-<li><code>EMPTY</code>: <code>ImmutableIntList</code> will equal <code>null</code> as a reminder that <code>null</code>
+<li><code>EMPTY: ImmutableIntList</code> will equal <code>null</code> as a reminder that <code>null</code>
 represents an empty list</li>
 </ul>
 </li>
 <li>instance variables (<code>public</code> and <code>final</code>)
 <ul>
-<li><code>head</code>: <code>int</code> is the first element in the list</li>
-<li><code>tail</code>: <code>ImmutableIntList</code> is a list of the elements after head</li>
+<li><code>head: int</code> is the first element in the list</li>
+<li><code>tail: ImmutableIntList</code> is a list of the elements after head</li>
 </ul>
 </li>
 <li>constructors
@@ -5537,16 +5537,15 @@ head element followed by another list</li>
 </li>
 <li>methods
 <ul>
-<li><code>get(index: int)</code>: <code>int</code> recursively finds the element at the specified
-index or throws an <code>IndexOutOfBounds</code> exception if the index is out of
-bounds</li>
-<li><code>last()</code>: <code>int</code> recursively traverses the list and returns the last element</li>
-<li><code>size()</code>: <code>int</code> recursively counts the number of elements in the list and
+<li><code>get(index: int): int</code> recursively finds the element at the specified index
+or throws an <code>IndexOutOfBounds</code> exception if the index is out of bounds</li>
+<li><code>last(): int</code> recursively traverses the list and returns the last element</li>
+<li><code>size(): int</code> recursively counts the number of elements in the list and
 returns the size</li>
-<li><code>indexOf(element: int)</code>: <code>int</code> recursively searches the list for an element
+<li><code>indexOf(element: int): int</code> recursively searches the list for an element
 and returns the index if found or -1 if not found</li>
-<li><code>add(element: int)</code>: <code>int</code> returns a new list with <code>element</code> as the head and
-this list as the tail</li>
+<li><code>add(element: int): ImmutableIntList</code> returns a new list with <code>element</code> as
+the head and this list as the tail</li>
 </ul>
 </li>
 </ul>
@@ -5714,7 +5713,7 @@ on because it’s not part of the interface.</p>
 <ul>
 <li><code>enqueue(element: E): boolean</code> adds element to the back of the queue,
 returning whether it succeeded</li>
-<li><code>dequeue(): E</code> removes and returns the front element from the stack; throws a
+<li><code>dequeue(): E</code> removes and returns the front element from the queue; throws a
 <code>NoSuchElementException</code> if the queue is empty</li>
 <li><code>peek(): E</code> as dequeue, but leaves the element in the queue</li>
 <li><code>size(): int</code> returns number of elements in the queue</li>
@@ -5777,7 +5776,206 @@ either a stack or a queue.</p>
 that’s worth mentioning.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="practice-9"><a class="header" href="#practice-9">Practice</a></h1>
-<p>TBD, check back after Thursday’s class.</p>
+<p>Write one generic class (<code>Pair&lt;T, S&gt;</code>) to replace the three repetitive pair
+classes below. Then rewrite the test program so that it only uses your <code>Pair</code>
+class. Finally, add a fourth pair of a different type (such as a double, boolean
+pair) to the test program to show how much better your generic class is than my
+starter code.</p>
+<pre><code class="language-java">public class IntIntPair {
+    public int v1, v2;
+
+    public IntIntPair(int v1, int v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
+
+    public String toString() {
+        return String.format("(%s, %s)", v1, v2);
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class StringIntPair {
+    public String v1;
+    public int v2;
+
+    public StringIntPair(String v1, int v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
+
+    public String toString() {
+        return String.format("(%s, %s)", v1, v2);
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class StringStringPair {
+    public String v1, v2;
+
+    public StringStringPair(String v1, String v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
+
+    public String toString() {
+        return String.format("(%s, %s)", v1, v2);
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class PairTest {
+    public static void main(String[] args) {
+        IntIntPair p1 = new IntIntPair(6, 7); // I'm sorry
+        StringIntPair p2 = new StringIntPair("red", 0xFF0000);
+        StringStringPair p3 = new StringStringPair("hello", "world");
+        // TODO: your fourth pair
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
+        // TODO: print your fourth pair
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-11-1103-1105"><a class="header" href="#week-11-1103-1105">Week 11 (11/03, 11/05)</a></h1>
+<h2 id="tuesday-agenda-10"><a class="header" href="#tuesday-agenda-10">Tuesday Agenda</a></h2>
+<ul>
+<li>list adt</li>
+<li>array-based list implementation</li>
+</ul>
+<h2 id="thursday-agenda-10"><a class="header" href="#thursday-agenda-10">Thursday Agenda</a></h2>
+<ul>
+<li>linked list implementation</li>
+<li>linked data structure implementations</li>
+<li>homework
+<ul>
+<li>read chapter 11:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BinaryTreeIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BinaryTreeIntro.html</a></li>
+<li><a href="#practice-10">practice</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="list-adt"><a class="header" href="#list-adt">List ADT</a></h1>
+<ul>
+<li><code>insert(index: int, element: E)</code> add an element at a specific index</li>
+<li><code>get(index: int): E</code> retrieve an element at a specific index</li>
+<li><code>removeAt(index: int): E</code> remove and return the element at a specific index</li>
+<li><code>size(): int</code> return the number of elements stored in the list</li>
+<li><code>add(element: E)</code> add an element to the end of the list</li>
+<li><code>remove(element: E): boolean</code> remove a specific element from the list,
+regardless of its index, and return whether it was removed successfully</li>
+<li><code>indexOf(element: E): int</code> return the index of a specific element or -1 if
+it’s not in the list</li>
+<li><code>clear()</code> remove everything from the list</li>
+<li><code>isEmpty(): boolean</code> return whether the list is empty</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="array-list"><a class="header" href="#array-list">Array List</a></h1>
+<p>This implementation involves a few things we didn’t have to do with the
+array-based stack and queue data structures.</p>
+<ul>
+<li>insert and remove require shifting elements</li>
+<li>indexOf requires a linear search</li>
+</ul>
+<p>We’ll try to implement most of these during class, but a few may end up as
+homework problems.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linked-list"><a class="header" href="#linked-list">Linked List</a></h1>
+<p>As with the array list, the linked list is more complex to implement than the
+linked stack and linked queue.</p>
+<ul>
+<li>insert, get, remove/removeAt, and indexOf require traversing the nodes</li>
+<li>insert and remove have some special cases</li>
+<li>add will also require traversing the nodes to reach the end unless we keep a
+second node pointer for the end of the list</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linked-data-structures"><a class="header" href="#linked-data-structures">Linked Data Structures</a></h1>
+<p>Some options that we may discuss further and demonstrate with our linked list:</p>
+<ul>
+<li>nodes with two pointers, one to the next node and one to the previous node,
+can make some list operations faster and/or easier to code (see the textbook
+section on “doubly linked lists”</li>
+<li>extra nodes containing no element can be used to eliminate special cases
+related to empty lists (see textbook implementation’s header node)</li>
+<li>circular chains of nodes or additional pointers can make some traversals
+faster or easier to implement</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-10"><a class="header" href="#practice-10">Practice</a></h1>
+<p>TBD</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-12-1110-1112"><a class="header" href="#week-12-1110-1112">Week 12 (11/10, 11/12)</a></h1>
+<h2 id="tuesday-agenda-11"><a class="header" href="#tuesday-agenda-11">Tuesday Agenda</a></h2>
+<ul>
+<li>binary tree introduction</li>
+<li>binary tree properties</li>
+<li>binary tree nodes</li>
+<li>binary search tree</li>
+</ul>
+<h2 id="thursday-agenda-11"><a class="header" href="#thursday-agenda-11">Thursday Agenda</a></h2>
+<ul>
+<li>bst insertion</li>
+<li>traversals</li>
+<li>implementation</li>
+<li>homework
+<ul>
+<li>read chapter 10.1-10.4 of the CS3 textbook (not our normal textbook):
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS3/html/HashIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS3/html/HashIntro.html</a></li>
+<li><a href="#practice-11">practice</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="trees"><a class="header" href="#trees">Trees</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binary-trees"><a class="header" href="#binary-trees">Binary Trees</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binary-search-tree-adt"><a class="header" href="#binary-search-tree-adt">Binary Search Tree ADT</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="tree-traversals"><a class="header" href="#tree-traversals">Tree Traversals</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binary-search-tree-implementation"><a class="header" href="#binary-search-tree-implementation">Binary Search Tree Implementation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-11"><a class="header" href="#practice-11">Practice</a></h1>
+<p>TBD</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-13-1117-1119"><a class="header" href="#week-13-1117-1119">Week 13 (11/17, 11/19)</a></h1>
+<h2 id="tuesday-agenda-12"><a class="header" href="#tuesday-agenda-12">Tuesday Agenda</a></h2>
+<ul>
+<li>hashing</li>
+<li>tables, maps, etc.</li>
+<li>hash table adt</li>
+</ul>
+<h2 id="thursday-agenda-12"><a class="header" href="#thursday-agenda-12">Thursday Agenda</a></h2>
+<ul>
+<li>hash table implementation</li>
+<li>homework
+<ul>
+<li><a href="#practice-12">practice</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hashing"><a class="header" href="#hashing">Hashing</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hash-tables-and-maps"><a class="header" href="#hash-tables-and-maps">Hash Tables and Maps</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hash-table-adt"><a class="header" href="#hash-table-adt">Hash Table ADT</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hash-table-implementation"><a class="header" href="#hash-table-implementation">Hash Table Implementation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-12"><a class="header" href="#practice-12">Practice</a></h1>
+<p>TBD</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-14-1201-1203"><a class="header" href="#week-14-1201-1203">Week 14 (12/01, 12/03)</a></h1>
+<h2 id="tuesday-agenda-13"><a class="header" href="#tuesday-agenda-13">Tuesday Agenda</a></h2>
+<ul>
+<li>finish assignments</li>
+</ul>
+<h2 id="thursday-agenda-13"><a class="header" href="#thursday-agenda-13">Thursday Agenda</a></h2>
+<ul>
+<li>finish assignments</li>
+</ul>
 
                     </main>
 

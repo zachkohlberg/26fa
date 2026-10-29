@@ -34,10 +34,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-058cedb8.js";
+            window.path_to_searchindex_js = "../../searchindex-07953966.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-095d2f20.js"></script>
+        <script src="../../toc-b772e2d4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -174,7 +174,64 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
-<p>TBD, check back after Thursday’s class.</p>
+<p>Write one generic class (<code>Pair&lt;T, S&gt;</code>) to replace the three repetitive pair
+classes below. Then rewrite the test program so that it only uses your <code>Pair</code>
+class. Finally, add a fourth pair of a different type (such as a double, boolean
+pair) to the test program to show how much better your generic class is than my
+starter code.</p>
+<pre><code class="language-java">public class IntIntPair {
+    public int v1, v2;
+
+    public IntIntPair(int v1, int v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
+
+    public String toString() {
+        return String.format("(%s, %s)", v1, v2);
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class StringIntPair {
+    public String v1;
+    public int v2;
+
+    public StringIntPair(String v1, int v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
+
+    public String toString() {
+        return String.format("(%s, %s)", v1, v2);
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class StringStringPair {
+    public String v1, v2;
+
+    public StringStringPair(String v1, String v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
+
+    public String toString() {
+        return String.format("(%s, %s)", v1, v2);
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class PairTest {
+    public static void main(String[] args) {
+        IntIntPair p1 = new IntIntPair(6, 7); // I'm sorry
+        StringIntPair p2 = new StringIntPair("red", 0xFF0000);
+        StringStringPair p3 = new StringStringPair("hello", "world");
+        // TODO: your fourth pair
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
+        // TODO: print your fourth pair
+    }
+}
+</code></pre>
 
                     </main>
 
@@ -184,6 +241,9 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
+                            <a rel="next prefetch" href="../../schedule/w11.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -195,6 +255,9 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
+                    <a rel="next prefetch" href="../../schedule/w11.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
             </nav>
 
         </div>

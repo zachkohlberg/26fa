@@ -34,10 +34,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-058cedb8.js";
+            window.path_to_searchindex_js = "../../searchindex-07953966.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-095d2f20.js"></script>
+        <script src="../../toc-b772e2d4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -192,14 +192,14 @@ operations for it.</p>
 <ul>
 <li>static variable
 <ul>
-<li><code>EMPTY</code>: <code>ImmutableIntList</code> will equal <code>null</code> as a reminder that <code>null</code>
+<li><code>EMPTY: ImmutableIntList</code> will equal <code>null</code> as a reminder that <code>null</code>
 represents an empty list</li>
 </ul>
 </li>
 <li>instance variables (<code>public</code> and <code>final</code>)
 <ul>
-<li><code>head</code>: <code>int</code> is the first element in the list</li>
-<li><code>tail</code>: <code>ImmutableIntList</code> is a list of the elements after head</li>
+<li><code>head: int</code> is the first element in the list</li>
+<li><code>tail: ImmutableIntList</code> is a list of the elements after head</li>
 </ul>
 </li>
 <li>constructors
@@ -211,16 +211,15 @@ head element followed by another list</li>
 </li>
 <li>methods
 <ul>
-<li><code>get(index: int)</code>: <code>int</code> recursively finds the element at the specified
-index or throws an <code>IndexOutOfBounds</code> exception if the index is out of
-bounds</li>
-<li><code>last()</code>: <code>int</code> recursively traverses the list and returns the last element</li>
-<li><code>size()</code>: <code>int</code> recursively counts the number of elements in the list and
+<li><code>get(index: int): int</code> recursively finds the element at the specified index
+or throws an <code>IndexOutOfBounds</code> exception if the index is out of bounds</li>
+<li><code>last(): int</code> recursively traverses the list and returns the last element</li>
+<li><code>size(): int</code> recursively counts the number of elements in the list and
 returns the size</li>
-<li><code>indexOf(element: int)</code>: <code>int</code> recursively searches the list for an element
+<li><code>indexOf(element: int): int</code> recursively searches the list for an element
 and returns the index if found or -1 if not found</li>
-<li><code>add(element: int)</code>: <code>int</code> returns a new list with <code>element</code> as the head and
-this list as the tail</li>
+<li><code>add(element: int): ImmutableIntList</code> returns a new list with <code>element</code> as
+the head and this list as the tail</li>
 </ul>
 </li>
 </ul>
