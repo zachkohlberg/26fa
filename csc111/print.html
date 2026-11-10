@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-9abc15d1.js";
+            window.path_to_searchindex_js = "searchindex-a36e8e44.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-b772e2d4.js"></script>
+        <script src="toc-f808c3c0.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -2288,12 +2288,11 @@ public class SortTests {
     }
 }
 </code></pre>
-<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
-<h3 id="task-1-bubble-selection-and-insertion-sort-5-points"><a class="header" href="#task-1-bubble-selection-and-insertion-sort-5-points">Task 1: Bubble, Selection, and Insertion Sort (5 points)</a></h3>
+<h2 id="task-1-bubble-selection-and-insertion-sort-5-points"><a class="header" href="#task-1-bubble-selection-and-insertion-sort-5-points">Task 1: Bubble, Selection, and Insertion Sort (5 points)</a></h2>
 <p>Write a <code>BubbleSort</code>, <code>SelectionSort</code>, and <code>InsertionSort</code> class. Each class
 must implement the <code>Sort</code> interface provided in the starter code. Each class
 must correctly track swaps and comparisons made while sorting.</p>
-<h4 id="requirements-5"><a class="header" href="#requirements-5">Requirements</a></h4>
+<h3 id="requirements-5"><a class="header" href="#requirements-5">Requirements</a></h3>
 <ul>
 <li>Each sorting algorithm must pass the <code>SortTests</code> test.</li>
 <li>Each sorting algorithm must implement the algorithm as shown in the
@@ -2304,14 +2303,14 @@ differences in your comments and explain why you made the changes.</li>
 any full swaps, then I still want you to count shifting an element as a swap
 for the sake of simplicity.</li>
 </ul>
-<h3 id="task-2-mergesort-5-points"><a class="header" href="#task-2-mergesort-5-points">Task 2: Mergesort (5 points)</a></h3>
+<h2 id="task-2-mergesort-5-points"><a class="header" href="#task-2-mergesort-5-points">Task 2: Mergesort (5 points)</a></h2>
 <p>Implement a mergesort algorithm (<code>Mergesort.java</code>). Same requirements as Task 1,
 but I want you to count copying an element from one array to another as a swap.
 This is less work than a swap (1 assignment rather than 3), but it’s a similar
 operation and I don’t want to complicate our data by tracking a third operation.</p>
-<h3 id="task-3-quicksort-5-points"><a class="header" href="#task-3-quicksort-5-points">Task 3: Quicksort (5 points)</a></h3>
+<h2 id="task-3-quicksort-5-points"><a class="header" href="#task-3-quicksort-5-points">Task 3: Quicksort (5 points)</a></h2>
 <p>Implement a quicksort algorithm (<code>Quicksort.java</code>). Same requirements as Task 1.</p>
-<h3 id="task-4-experiment-5-points"><a class="header" href="#task-4-experiment-5-points">Task 4: Experiment (5 points)</a></h3>
+<h2 id="task-4-experiment-5-points"><a class="header" href="#task-4-experiment-5-points">Task 4: Experiment (5 points)</a></h2>
 <p>Write a program named <code>SortingExperiment.java</code> that does the following:</p>
 <ul>
 <li>Choose an arbitrary number as a seed and set the seed in <code>SortHelper</code>. This
@@ -2456,8 +2455,8 @@ class meetings. Expect this section to be updated frequently.</p>
 <tr><td>9</td><td>10/20</td><td>10/22</td><td>linked data structures</td><td>ch9</td><td>Monster Battle due 10/18, midterm grades due Wednesday, 10/21</td></tr>
 <tr><td>10</td><td>10/27</td><td>10/29</td><td>queues, generics</td><td>ch3, ch10</td><td>withdraw deadline Friday, 10/30</td></tr>
 <tr><td>11</td><td>11/03</td><td>11/05</td><td>lists</td><td>ch11</td><td></td></tr>
-<tr><td>12</td><td>11/10</td><td>11/12</td><td>trees</td><td>CS3: ch10</td><td>Maze Solver due 11/08</td></tr>
-<tr><td>13</td><td>11/17</td><td>11/19</td><td>hashing</td><td></td><td></td></tr>
+<tr><td>12</td><td>11/10</td><td>11/12</td><td>trees</td><td>TBA</td><td>Maze Solver due 11/08</td></tr>
+<tr><td>13</td><td>11/17</td><td>11/19</td><td>minimax</td><td></td><td></td></tr>
 <tr><td>Break</td><td>11/24</td><td>11/26</td><td><strong>NO CLASS</strong></td><td></td><td>Sorting Experiment due 11/22</td></tr>
 <tr><td>14</td><td>12/01</td><td>12/03</td><td>TBA</td><td></td><td></td></tr>
 <tr><td>Finals</td><td>12/08</td><td>12/10</td><td><strong>NO CLASS</strong></td><td></td><td>final grades due Monday, 12/14</td></tr>
@@ -5916,6 +5915,12 @@ started during class.</p>
 <h1 id="week-12-1110-1112"><a class="header" href="#week-12-1110-1112">Week 12 (11/10, 11/12)</a></h1>
 <h2 id="tuesday-agenda-11"><a class="header" href="#tuesday-agenda-11">Tuesday Agenda</a></h2>
 <ul>
+<li>topic change for next week:
+<ul>
+<li>no hashing, but you can still explore it on your own if interested</li>
+<li>focus will be on minimax and starting the final project</li>
+</ul>
+</li>
 <li>binary tree introduction</li>
 <li>binary tree properties</li>
 <li>binary tree nodes</li>
@@ -5928,22 +5933,160 @@ started during class.</p>
 <li>implementation</li>
 <li>homework
 <ul>
-<li>read chapter 10.1-10.4 of the CS3 textbook (not our normal textbook):
-<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS3/html/HashIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS3/html/HashIntro.html</a></li>
 <li><a href="#practice-11">practice</a></li>
+<li>might give reading to prep for minimax, TBD</li>
+</ul>
+</li>
+<li>chapter 10 of the CS3 book covers hashing if you’re interested, but we
+probably won’t be covering it during class:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS3/html/HashIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS3/html/HashIntro.html</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="trees"><a class="header" href="#trees">Trees</a></h1>
+<ul>
+<li>what is a tree?</li>
+<li>what is a binary tree?</li>
+<li>terms
+<ul>
+<li>depth: distance from root to a node</li>
+<li>height: depth of deepest node</li>
+<li>level: all nodes of same depth</li>
+<li>leaf node: no children (or all children empty)</li>
+<li>internal node: 1 or more (nonempty) children</li>
+<li>full: all internal nodes have two (nonempty) children</li>
+<li>complete:
+<ul>
+<li>all levels above bottom level have max number of nonempty nodes</li>
+<li>all nonempty nodes on bottom level are clustered beginning on the left</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>applications
+<ul>
+<li>abstract syntax tree</li>
+<li>file systems</li>
+<li>sorting (tree sort)</li>
+<li>storing game states for our minimax algorithm</li>
 </ul>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="trees"><a class="header" href="#trees">Trees</a></h1>
+<h1 id="binary-tree-node"><a class="header" href="#binary-tree-node">Binary Tree Node</a></h1>
+<ul>
+<li>a binary tree node is a node with two pointers instead of one: left child and
+right child instead of next</li>
+<li>exercise: write a generic binary tree node class
+<ul>
+<li>no getters/setters and no access modifiers</li>
+</ul>
+</li>
+<li>exercise: write a main method that creates the tree structure below
+<ul>
+<li>you’re only allowed to use one variable, <code>root</code></li>
+<li>when finished, <code>root</code> must point to the node containing <code>D</code></li>
+<li>print each node’s item after constructing the tree</li>
+</ul>
+</li>
+</ul>
+<pre><code>     D
+    / \
+   /   \
+  A     C
+ / \     \
+B   F     G
+   /
+  E
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="binary-trees"><a class="header" href="#binary-trees">Binary Trees</a></h1>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="binary-search-tree-adt"><a class="header" href="#binary-search-tree-adt">Binary Search Tree ADT</a></h1>
+<h1 id="binary-search-trees"><a class="header" href="#binary-search-trees">Binary Search Trees</a></h1>
+<ul>
+<li>to qualify as a BST, for each internal node:
+<ul>
+<li>data stored in left child and all descendants is &lt;= this node’s data</li>
+<li>data stored in right child and all descendants is &gt; this node’s data</li>
+</ul>
+</li>
+<li>to insert while maintaining BST:
+<ul>
+<li>if root is empty, create root node with new item</li>
+<li>if root is not empty, attempt to insert as a child of root</li>
+<li>to insert as a child of node N:
+<ul>
+<li>if new item is &lt;= N’s element
+<ul>
+<li>if N has a left child, then attempt to insert as a child of N’s left
+child</li>
+<li>if N has no left child, then create a left child with new item</li>
+</ul>
+</li>
+<li>if new item is &gt; N’s element
+<ul>
+<li>if N has a right child, then attempt to insert as a child of N’s right
+child</li>
+<li>if N has no right child, then create a right child with new item</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="tree-traversals"><a class="header" href="#tree-traversals">Tree Traversals</a></h1>
+<ul>
+<li>traversing a tree means visiting each node
+<ul>
+<li>just like iterating over an array or traversing a linked list</li>
+<li>“visiting” could involve doing something with the node’s value, but we’re
+only interested in how to visit them</li>
+</ul>
+</li>
+<li>three types of traversals for binary tree:
+<ul>
+<li>preorder: visit node before its children</li>
+<li>inorder: visit node after visiting left child and before visiting right
+child</li>
+<li>postorder: visit node after its children</li>
+</ul>
+</li>
+<li>traversals affect the order in which we see the tree’s elements, and an
+inorder traversal of a BST will traverse the nodes in order</li>
+<li>exercise: write a recursive inorder traversal and use it to print the nodes
+from our earlier exercise</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="binary-search-tree-implementation"><a class="header" href="#binary-search-tree-implementation">Binary Search Tree Implementation</a></h1>
+<ul>
+<li>code a non-generic <strong>binary search tree</strong> that holds integers</li>
+<li>include the following operations:
+<ul>
+<li>insert: add an integer to the tree while maintaining BST property</li>
+<li>inorder, preorder, and postorder traversals:
+<ul>
+<li>take another data structure as a parameter (use any of our previous
+examples, such as <code>LinkedList&lt;Integer&gt;</code>)</li>
+<li>add the tree’s elements to the other data structure in the appropriate
+order</li>
+<li>if this is difficult, then try just printing the tree’s elements first and
+then modify that code to add them to the other collection instead of
+printing them</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>making a generic BST:
+<ul>
+<li>can’t compare a generic type <code>E</code> without knowing more about it, so we can’t
+use our insert algorithm</li>
+<li>we can use a generic type constraint (see textbook’s implementation) to
+require that E implements the <code>Comparable</code> interface, which guarantees it
+has a <code>compareTo</code> method (like the one in <code>String</code>)</li>
+<li>we can require a <code>Comparator&lt;E&gt;</code> in our constructor, which is an object that
+can compare two instances of <code>E</code></li>
+</ul>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="practice-11"><a class="header" href="#practice-11">Practice</a></h1>
 <p>Complete the <code>TODO</code> comments in the list implementations we started during
@@ -5952,27 +6095,17 @@ class.</p>
 <h1 id="week-13-1117-1119"><a class="header" href="#week-13-1117-1119">Week 13 (11/17, 11/19)</a></h1>
 <h2 id="tuesday-agenda-12"><a class="header" href="#tuesday-agenda-12">Tuesday Agenda</a></h2>
 <ul>
-<li>hashing</li>
-<li>tables, maps, etc.</li>
-<li>hash table adt</li>
+<li>minimax topics TBD</li>
 </ul>
 <h2 id="thursday-agenda-12"><a class="header" href="#thursday-agenda-12">Thursday Agenda</a></h2>
 <ul>
-<li>hash table implementation</li>
+<li>minimax topics TBD</li>
 <li>homework
 <ul>
 <li><a href="#practice-12">practice</a></li>
 </ul>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="hashing"><a class="header" href="#hashing">Hashing</a></h1>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="hash-tables-and-maps"><a class="header" href="#hash-tables-and-maps">Hash Tables and Maps</a></h1>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="hash-table-adt"><a class="header" href="#hash-table-adt">Hash Table ADT</a></h1>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="hash-table-implementation"><a class="header" href="#hash-table-implementation">Hash Table Implementation</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="practice-12"><a class="header" href="#practice-12">Practice</a></h1>
 <p>Complete the <code>TODO</code> comments in the <code>BinarySearchTree</code> implementation we started
